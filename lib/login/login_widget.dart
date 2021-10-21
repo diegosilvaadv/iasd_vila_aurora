@@ -82,7 +82,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          'Welcome Back,',
+                          'Seja Bem Vindo,',
                           style: FlutterFlowTheme.title1.override(
                             fontFamily: 'Lexend Deca',
                           ),
