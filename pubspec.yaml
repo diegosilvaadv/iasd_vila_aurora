@@ -38,6 +38,7 @@ dependencies:
   firebase_messaging: ^10.0.7
   firebase_storage: ^10.0.1
   flutter_google_places: ^0.3.0
+  flutter_spinkit: ^4.1.2+1
   font_awesome_flutter:
   geolocator: 7.6.2
   google_fonts: ^2.1.0

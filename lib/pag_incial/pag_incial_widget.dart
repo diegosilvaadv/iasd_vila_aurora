@@ -6,6 +6,7 @@ import '../main.dart';
 import '../sonoplastia/sonoplastia_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -104,9 +105,9 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: CircularProgressIndicator(
-                                              color:
-                                                  FlutterFlowTheme.primaryColor,
+                                            child: SpinKitDoubleBounce(
+                                              color: Color(0xFFF49F04),
+                                              size: 50,
                                             ),
                                           ),
                                         );
@@ -566,8 +567,9 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: CircularProgressIndicator(
-                                color: FlutterFlowTheme.primaryColor,
+                              child: SpinKitDoubleBounce(
+                                color: Color(0xFFF49F04),
+                                size: 50,
                               ),
                             ),
                           );

@@ -10,6 +10,7 @@ import '../post_details/post_details_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ViewProfilePageOtherWidget extends StatefulWidget {
@@ -41,8 +42,9 @@ class _ViewProfilePageOtherWidgetState
             child: SizedBox(
               width: 50,
               height: 50,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.primaryColor,
+              child: SpinKitDoubleBounce(
+                color: Color(0xFFF49F04),
+                size: 50,
               ),
             ),
           );
@@ -275,8 +277,9 @@ class _ViewProfilePageOtherWidgetState
                         child: SizedBox(
                           width: 50,
                           height: 50,
-                          child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.primaryColor,
+                          child: SpinKitDoubleBounce(
+                            color: Color(0xFFF49F04),
+                            size: 50,
                           ),
                         ),
                       );
@@ -312,8 +315,9 @@ class _ViewProfilePageOtherWidgetState
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.primaryColor,
+                                      child: SpinKitDoubleBounce(
+                                        color: Color(0xFFF49F04),
+                                        size: 50,
                                       ),
                                     ),
                                   );

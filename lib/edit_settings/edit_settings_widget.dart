@@ -8,6 +8,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../login/login_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditSettingsWidget extends StatefulWidget {
@@ -32,8 +33,9 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.primaryColor,
+              child: SpinKitDoubleBounce(
+                color: Color(0xFFF49F04),
+                size: 50,
               ),
             ),
           );

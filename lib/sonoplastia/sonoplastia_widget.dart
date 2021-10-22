@@ -4,6 +4,7 @@ import '../detalhes_sonoplastia/detalhes_sonoplastia_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SonoplastiaWidget extends StatefulWidget {
@@ -164,8 +165,9 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                         child: SizedBox(
                           width: 50,
                           height: 50,
-                          child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.primaryColor,
+                          child: SpinKitDoubleBounce(
+                            color: Color(0xFFF49F04),
+                            size: 50,
                           ),
                         ),
                       );
@@ -255,9 +257,10 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    CircularProgressIndicator(
-                                                                  color: FlutterFlowTheme
-                                                                      .primaryColor,
+                                                                    SpinKitDoubleBounce(
+                                                                  color: Color(
+                                                                      0xFFF49F04),
+                                                                  size: 50,
                                                                 ),
                                                               ),
                                                             );

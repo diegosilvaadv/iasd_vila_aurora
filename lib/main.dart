@@ -9,6 +9,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:iasd7vilaaurora/login/login_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'pag_incial/pag_incial_widget.dart';
 import 'chat_main/chat_main_widget.dart';
 import 'home_page/home_page_widget.dart';

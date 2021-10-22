@@ -12,6 +12,7 @@ import '../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfilePageWidget extends StatefulWidget {
@@ -37,8 +38,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.primaryColor,
+              child: SpinKitDoubleBounce(
+                color: Color(0xFFF49F04),
+                size: 50,
               ),
             ),
           );
@@ -288,8 +290,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       child: SizedBox(
                                         width: 50,
                                         height: 50,
-                                        child: CircularProgressIndicator(
-                                          color: FlutterFlowTheme.primaryColor,
+                                        child: SpinKitDoubleBounce(
+                                          color: Color(0xFFF49F04),
+                                          size: 50,
                                         ),
                                       ),
                                     );
@@ -431,9 +434,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: CircularProgressIndicator(
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
+                                          child: SpinKitDoubleBounce(
+                                            color: Color(0xFFF49F04),
+                                            size: 50,
                                           ),
                                         ),
                                       );
@@ -466,12 +469,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 4, 0, 8),
-                                            child:
-                                                StreamBuilder<UserPostsRecord>(
-                                              stream:
-                                                  UserPostsRecord.getDocument(
-                                                      socialFeedUserPostsRecord
-                                                          .reference),
+                                            child: StreamBuilder<UsersRecord>(
+                                              stream: UsersRecord.getDocument(
+                                                  socialFeedUserPostsRecord
+                                                      .postUser),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -480,14 +481,15 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                       width: 50,
                                                       height: 50,
                                                       child:
-                                                          CircularProgressIndicator(
-                                                        color: FlutterFlowTheme
-                                                            .primaryColor,
+                                                          SpinKitDoubleBounce(
+                                                        color:
+                                                            Color(0xFFF49F04),
+                                                        size: 50,
                                                       ),
                                                     ),
                                                   );
                                                 }
-                                                final userPostUserPostsRecord =
+                                                final userPostUsersRecord =
                                                     snapshot.data;
                                                 return Container(
                                                   width: MediaQuery.of(context)
