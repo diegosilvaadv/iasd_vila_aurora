@@ -151,7 +151,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Image.network(
                                           valueOrDefault<String>(
                                             profilePageUsersRecord.photoUrl,
-                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/5lywt4ult0tj/flouffy-qEO5MpLyOks-unsplash.jpg',
+                                            'https://cdn-icons-png.flaticon.com/512/149/149071.png',
                                           ),
                                           fit: BoxFit.fitWidth,
                                         ),
@@ -261,10 +261,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           indicatorWeight: 2,
                           tabs: [
                             Tab(
-                              text: 'Dog Profiles',
+                              text: 'Membros da Igreja',
                             ),
                             Tab(
-                              text: 'Posts',
+                              text: 'Postagens',
                             )
                           ],
                         ),
@@ -275,7 +275,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 width: 100,
                                 height: 100,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.background,
+                                  color: FlutterFlowTheme.primaryColor,
                                 ),
                                 child: AuthUserStreamWidget(
                                   child: StreamBuilder<List<UsersRecord>>(
@@ -304,7 +304,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       if (columnUsersRecordList.isEmpty) {
                                         return Center(
                                           child: Image.asset(
-                                            'assets/images/emptyDog@2x.png',
+                                            'assets/images/Logo_PORTUGUES.png',
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
@@ -359,12 +359,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           Radius.circular(0),
                                                     ),
                                                     child: CachedNetworkImage(
-                                                      imageUrl: valueOrDefault<
-                                                          String>(
-                                                        columnUsersRecord
-                                                            .photoUrl,
-                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/gu4akoa3hju1/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg',
-                                                      ),
+                                                      imageUrl:
+                                                          columnUsersRecord
+                                                              .photoUrl,
                                                       width: 100,
                                                       height: 100,
                                                       fit: BoxFit.cover,
@@ -663,7 +660,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                             String>(
                                                                           userPostUsersRecord
                                                                               .photoUrl,
-                                                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/wn636nykq7im/lucrezia-carnelos-0liYTl4dJxk-unsplash.jpg',
+                                                                          'https://cdn-icons-png.flaticon.com/512/149/149071.png',
                                                                         ),
                                                                         fit: BoxFit
                                                                             .fitWidth,

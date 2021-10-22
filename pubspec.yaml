@@ -49,6 +49,7 @@ dependencies:
   rxdart: ^0.26.0
   share_plus: ^2.1.4
   sign_in_with_apple: ^3.0.0
+  table_calendar: ^2.3.3
   timeago:
   url_launcher:
   video_player: ^2.1.10
