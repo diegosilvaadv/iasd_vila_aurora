@@ -31,11 +31,9 @@ dependencies:
   cached_network_image: ^3.1.0
   chewie: ^1.0.0
   cloud_firestore: ^2.4.0
-  cloud_functions: ^3.0.0
   dash_chat:
   firebase_auth: ^3.0.1
   firebase_core: ^1.4.0
-  firebase_messaging: ^10.0.7
   firebase_storage: ^10.0.1
   flutter_google_places: ^0.3.0
   flutter_spinkit: ^4.1.2+1

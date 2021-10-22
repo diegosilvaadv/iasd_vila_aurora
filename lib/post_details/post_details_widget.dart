@@ -424,194 +424,201 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         ),
                                       );
                                     }
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: List.generate(
-                                          commentListPostCommentsRecordList
-                                              .length, (commentListIndex) {
-                                        final commentListPostCommentsRecord =
-                                            commentListPostCommentsRecordList[
-                                                commentListIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 12),
-                                          child: StreamBuilder<UsersRecord>(
-                                            stream: UsersRecord.getDocument(
-                                                commentListPostCommentsRecord
-                                                    .user),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50,
-                                                    height: 50,
-                                                    child: SpinKitDoubleBounce(
-                                                      color: Color(0xFFF49F04),
-                                                      size: 50,
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              final commentUsersRecord =
-                                                  snapshot.data;
-                                              return Container(
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme
-                                                      .tertiaryColor,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 3,
-                                                      color: Color(0x41000000),
-                                                      offset: Offset(0, 1),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(8, 12, 8, 12),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        width: 40,
-                                                        height: 40,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                        child: Image.network(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            commentUsersRecord
-                                                                .photoUrl,
-                                                            'https://cdn-icons-png.flaticon.com/512/149/149071.png',
-                                                          ),
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                    return SingleChildScrollView(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: List.generate(
+                                            commentListPostCommentsRecordList
+                                                .length, (commentListIndex) {
+                                          final commentListPostCommentsRecord =
+                                              commentListPostCommentsRecordList[
+                                                  commentListIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 0, 12),
+                                            child: StreamBuilder<UsersRecord>(
+                                              stream: UsersRecord.getDocument(
+                                                  commentListPostCommentsRecord
+                                                      .user),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50,
+                                                      height: 50,
+                                                      child:
+                                                          SpinKitDoubleBounce(
+                                                        color:
+                                                            Color(0xFFF49F04),
+                                                        size: 50,
                                                       ),
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(12,
-                                                                      0, 0, 0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  commentUsersRecord
-                                                                      .displayName,
-                                                                  'My Name Here',
-                                                                ),
-                                                                style: FlutterFlowTheme
-                                                                    .subtitle2
-                                                                    .override(
-                                                                  fontFamily:
-                                                                      'Lexend Deca',
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            4,
-                                                                            0,
-                                                                            0),
-                                                                child: Text(
-                                                                  commentListPostCommentsRecord
-                                                                      .comment,
-                                                                  style: FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                    fontFamily:
-                                                                        'Lexend Deca',
+                                                    ),
+                                                  );
+                                                }
+                                                final commentUsersRecord =
+                                                    snapshot.data;
+                                                return Container(
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme
+                                                        .tertiaryColor,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 3,
+                                                        color:
+                                                            Color(0x41000000),
+                                                        offset: Offset(0, 1),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                8, 12, 8, 12),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                          width: 40,
+                                                          height: 40,
+                                                          clipBehavior:
+                                                              Clip.antiAlias,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Image.network(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              commentUsersRecord
+                                                                  .photoUrl,
+                                                              'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+                                                            ),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        12,
+                                                                        0,
+                                                                        0,
+                                                                        0),
+                                                            child:
+                                                                SingleChildScrollView(
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      commentUsersRecord
+                                                                          .displayName,
+                                                                      'My Name Here',
+                                                                    ),
+                                                                    style: FlutterFlowTheme
+                                                                        .subtitle2
+                                                                        .override(
+                                                                      fontFamily:
+                                                                          'Lexend Deca',
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0,
                                                                             4,
                                                                             0,
                                                                             0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
+                                                                    child: Text(
+                                                                      commentListPostCommentsRecord
+                                                                          .comment,
+                                                                      style: FlutterFlowTheme
+                                                                          .bodyText1
+                                                                          .override(
+                                                                        fontFamily:
+                                                                            'Lexend Deca',
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0,
+                                                                            4,
+                                                                            0,
+                                                                            0),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0,
                                                                               0,
                                                                               4,
                                                                               0),
-                                                                      child:
-                                                                          Text(
-                                                                        'Posted',
-                                                                        style: FlutterFlowTheme
-                                                                            .bodyText1
-                                                                            .override(
-                                                                          fontFamily:
-                                                                              'Lexend Deca',
-                                                                          fontSize:
-                                                                              12,
+                                                                          child:
+                                                                              Text(
+                                                                            'Posted',
+                                                                            style:
+                                                                                FlutterFlowTheme.bodyText1.override(
+                                                                              fontFamily: 'Lexend Deca',
+                                                                              fontSize: 12,
+                                                                            ),
+                                                                          ),
                                                                         ),
-                                                                      ),
+                                                                        Text(
+                                                                          dateTimeFormat(
+                                                                              'relative',
+                                                                              commentListPostCommentsRecord.timePosted),
+                                                                          style: FlutterFlowTheme
+                                                                              .bodyText2
+                                                                              .override(
+                                                                            fontFamily:
+                                                                                'Lexend Deca',
+                                                                            fontSize:
+                                                                                12,
+                                                                          ),
+                                                                        )
+                                                                      ],
                                                                     ),
-                                                                    Text(
-                                                                      dateTimeFormat(
-                                                                          'relative',
-                                                                          commentListPostCommentsRecord
-                                                                              .timePosted),
-                                                                      style: FlutterFlowTheme
-                                                                          .bodyText2
-                                                                          .override(
-                                                                        fontFamily:
-                                                                            'Lexend Deca',
-                                                                        fontSize:
-                                                                            12,
-                                                                      ),
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            ],
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      )
-                                                    ],
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        );
-                                      }),
+                                                );
+                                              },
+                                            ),
+                                          );
+                                        }),
+                                      ),
                                     );
                                   },
                                 ),
