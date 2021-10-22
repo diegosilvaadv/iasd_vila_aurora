@@ -366,21 +366,27 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                                                             FontWeight.w500,
                                                       ),
                                                     ),
-                                                    Text(
-                                                      dateTimeFormat(
-                                                          'Hm',
-                                                          columnEscalaSonoplastiaRecord
-                                                              .data),
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                        color:
-                                                            Color(0xFF6DEEE8),
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w500,
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5, 0, 0, 0),
+                                                      child: Text(
+                                                        dateTimeFormat(
+                                                            'Hm',
+                                                            columnEscalaSonoplastiaRecord
+                                                                .data),
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color:
+                                                              Color(0xFF6DEEE8),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                                       ),
                                                     )
                                                   ],

@@ -423,7 +423,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     queryBuilder: (userPostsRecord) =>
                                         userPostsRecord
                                             .where('postUser',
-                                                isEqualTo: currentUserReference)
+                                                isEqualTo:
+                                                    profilePageUsersRecord
+                                                        .reference)
                                             .orderBy('timePosted',
                                                 descending: true),
                                   ),
