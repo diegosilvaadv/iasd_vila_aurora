@@ -101,7 +101,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              'Access your account below or',
+                              'Acesse sua conta abaixo ou',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -124,7 +124,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   setState(() => _loadingButton1 = false);
                                 }
                               },
-                              text: 'Create Account',
+                              text: 'Criar Conta',
                               options: FFButtonOptions(
                                 width: 125,
                                 height: 28,
