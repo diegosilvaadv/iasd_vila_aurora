@@ -263,163 +263,110 @@ class _ViewProfilePageOtherWidgetState
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.background,
                                 ),
-                                child: StreamBuilder<List<DogsRecord>>(
-                                  stream: queryDogsRecord(
-                                    queryBuilder: (dogsRecord) =>
-                                        dogsRecord.where('userAssociation',
-                                            isEqualTo:
-                                                viewProfilePageOtherUsersRecord
-                                                    .reference),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<DogsRecord> columnDogsRecordList =
-                                        snapshot.data;
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: List.generate(
-                                          columnDogsRecordList.length,
-                                          (columnIndex) {
-                                        final columnDogsRecord =
-                                            columnDogsRecordList[columnIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 12, 0, 0),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 12, 0, 0),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
                                                 0.96,
-                                            height: 100,
-                                            decoration: BoxDecoration(
-                                              color: FlutterFlowTheme
-                                                  .tertiaryColor,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 3,
-                                                  color: Color(0x32000000),
-                                                  offset: Offset(0, 1),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.tertiaryColor,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 3,
+                                              color: Color(0x32000000),
+                                              offset: Offset(0, 1),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(8),
+                                                bottomRight: Radius.circular(0),
+                                                topLeft: Radius.circular(8),
+                                                topRight: Radius.circular(0),
+                                              ),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/544/600',
+                                                width: 100,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(8),
-                                                    bottomRight:
-                                                        Radius.circular(0),
-                                                    topLeft: Radius.circular(8),
-                                                    topRight:
-                                                        Radius.circular(0),
-                                                  ),
-                                                  child: Image.network(
-                                                    valueOrDefault<String>(
-                                                      columnDogsRecord.dogPhoto,
-                                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/gu4akoa3hju1/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg',
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(12, 0, 0, 0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Hello World',
+                                                    style: FlutterFlowTheme
+                                                        .title3
+                                                        .override(
+                                                      fontFamily: 'Lexend Deca',
                                                     ),
-                                                    width: 100,
-                                                    height: 100,
-                                                    fit: BoxFit.cover,
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 0, 0, 0),
-                                                  child: Column(
+                                                  Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
                                                     children: [
-                                                      Text(
-                                                        columnDogsRecord
-                                                            .dogName,
-                                                        style: FlutterFlowTheme
-                                                            .title3
-                                                            .override(
-                                                          fontFamily:
-                                                              'Lexend Deca',
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 4, 0, 0),
+                                                        child: Text(
+                                                          'Hello World',
+                                                          style:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Lexend Deca',
+                                                          ),
                                                         ),
                                                       ),
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        4,
-                                                                        0,
-                                                                        0),
-                                                            child: Text(
-                                                              columnDogsRecord
-                                                                  .dogType,
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Lexend Deca',
-                                                              ),
-                                                            ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    4, 4, 0, 0),
+                                                        child: Text(
+                                                          'Hello World',
+                                                          style:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Lexend Deca',
                                                           ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        4,
-                                                                        4,
-                                                                        0,
-                                                                        0),
-                                                            child: Text(
-                                                              columnDogsRecord
-                                                                  .dogAge,
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Lexend Deca',
-                                                              ),
-                                                            ),
-                                                          )
-                                                        ],
+                                                        ),
                                                       )
                                                     ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      }),
-                                    );
-                                  },
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
                               StreamBuilder<List<UserPostsRecord>>(

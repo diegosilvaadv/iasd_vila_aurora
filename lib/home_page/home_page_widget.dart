@@ -9,7 +9,6 @@ import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_video_player.dart';
 import '../post_details/post_details_widget.dart';
-import '../story_details/story_details_widget.dart';
 import '../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -140,125 +139,43 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     ),
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 8),
-                      child: StreamBuilder<List<UserStoriesRecord>>(
-                        stream: queryUserStoriesRecord(
-                          queryBuilder: (userStoriesRecord) => userStoriesRecord
-                              .orderBy('storyPostedAt', descending: true),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: CircularProgressIndicator(
-                                  color: FlutterFlowTheme.primaryColor,
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                        'https://picsum.photos/seed/784/600',
+                                    fit: BoxFit.fitWidth,
+                                  ),
                                 ),
-                              ),
-                            );
-                          }
-                          List<UserStoriesRecord>
-                              listViewUserStoriesRecordList = snapshot.data;
-                          if (listViewUserStoriesRecordList.isEmpty) {
-                            return Center(
-                              child: Image.asset(
-                                'assets/images/df3hg_',
-                                width: 60,
-                              ),
-                            );
-                          }
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: listViewUserStoriesRecordList.length,
-                            itemBuilder: (context, listViewIndex) {
-                              final listViewUserStoriesRecord =
-                                  listViewUserStoriesRecordList[listViewIndex];
-                              return Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                                child: StreamBuilder<UsersRecord>(
-                                  stream: UsersRecord.getDocument(
-                                      listViewUserStoriesRecord.user),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    final columnUsersRecord = snapshot.data;
-                                    return InkWell(
-                                      onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          PageTransition(
-                                            type:
-                                                PageTransitionType.bottomToTop,
-                                            duration:
-                                                Duration(milliseconds: 200),
-                                            reverseDuration:
-                                                Duration(milliseconds: 200),
-                                            child: StoryDetailsWidget(
-                                              initialStoryIndex: listViewIndex,
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            width: 40,
-                                            height: 40,
-                                            clipBehavior: Clip.antiAlias,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                            ),
-                                            child: CachedNetworkImage(
-                                              imageUrl: valueOrDefault<String>(
-                                                columnUsersRecord.photoUrl,
-                                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ecyxfirnulof/karsten-winegeart-BJaqPaH6AGQ-unsplash.jpg',
-                                              ),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 0, 0),
-                                            child: AutoSizeText(
-                                              valueOrDefault<String>(
-                                                columnUsersRecord.displayName,
-                                                'Ellie May',
-                                              ).maybeHandleOverflow(
-                                                maxChars: 8,
-                                                replacement: '…',
-                                              ),
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          );
-                        },
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 4, 0, 0),
+                                  child: AutoSizeText(
+                                    'Name',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Lexend Deca',
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   )

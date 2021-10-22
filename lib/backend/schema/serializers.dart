@@ -3,9 +3,6 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'user_posts_record.dart';
 import 'users_record.dart';
 import 'post_comments_record.dart';
-import 'user_stories_record.dart';
-import 'story_comments_record.dart';
-import 'dogs_record.dart';
 import 'friends_record.dart';
 import 'chats_record.dart';
 import 'chat_messages_record.dart';
@@ -22,9 +19,6 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   UserPostsRecord,
   UsersRecord,
   PostCommentsRecord,
-  UserStoriesRecord,
-  StoryCommentsRecord,
-  DogsRecord,
   FriendsRecord,
   ChatsRecord,
   ChatMessagesRecord,

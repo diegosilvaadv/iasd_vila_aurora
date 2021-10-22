@@ -48,9 +48,7 @@ dependencies:
   mime_type: ^1.0.0
   page_transition:
   rxdart: ^0.26.0
-  share_plus: ^2.1.4
   sign_in_with_apple: ^3.0.0
-  smooth_page_indicator:
   timeago:
   url_launcher:
   video_player: ^2.1.10

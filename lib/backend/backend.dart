@@ -7,9 +7,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/user_posts_record.dart';
 import 'schema/users_record.dart';
 import 'schema/post_comments_record.dart';
-import 'schema/user_stories_record.dart';
-import 'schema/story_comments_record.dart';
-import 'schema/dogs_record.dart';
 import 'schema/friends_record.dart';
 import 'schema/chats_record.dart';
 import 'schema/chat_messages_record.dart';
@@ -22,9 +19,6 @@ export 'schema/serializers.dart';
 export 'schema/user_posts_record.dart';
 export 'schema/users_record.dart';
 export 'schema/post_comments_record.dart';
-export 'schema/user_stories_record.dart';
-export 'schema/story_comments_record.dart';
-export 'schema/dogs_record.dart';
 export 'schema/friends_record.dart';
 export 'schema/chats_record.dart';
 export 'schema/chat_messages_record.dart';
@@ -49,28 +43,6 @@ Stream<List<PostCommentsRecord>> queryPostCommentsRecord(
         bool singleRecord = false}) =>
     queryCollection(
         PostCommentsRecord.collection, PostCommentsRecord.serializer,
-        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
-
-Stream<List<UserStoriesRecord>> queryUserStoriesRecord(
-        {Query Function(Query) queryBuilder,
-        int limit = -1,
-        bool singleRecord = false}) =>
-    queryCollection(UserStoriesRecord.collection, UserStoriesRecord.serializer,
-        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
-
-Stream<List<StoryCommentsRecord>> queryStoryCommentsRecord(
-        {Query Function(Query) queryBuilder,
-        int limit = -1,
-        bool singleRecord = false}) =>
-    queryCollection(
-        StoryCommentsRecord.collection, StoryCommentsRecord.serializer,
-        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
-
-Stream<List<DogsRecord>> queryDogsRecord(
-        {Query Function(Query) queryBuilder,
-        int limit = -1,
-        bool singleRecord = false}) =>
-    queryCollection(DogsRecord.collection, DogsRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<FriendsRecord>> queryFriendsRecord(

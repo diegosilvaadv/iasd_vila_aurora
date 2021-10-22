@@ -35,24 +35,6 @@ service cloud.firestore {
 
     // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
     // security rules for this collection before publishing your app.
-    match /userStories/{id} {
-      allow read, write: if true;
-    }
-
-    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
-    // security rules for this collection before publishing your app.
-    match /storyComments/{id} {
-      allow read, write: if true;
-    }
-
-    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
-    // security rules for this collection before publishing your app.
-    match /dogs/{id} {
-      allow read, write: if true;
-    }
-
-    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
-    // security rules for this collection before publishing your app.
     match /friends/{id} {
       allow read, write: if true;
     }

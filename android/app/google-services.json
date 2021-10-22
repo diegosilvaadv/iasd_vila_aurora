@@ -1,45 +1,37 @@
 {
   "project_info": {
-    "project_number": "768238167223",
-    "project_id": "sniffsocial",
-    "storage_bucket": "sniffsocial.appspot.com"
+    "project_number": "175911452677",
+    "project_id": "iasdvilaaurora7",
+    "storage_bucket": "iasdvilaaurora7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:768238167223:android:23ce68b2b033c9ac0e9932",
+        "mobilesdk_app_id": "1:175911452677:android:1425f5d90d9e24a277dc6c",
         "android_client_info": {
           "package_name": "com.flutterflow.sniffsocial"
         }
       },
       "oauth_client": [
         {
-          "client_id": "768238167223-8ic7g1v2k5j9p6olqlb2158453ff68ns.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.flutterflow.sniffsocial",
-            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
-          }
-        },
-        {
-          "client_id": "768238167223-bv7rtpp2ienr5klpkqocklfg1jlt1mso.apps.googleusercontent.com",
+          "client_id": "175911452677-h644k9ruppqv925gqbds4825abu7q788.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCtY_yi2t45gaQYN2tAX1kTgNLjexTNDD8"
+          "current_key": "AIzaSyDojM42JwQXSEyLDnkx_7D40DUpOXHrlZs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "768238167223-bv7rtpp2ienr5klpkqocklfg1jlt1mso.apps.googleusercontent.com",
+              "client_id": "175911452677-h644k9ruppqv925gqbds4825abu7q788.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "768238167223-43fd19f4li6v8uhj8b8rlfd78r3fvoqm.apps.googleusercontent.com",
+              "client_id": "175911452677-1g1ioaje998ia4s38cql3loil5jvglme.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.flutterflow.sniffsocial"

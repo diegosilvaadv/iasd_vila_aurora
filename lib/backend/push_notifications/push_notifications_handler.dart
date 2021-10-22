@@ -10,18 +10,13 @@ import 'package:flutter/material.dart';
 import '../../main.dart';
 import '../../login/login_widget.dart';
 import '../../create_account/create_account_widget.dart';
-import '../../create_dog_profile/create_dog_profile_widget.dart';
 import '../../create_your_profile/create_your_profile_widget.dart';
 import '../../forgot_password/forgot_password_widget.dart';
 import '../../create_post/create_post_widget.dart';
-import '../../create_story/create_story_widget.dart';
 import '../../post_details/post_details_widget.dart';
-import '../../story_details/story_details_widget.dart';
 import '../../edit_settings/edit_settings_widget.dart';
 import '../../edit_user_profile/edit_user_profile_widget.dart';
-import '../../edit_dog_profile/edit_dog_profile_widget.dart';
 import '../../change_password/change_password_widget.dart';
-import '../../create_dog_profile_new/create_dog_profile_new_widget.dart';
 import '../../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../../chat_user/chat_user_widget.dart';
 
@@ -92,29 +87,19 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'login': (data) async => LoginWidget(),
   'createAccount': (data) async => CreateAccountWidget(),
-  'createDogProfile': (data) async => CreateDogProfileWidget(),
   'createYourProfile': (data) async => CreateYourProfileWidget(),
   'forgotPassword': (data) async => ForgotPasswordWidget(),
   'homePage': (data) async => NavBarPage(initialPage: 'HomePageWidget'),
   'profilePage': (data) async => NavBarPage(initialPage: 'ProfilePageWidget'),
   'createPost': (data) async => CreatePostWidget(),
-  'createStory': (data) async => CreateStoryWidget(),
   'postDetails': (data) async => PostDetailsWidget(
         postReference: getParameter(data, 'postReference'),
         userRecord: await getDocumentParameter(
             data, 'userRecord', UsersRecord.serializer),
       ),
-  'storyDetails': (data) async => StoryDetailsWidget(
-        initialStoryIndex: getParameter(data, 'initialStoryIndex'),
-      ),
   'editSettings': (data) async => EditSettingsWidget(),
   'editUserProfile': (data) async => EditUserProfileWidget(),
-  'editDogProfile': (data) async => EditDogProfileWidget(
-        dogProfile: await getDocumentParameter(
-            data, 'dogProfile', DogsRecord.serializer),
-      ),
   'changePassword': (data) async => ChangePasswordWidget(),
-  'createDogProfile_New': (data) async => CreateDogProfileNewWidget(),
   'viewProfilePageOther': (data) async => ViewProfilePageOtherWidget(
         userDetails: await getDocumentParameter(
             data, 'userDetails', UsersRecord.serializer),
