@@ -1,14 +1,13 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../create_post/create_post_widget.dart';
 import '../edit_settings/edit_settings_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import '../post_details/post_details_widget.dart';
-import '../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +47,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
         final profilePageUsersRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
-          backgroundColor: Colors.black,
+          backgroundColor: FlutterFlowTheme.background,
           body: SafeArea(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -60,10 +59,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: Color(0xFFFAA211),
+                        color: Colors.white,
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 5),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,8 +98,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
                                             fontFamily: 'Lexend Deca',
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
+                                            color: Color(0xFFEE8B60),
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
                                           ),
@@ -113,15 +111,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 8, 0, 0),
                                         child: Text(
-                                          valueOrDefault<String>(
-                                            profilePageUsersRecord.igreja,
-                                            'Igreja Adventista do Sétimo dia',
-                                          ),
+                                          profilePageUsersRecord.igreja,
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
                                             fontFamily: 'Lexend Deca',
-                                            color: Colors.black,
                                           ),
                                         ),
                                       ),
@@ -157,7 +151,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Image.network(
                                           valueOrDefault<String>(
                                             profilePageUsersRecord.photoUrl,
-                                            'http://simpleicon.com/wp-content/uploads/user1.png',
+                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/5lywt4ult0tj/flouffy-qEO5MpLyOks-unsplash.jpg',
                                           ),
                                           fit: BoxFit.fitWidth,
                                         ),
@@ -189,14 +183,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 type: PageTransitionType.bottomToTop,
                                 duration: Duration(milliseconds: 250),
                                 reverseDuration: Duration(milliseconds: 250),
-                                child: CreatePostWidget(),
+                                child: NavBarPage(initialPage: 'chatMain'),
                               ),
                             );
                           } finally {
                             setState(() => _loadingButton1 = false);
                           }
                         },
-                        text: 'Criar Post',
+                        text: 'Add a Dog',
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
@@ -231,18 +225,17 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             setState(() => _loadingButton2 = false);
                           }
                         },
-                        text: 'Configurações',
+                        text: 'Settings',
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
                           color: FlutterFlowTheme.tertiaryColor,
                           textStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lexend Deca',
-                            color: Colors.black,
                           ),
                           elevation: 0,
                           borderSide: BorderSide(
-                            color: Colors.black,
+                            color: FlutterFlowTheme.gray200,
                             width: 2,
                           ),
                           borderRadius: 12,
@@ -259,8 +252,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     child: Column(
                       children: [
                         TabBar(
-                          labelColor: Color(0xFFFAA211),
-                          unselectedLabelColor: Color(0xFFFEFEFE),
+                          labelColor: FlutterFlowTheme.primaryColor,
+                          unselectedLabelColor: FlutterFlowTheme.grayIcon,
                           labelStyle: GoogleFonts.getFont(
                             'Roboto',
                           ),
@@ -268,7 +261,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           indicatorWeight: 2,
                           tabs: [
                             Tab(
-                              text: 'Irmãos da igreja',
+                              text: 'Dog Profiles',
                             ),
                             Tab(
                               text: 'Posts',
@@ -278,150 +271,222 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Expanded(
                           child: TabBarView(
                             children: [
-                              StreamBuilder<List<UserPostsRecord>>(
-                                stream: queryUserPostsRecord(
-                                  queryBuilder: (userPostsRecord) =>
-                                      userPostsRecord
-                                          .where(
-                                              'postUser',
-                                              isEqualTo: profilePageUsersRecord
-                                                  .reference)
-                                          .orderBy('timePosted'),
+                              Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.background,
                                 ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: SpinKitDoubleBounce(
-                                          color: Color(0xFFF49F04),
-                                          size: 50,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<UserPostsRecord>
-                                      columnUserPostsRecordList = snapshot.data;
-                                  return SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: List.generate(
-                                          columnUserPostsRecordList.length,
-                                          (columnIndex) {
-                                        final columnUserPostsRecord =
-                                            columnUserPostsRecordList[
-                                                columnIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 10),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ViewProfilePageOtherWidget(
-                                                    userDetails:
-                                                        profilePageUsersRecord,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            child: Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xFF252525),
-                                              ),
-                                              child: SingleChildScrollView(
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10,
-                                                                          5,
-                                                                          0,
-                                                                          5),
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    columnUserPostsRecord
-                                                                        .postPhoto,
-                                                                    'http://simpleicon.com/wp-content/uploads/user1.png',
-                                                                  ),
-                                                                  width: 100,
-                                                                  height: 100,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          5,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                                  child: Text(
-                                                                    profilePageUsersRecord
-                                                                        .displayName,
-                                                                    style: FlutterFlowTheme
-                                                                        .title1
-                                                                        .override(
-                                                                      fontFamily:
-                                                                          'Lexend Deca',
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                                  ),
-                                                                )
-                                                              ],
-                                                            )
-                                                          ],
-                                                        )
-                                                      ],
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
+                                child: AuthUserStreamWidget(
+                                  child: StreamBuilder<List<UsersRecord>>(
+                                    stream: queryUsersRecord(
+                                      queryBuilder: (usersRecord) =>
+                                          usersRecord.where('display_name',
+                                              isEqualTo:
+                                                  currentUserDisplayName),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50,
+                                            height: 50,
+                                            child: SpinKitDoubleBounce(
+                                              color: Color(0xFFF49F04),
+                                              size: 50,
                                             ),
                                           ),
                                         );
-                                      }),
-                                    ),
-                                  );
-                                },
+                                      }
+                                      List<UsersRecord> columnUsersRecordList =
+                                          snapshot.data;
+                                      if (columnUsersRecordList.isEmpty) {
+                                        return Center(
+                                          child: Image.asset(
+                                            'assets/images/emptyDog@2x.png',
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.8,
+                                          ),
+                                        );
+                                      }
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: List.generate(
+                                            columnUsersRecordList.length,
+                                            (columnIndex) {
+                                          final columnUsersRecord =
+                                              columnUsersRecordList[
+                                                  columnIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 12, 0, 0),
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.96,
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                color: FlutterFlowTheme
+                                                    .tertiaryColor,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 3,
+                                                    color: Color(0x32000000),
+                                                    offset: Offset(0, 1),
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(8),
+                                                      bottomRight:
+                                                          Radius.circular(0),
+                                                      topLeft:
+                                                          Radius.circular(8),
+                                                      topRight:
+                                                          Radius.circular(0),
+                                                    ),
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: valueOrDefault<
+                                                          String>(
+                                                        columnUsersRecord
+                                                            .photoUrl,
+                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/gu4akoa3hju1/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg',
+                                                      ),
+                                                      width: 100,
+                                                      height: 100,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12, 0, 0, 0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            columnUsersRecord
+                                                                .displayName,
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .title3
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Lexend Deca',
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0,
+                                                                            4,
+                                                                            0,
+                                                                            0),
+                                                                child: Text(
+                                                                  columnUsersRecord
+                                                                      .igreja,
+                                                                  style: FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Lexend Deca',
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            4,
+                                                                            4,
+                                                                            0,
+                                                                            0),
+                                                                child: Text(
+                                                                  columnUsersRecord
+                                                                      .email,
+                                                                  style: FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Lexend Deca',
+                                                                  ),
+                                                                ),
+                                                              )
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 12, 0),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          FlutterFlowTheme
+                                                              .gray200,
+                                                      borderRadius: 30,
+                                                      borderWidth: 2,
+                                                      buttonSize: 44,
+                                                      icon: Icon(
+                                                        Icons.edit_outlined,
+                                                        color: FlutterFlowTheme
+                                                            .grayIcon,
+                                                        size: 24,
+                                                      ),
+                                                      onPressed: () async {
+                                                        await Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                NavBarPage(
+                                                                    initialPage:
+                                                                        'chatMain'),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  ),
+                                ),
                               ),
                               Padding(
                                 padding:
@@ -508,12 +573,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme
                                                         .tertiaryColor,
-                                                    image: DecorationImage(
-                                                      fit: BoxFit.cover,
-                                                      image: Image.asset(
-                                                        'assets/images/Logo_PORTUGUES.png',
-                                                      ).image,
-                                                    ),
                                                     boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4,
@@ -534,7 +593,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           builder: (context) =>
                                                               PostDetailsWidget(
                                                             userRecord:
-                                                                profilePageUsersRecord,
+                                                                userPostUsersRecord,
                                                             postReference:
                                                                 socialFeedUserPostsRecord
                                                                     .reference,
@@ -542,263 +601,233 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                         ),
                                                       );
                                                     },
-                                                    child:
-                                                        SingleChildScrollView(
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        8,
-                                                                        2,
-                                                                        4),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          8,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                                  child: Card(
-                                                                    clipBehavior:
-                                                                        Clip.antiAliasWithSaveLayer,
-                                                                    color: Color(
-                                                                        0xFF4B39EF),
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              20),
-                                                                    ),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      8, 2, 4),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                child: Card(
+                                                                  clipBehavior:
+                                                                      Clip.antiAliasWithSaveLayer,
+                                                                  color: Color(
+                                                                      0xFF4B39EF),
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            20),
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            1,
+                                                                            1,
+                                                                            1,
+                                                                            1),
                                                                     child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              1,
-                                                                              1,
-                                                                              1,
-                                                                              1),
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            40,
-                                                                        height:
-                                                                            40,
-                                                                        clipBehavior:
-                                                                            Clip.antiAlias,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          shape:
-                                                                              BoxShape.circle,
+                                                                        Container(
+                                                                      width: 40,
+                                                                      height:
+                                                                          40,
+                                                                      clipBehavior:
+                                                                          Clip.antiAlias,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child: Image
+                                                                          .network(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          userPostUsersRecord
+                                                                              .photoUrl,
+                                                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/wn636nykq7im/lucrezia-carnelos-0liYTl4dJxk-unsplash.jpg',
                                                                         ),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            profilePageUsersRecord.photoUrl,
-                                                                            'https://cdn-icons-png.flaticon.com/512/149/149071.png',
-                                                                          ),
-                                                                          fit: BoxFit
-                                                                              .fitWidth,
-                                                                        ),
+                                                                        fit: BoxFit
+                                                                            .fitWidth,
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                                Expanded(
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceBetween,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            12,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            profilePageUsersRecord.displayName,
-                                                                            'myUsername',
-                                                                          ),
-                                                                          style: FlutterFlowTheme
-                                                                              .bodyText1
-                                                                              .override(
-                                                                            fontFamily:
-                                                                                'Lexend Deca',
-                                                                            color:
-                                                                                Color(0xFF090F13),
-                                                                            fontSize:
-                                                                                14,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      FlutterFlowIconButton(
-                                                                        borderColor:
-                                                                            Colors.transparent,
-                                                                        borderRadius:
-                                                                            30,
-                                                                        buttonSize:
-                                                                            46,
-                                                                        icon:
-                                                                            Icon(
-                                                                          Icons
-                                                                              .keyboard_control,
-                                                                          color:
-                                                                              Color(0xFF262D34),
-                                                                          size:
-                                                                              20,
-                                                                        ),
-                                                                        onPressed:
-                                                                            () {
-                                                                          print(
-                                                                              'IconButton pressed ...');
-                                                                        },
-                                                                      )
-                                                                    ],
-                                                                  ),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        0),
-                                                            child:
-                                                                CachedNetworkImage(
-                                                              imageUrl:
-                                                                  socialFeedUserPostsRecord
-                                                                      .postPhoto,
-                                                              width:
-                                                                  MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                              height: 300,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8,
-                                                                        4,
-                                                                        8,
-                                                                        0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              children: [
-                                                                Row(
+                                                              ),
+                                                              Expanded(
+                                                                child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
                                                                           .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
                                                                   children: [
                                                                     Padding(
                                                                       padding: EdgeInsetsDirectional
                                                                           .fromSTEB(
+                                                                              12,
                                                                               0,
                                                                               0,
-                                                                              16,
                                                                               0),
                                                                       child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          ToggleIcon(
-                                                                            onPressed:
-                                                                                () async {
-                                                                              final likesElement = currentUserReference;
-                                                                              final likesUpdate = socialFeedUserPostsRecord.likes.contains(likesElement)
-                                                                                  ? FieldValue.arrayRemove([
-                                                                                      likesElement
-                                                                                    ])
-                                                                                  : FieldValue.arrayUnion([
-                                                                                      likesElement
-                                                                                    ]);
-                                                                              final userPostsUpdateData = {
-                                                                                'likes': likesUpdate,
-                                                                              };
-                                                                              await socialFeedUserPostsRecord.reference.update(userPostsUpdateData);
-                                                                            },
-                                                                            value:
-                                                                                socialFeedUserPostsRecord.likes.contains(currentUserReference),
-                                                                            onIcon:
-                                                                                Icon(
-                                                                              Icons.favorite_rounded,
-                                                                              color: Color(0xFF4B39EF),
-                                                                              size: 25,
-                                                                            ),
-                                                                            offIcon:
-                                                                                Icon(
-                                                                              Icons.favorite_border,
-                                                                              color: Color(0xFF95A1AC),
-                                                                              size: 25,
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                4,
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            child:
-                                                                                Text(
-                                                                              valueOrDefault<String>(
-                                                                                functions.likes(socialFeedUserPostsRecord).toString().toString(),
-                                                                                '0',
-                                                                              ),
-                                                                              style: FlutterFlowTheme.bodyText2.override(
-                                                                                fontFamily: 'Lexend Deca',
-                                                                                color: Color(0xFF8B97A2),
-                                                                                fontSize: 14,
-                                                                                fontWeight: FontWeight.normal,
-                                                                              ),
-                                                                            ),
-                                                                          )
-                                                                        ],
+                                                                          Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          userPostUsersRecord
+                                                                              .userName,
+                                                                          'myUsername',
+                                                                        ),
+                                                                        style: FlutterFlowTheme
+                                                                            .bodyText1
+                                                                            .override(
+                                                                          fontFamily:
+                                                                              'Lexend Deca',
+                                                                          color:
+                                                                              Color(0xFF090F13),
+                                                                          fontSize:
+                                                                              14,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                        ),
                                                                       ),
                                                                     ),
-                                                                    Row(
+                                                                    FlutterFlowIconButton(
+                                                                      borderColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      borderRadius:
+                                                                          30,
+                                                                      buttonSize:
+                                                                          46,
+                                                                      icon:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .keyboard_control,
+                                                                        color: Color(
+                                                                            0xFF262D34),
+                                                                        size:
+                                                                            20,
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {
+                                                                        print(
+                                                                            'IconButton pressed ...');
+                                                                      },
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(0),
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            imageUrl:
+                                                                valueOrDefault<
+                                                                    String>(
+                                                              socialFeedUserPostsRecord
+                                                                  .postPhoto,
+                                                              'https://d.newsweek.com/en/full/1310267/best-hawaii-beaches.jpg',
+                                                            ),
+                                                            width:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width,
+                                                            height: 300,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(8,
+                                                                      4, 8, 0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0,
+                                                                            0,
+                                                                            16,
+                                                                            0),
+                                                                    child: Row(
                                                                       mainAxisSize:
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Icon(
-                                                                          Icons
-                                                                              .mode_comment_outlined,
-                                                                          color:
-                                                                              Color(0xFF95A1AC),
-                                                                          size:
-                                                                              24,
+                                                                        ToggleIcon(
+                                                                          onPressed:
+                                                                              () async {
+                                                                            final likesElement =
+                                                                                profilePageUsersRecord.reference;
+                                                                            final likesUpdate = socialFeedUserPostsRecord.likes.contains(likesElement)
+                                                                                ? FieldValue.arrayRemove([
+                                                                                    likesElement
+                                                                                  ])
+                                                                                : FieldValue.arrayUnion([
+                                                                                    likesElement
+                                                                                  ]);
+                                                                            final userPostsUpdateData =
+                                                                                {
+                                                                              'likes': likesUpdate,
+                                                                            };
+                                                                            await socialFeedUserPostsRecord.reference.update(userPostsUpdateData);
+                                                                          },
+                                                                          value: socialFeedUserPostsRecord
+                                                                              .likes
+                                                                              .contains(profilePageUsersRecord.reference),
+                                                                          onIcon:
+                                                                              Icon(
+                                                                            Icons.favorite_rounded,
+                                                                            color:
+                                                                                Color(0xFF4B39EF),
+                                                                            size:
+                                                                                25,
+                                                                          ),
+                                                                          offIcon:
+                                                                              Icon(
+                                                                            Icons.favorite_border,
+                                                                            color:
+                                                                                Color(0xFF95A1AC),
+                                                                            size:
+                                                                                25,
+                                                                          ),
                                                                         ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -808,7 +837,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            socialFeedUserPostsRecord.numComments.toString(),
+                                                                            valueOrDefault<String>(
+                                                                              functions.likes(socialFeedUserPostsRecord).toString().toString(),
+                                                                              '0',
+                                                                            ),
                                                                             style:
                                                                                 FlutterFlowTheme.bodyText2.override(
                                                                               fontFamily: 'Lexend Deca',
@@ -819,95 +851,132 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           ),
                                                                         )
                                                                       ],
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              2,
-                                                                              8,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        dateTimeFormat(
-                                                                            'relative',
-                                                                            socialFeedUserPostsRecord.timePosted),
-                                                                        style: FlutterFlowTheme
-                                                                            .bodyText1
-                                                                            .override(
-                                                                          fontFamily:
-                                                                              'Lexend Deca',
-                                                                        ),
-                                                                      ),
                                                                     ),
-                                                                    Icon(
-                                                                      Icons
-                                                                          .ios_share,
-                                                                      color: Color(
-                                                                          0xFF95A1AC),
-                                                                      size: 24,
-                                                                    )
-                                                                  ],
-                                                                )
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        2,
-                                                                        4,
-                                                                        0,
-                                                                        0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Expanded(
-                                                                  child:
+                                                                  ),
+                                                                  Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .mode_comment_outlined,
+                                                                        color: Color(
+                                                                            0xFF95A1AC),
+                                                                        size:
+                                                                            24,
+                                                                      ),
                                                                       Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            4,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                        child:
+                                                                            Text(
+                                                                          socialFeedUserPostsRecord
+                                                                              .numComments
+                                                                              .toString(),
+                                                                          style: FlutterFlowTheme
+                                                                              .bodyText2
+                                                                              .override(
+                                                                            fontFamily:
+                                                                                'Lexend Deca',
+                                                                            color:
+                                                                                Color(0xFF8B97A2),
+                                                                            fontSize:
+                                                                                14,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                          ),
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  )
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            12,
                                                                             0,
-                                                                            12,
-                                                                            12),
+                                                                            2,
+                                                                            8,
+                                                                            0),
                                                                     child: Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        socialFeedUserPostsRecord
-                                                                            .postDescription,
-                                                                        'I\'m back with a super quick Instagram redesign just for the fan. Rounded corners and cute icons, what else do we need, haha.⁣ ',
-                                                                      ),
+                                                                      dateTimeFormat(
+                                                                          'relative',
+                                                                          socialFeedUserPostsRecord
+                                                                              .timePosted),
                                                                       style: FlutterFlowTheme
                                                                           .bodyText1
                                                                           .override(
                                                                         fontFamily:
                                                                             'Lexend Deca',
-                                                                        color: Color(
-                                                                            0xFF090F13),
-                                                                        fontSize:
-                                                                            14,
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
+                                                                  Icon(
+                                                                    Icons
+                                                                        .ios_share,
+                                                                    color: Color(
+                                                                        0xFF95A1AC),
+                                                                    size: 24,
+                                                                  )
+                                                                ],
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(2,
+                                                                      4, 0, 0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          12,
+                                                                          0,
+                                                                          12,
+                                                                          12),
+                                                                  child: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      socialFeedUserPostsRecord
+                                                                          .postDescription,
+                                                                      'I\'m back with a super quick Instagram redesign just for the fan. Rounded corners and cute icons, what else do we need, haha.⁣ ',
+                                                                    ),
+                                                                    style: FlutterFlowTheme
+                                                                        .bodyText1
+                                                                        .override(
+                                                                      fontFamily:
+                                                                          'Lexend Deca',
+                                                                      color: Color(
+                                                                          0xFF090F13),
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        )
+                                                      ],
                                                     ),
                                                   ),
                                                 );
