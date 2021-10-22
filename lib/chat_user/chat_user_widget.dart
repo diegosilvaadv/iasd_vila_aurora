@@ -26,7 +26,7 @@ class _ChatUserWidgetState extends State<ChatUserWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.dark600,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -46,7 +46,7 @@ class _ChatUserWidgetState extends State<ChatUserWidget> {
           widget.chatUser.displayName,
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Lexend Deca',
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),

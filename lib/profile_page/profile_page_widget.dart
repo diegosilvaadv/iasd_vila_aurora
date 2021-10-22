@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../create_post/create_post_widget.dart';
 import '../edit_settings/edit_settings_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -7,6 +8,7 @@ import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../post_details/post_details_widget.dart';
+import '../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +46,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
         final profilePageUsersRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.tertiaryColor,
+          backgroundColor: Colors.black,
           body: SafeArea(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -56,10 +58,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xFFFAA211),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 5),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,7 +97,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
                                             fontFamily: 'Lexend Deca',
-                                            color: Color(0xFFEE8B60),
+                                            color:
+                                                FlutterFlowTheme.primaryColor,
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
                                           ),
@@ -108,11 +111,15 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 8, 0, 0),
                                         child: Text(
-                                          profilePageUsersRecord.bio,
+                                          valueOrDefault<String>(
+                                            profilePageUsersRecord.igreja,
+                                            'Igreja Adventista do Sétimo dia',
+                                          ),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
                                             fontFamily: 'Lexend Deca',
+                                            color: Colors.black,
                                           ),
                                         ),
                                       ),
@@ -148,7 +155,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Image.network(
                                           valueOrDefault<String>(
                                             profilePageUsersRecord.photoUrl,
-                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/5lywt4ult0tj/flouffy-qEO5MpLyOks-unsplash.jpg',
+                                            'http://simpleicon.com/wp-content/uploads/user1.png',
                                           ),
                                           fit: BoxFit.fitWidth,
                                         ),
@@ -171,10 +178,23 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          setState(() => _loadingButton1 = true);
+                          try {
+                            await Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.bottomToTop,
+                                duration: Duration(milliseconds: 250),
+                                reverseDuration: Duration(milliseconds: 250),
+                                child: CreatePostWidget(),
+                              ),
+                            );
+                          } finally {
+                            setState(() => _loadingButton1 = false);
+                          }
                         },
-                        text: 'Add a Dog',
+                        text: 'Criar Post',
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
@@ -209,17 +229,18 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             setState(() => _loadingButton2 = false);
                           }
                         },
-                        text: 'Settings',
+                        text: 'Configurações',
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
                           color: FlutterFlowTheme.tertiaryColor,
                           textStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lexend Deca',
+                            color: Colors.black,
                           ),
                           elevation: 0,
                           borderSide: BorderSide(
-                            color: FlutterFlowTheme.gray200,
+                            color: Colors.black,
                             width: 2,
                           ),
                           borderRadius: 12,
@@ -236,8 +257,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     child: Column(
                       children: [
                         TabBar(
-                          labelColor: FlutterFlowTheme.primaryColor,
-                          unselectedLabelColor: FlutterFlowTheme.grayIcon,
+                          labelColor: Color(0xFFFAA211),
+                          unselectedLabelColor: Color(0xFFFEFEFE),
                           labelStyle: GoogleFonts.getFont(
                             'Roboto',
                           ),
@@ -245,7 +266,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           indicatorWeight: 2,
                           tabs: [
                             Tab(
-                              text: 'Dog Profiles',
+                              text: 'Irmãos da igreja',
                             ),
                             Tab(
                               text: 'Posts',
@@ -255,147 +276,141 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Expanded(
                           child: TabBarView(
                             children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.background,
+                              StreamBuilder<List<UsersRecord>>(
+                                stream: queryUsersRecord(
+                                  queryBuilder: (usersRecord) =>
+                                      usersRecord.orderBy('display_name'),
                                 ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 12, 0, 0),
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.96,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.tertiaryColor,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 3,
-                                              color: Color(0x32000000),
-                                              offset: Offset(0, 1),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius: BorderRadius.only(
-                                                bottomLeft: Radius.circular(8),
-                                                bottomRight: Radius.circular(0),
-                                                topLeft: Radius.circular(8),
-                                                topRight: Radius.circular(0),
-                                              ),
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    valueOrDefault<String>(
-                                                  profilePageUsersRecord
-                                                      .photoUrl,
-                                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/gu4akoa3hju1/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg',
-                                                ),
-                                                width: 100,
-                                                height: 100,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(12, 0, 0, 0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Hello World',
-                                                      style: FlutterFlowTheme
-                                                          .title3
-                                                          .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                      ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      4, 0, 0),
-                                                          child: Text(
-                                                            'Hello World',
-                                                            style:
-                                                                FlutterFlowTheme
-                                                                    .bodyText1
-                                                                    .override(
-                                                              fontFamily:
-                                                                  'Lexend Deca',
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(4,
-                                                                      4, 0, 0),
-                                                          child: Text(
-                                                            'Hello World',
-                                                            style:
-                                                                FlutterFlowTheme
-                                                                    .bodyText1
-                                                                    .override(
-                                                              fontFamily:
-                                                                  'Lexend Deca',
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 12, 0),
-                                              child: FlutterFlowIconButton(
-                                                borderColor:
-                                                    FlutterFlowTheme.gray200,
-                                                borderRadius: 30,
-                                                borderWidth: 2,
-                                                buttonSize: 44,
-                                                icon: Icon(
-                                                  Icons.edit_outlined,
-                                                  color:
-                                                      FlutterFlowTheme.grayIcon,
-                                                  size: 24,
-                                                ),
-                                                onPressed: () {
-                                                  print(
-                                                      'IconButton pressed ...');
-                                                },
-                                              ),
-                                            )
-                                          ],
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.primaryColor,
                                         ),
                                       ),
-                                    )
-                                  ],
-                                ),
+                                    );
+                                  }
+                                  List<UsersRecord> columnUsersRecordList =
+                                      snapshot.data;
+                                  return SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: List.generate(
+                                          columnUsersRecordList.length,
+                                          (columnIndex) {
+                                        final columnUsersRecord =
+                                            columnUsersRecordList[columnIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 0, 10),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ViewProfilePageOtherWidget(
+                                                    userDetails:
+                                                        columnUsersRecord,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFF252525),
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        5,
+                                                                        0,
+                                                                        5),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              child:
+                                                                  Image.network(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  columnUsersRecord
+                                                                      .photoUrl,
+                                                                  'http://simpleicon.com/wp-content/uploads/user1.png',
+                                                                ),
+                                                                width: 100,
+                                                                height: 100,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                child: Text(
+                                                                  columnUsersRecord
+                                                                      .displayName,
+                                                                  style: FlutterFlowTheme
+                                                                      .title1
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Lexend Deca',
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
+                                                                ),
+                                                              )
+                                                            ],
+                                                          )
+                                                        ],
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }),
+                                    ),
+                                  );
+                                },
                               ),
                               Padding(
                                 padding:
@@ -405,9 +420,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     queryBuilder: (userPostsRecord) =>
                                         userPostsRecord
                                             .where('postUser',
-                                                isEqualTo:
-                                                    profilePageUsersRecord
-                                                        .reference)
+                                                isEqualTo: currentUserReference)
                                             .orderBy('timePosted',
                                                 descending: true),
                                   ),
@@ -481,6 +494,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme
                                                         .tertiaryColor,
+                                                    image: DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: Image.asset(
+                                                        'assets/images/Logo_PORTUGUES.png',
+                                                      ).image,
+                                                    ),
                                                     boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4,
@@ -571,7 +590,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                             String>(
                                                                           userPostUsersRecord
                                                                               .photoUrl,
-                                                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/wn636nykq7im/lucrezia-carnelos-0liYTl4dJxk-unsplash.jpg',
+                                                                          'https://cdn-icons-png.flaticon.com/512/149/149071.png',
                                                                         ),
                                                                         fit: BoxFit
                                                                             .fitWidth,
@@ -654,12 +673,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           child:
                                                               CachedNetworkImage(
                                                             imageUrl:
-                                                                valueOrDefault<
-                                                                    String>(
-                                                              socialFeedUserPostsRecord
-                                                                  .postPhoto,
-                                                              'https://d.newsweek.com/en/full/1310267/best-hawaii-beaches.jpg',
-                                                            ),
+                                                                socialFeedUserPostsRecord
+                                                                    .postPhoto,
                                                             width:
                                                                 MediaQuery.of(
                                                                         context)
@@ -703,7 +718,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           onPressed:
                                                                               () async {
                                                                             final likesElement =
-                                                                                profilePageUsersRecord.reference;
+                                                                                currentUserReference;
                                                                             final likesUpdate = socialFeedUserPostsRecord.likes.contains(likesElement)
                                                                                 ? FieldValue.arrayRemove([
                                                                                     likesElement
@@ -719,7 +734,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           },
                                                                           value: socialFeedUserPostsRecord
                                                                               .likes
-                                                                              .contains(profilePageUsersRecord.reference),
+                                                                              .contains(currentUserReference),
                                                                           onIcon:
                                                                               Icon(
                                                                             Icons.favorite_rounded,

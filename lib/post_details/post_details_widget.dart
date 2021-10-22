@@ -79,10 +79,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(0),
                                 child: CachedNetworkImage(
-                                  imageUrl: valueOrDefault<String>(
-                                    postDetailsUserPostsRecord.postPhoto,
-                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
-                                  ),
+                                  imageUrl:
+                                      postDetailsUserPostsRecord.postPhoto,
                                   width: 100,
                                   height: 430,
                                   fit: BoxFit.cover,
@@ -283,12 +281,12 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                               .likes
                                               .contains(currentUserReference),
                                           onIcon: Icon(
-                                            Icons.pets_rounded,
+                                            Icons.favorite,
                                             color: Color(0xFF4B39EF),
                                             size: 25,
                                           ),
                                           offIcon: Icon(
-                                            Icons.pets_outlined,
+                                            Icons.favorite_border,
                                             color: Color(0xFF95A1AC),
                                             size: 25,
                                           ),
@@ -499,7 +497,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                               String>(
                                                             commentUsersRecord
                                                                 .photoUrl,
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/pbp73skqv1ru/shayna-douglas-lgILhKUELg4-unsplash.jpg',
+                                                            'https://cdn-icons-png.flaticon.com/512/149/149071.png',
                                                           ),
                                                           fit: BoxFit.cover,
                                                         ),

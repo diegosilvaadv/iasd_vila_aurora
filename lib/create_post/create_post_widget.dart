@@ -42,13 +42,13 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.background,
+        backgroundColor: Colors.black,
         automaticallyImplyLeading: false,
         title: Text(
-          'Create Post',
+          'Criar Postagem',
           style: FlutterFlowTheme.title2.override(
             fontFamily: 'Lexend Deca',
-            color: Color(0xFF090F13),
+            color: Colors.white,
             fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
@@ -212,7 +212,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                         controller: textController,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          hintText: 'Comment....',
+                                          hintText: 'Comentário do Poste...',
                                           hintStyle: FlutterFlowTheme.bodyText2
                                               .override(
                                             fontFamily: 'Lexend Deca',
@@ -270,7 +270,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                         webGoogleMapsApiKey: '',
                         onSelect: (place) =>
                             setState(() => placePickerValue = place),
-                        defaultText: 'Location',
+                        defaultText: 'Localização',
                         icon: Icon(
                           Icons.place,
                           color: FlutterFlowTheme.grayIcon,
@@ -335,7 +335,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                     setState(() => _loadingButton = false);
                   }
                 },
-                text: 'Create Post',
+                text: 'Publicar Postagem',
                 options: FFButtonOptions(
                   width: 270,
                   height: 50,

@@ -39,12 +39,13 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.tertiaryColor,
+        backgroundColor: Color(0xFF30243E),
         automaticallyImplyLeading: false,
         title: Text(
-          'Your Profile',
+          'Seu Perfil ;)',
           style: FlutterFlowTheme.title2.override(
             fontFamily: 'Lexend Deca',
+            color: Colors.white,
           ),
         ),
         actions: [
@@ -54,7 +55,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
               '2/2',
               style: FlutterFlowTheme.bodyText1.override(
                 fontFamily: 'Lexend Deca',
-                color: FlutterFlowTheme.primaryColor,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -79,10 +80,15 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
-                          child: Text(
-                            'Fill out your profile now in order to complete setup of your profile.',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lexend Deca',
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                            child: Text(
+                              'Preencha o seu perfil agora para concluir as configurações.',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         )
@@ -98,7 +104,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                           context: context,
                           allowPhoto: true,
                           backgroundColor: FlutterFlowTheme.tertiaryColor,
-                          textColor: FlutterFlowTheme.primaryDark,
+                          textColor: Colors.black,
                           pickerFontFamily: 'Lexend Deca',
                         );
                         if (selectedMedia != null &&
@@ -123,14 +129,22 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                         width: 120,
                         height: 120,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.gray200,
+                          color: FlutterFlowTheme.primaryColor,
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: Image.asset(
                               'assets/images/addUser@2x.png',
                             ).image,
                           ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFF0097A7),
+                            )
+                          ],
                           shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Color(0xFF30243E),
+                          ),
                         ),
                         child: Container(
                           width: 120,
@@ -153,37 +167,52 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                       children: [
                         Expanded(
                           child: TextFormField(
+                            onChanged: (_) => setState(() {}),
                             controller: yourNameController,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Your Name',
+                              labelText: ' Nome & Sobrenome',
                               labelStyle: FlutterFlowTheme.subtitle1.override(
                                 fontFamily: 'Lexend Deca',
+                                color: FlutterFlowTheme.secondaryColor,
+                                fontWeight: FontWeight.bold,
                               ),
-                              enabledBorder: UnderlineInputBorder(
+                              enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  width: 3,
                                 ),
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(4.0),
-                                  topRight: Radius.circular(4.0),
-                                ),
+                                borderRadius: BorderRadius.circular(5),
                               ),
-                              focusedBorder: UnderlineInputBorder(
+                              focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  width: 3,
                                 ),
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(4.0),
-                                  topRight: Radius.circular(4.0),
-                                ),
+                                borderRadius: BorderRadius.circular(5),
                               ),
+                              filled: true,
+                              fillColor: Colors.black,
+                              contentPadding:
+                                  EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                              suffixIcon: yourNameController.text.isNotEmpty
+                                  ? InkWell(
+                                      onTap: () => setState(
+                                        () => yourNameController.clear(),
+                                      ),
+                                      child: Icon(
+                                        Icons.clear,
+                                        color: Color(0xFFFB0D0D),
+                                        size: 20,
+                                      ),
+                                    )
+                                  : null,
                             ),
-                            style: FlutterFlowTheme.title2.override(
+                            style: FlutterFlowTheme.title3.override(
                               fontFamily: 'Lexend Deca',
+                              color: Color(0xFFE1E1E1),
                             ),
+                            textAlign: TextAlign.start,
                           ),
                         )
                       ],
@@ -202,33 +231,35 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               controller: userNameController,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'UserName',
+                                labelText: 'Nome de Usuário',
                                 labelStyle: FlutterFlowTheme.bodyText1.override(
                                   fontFamily: 'Lexend Deca',
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                enabledBorder: UnderlineInputBorder(
+                                enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
+                                    color: FlutterFlowTheme.secondaryColor,
+                                    width: 3,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
-                                focusedBorder: UnderlineInputBorder(
+                                focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
+                                    color: FlutterFlowTheme.secondaryColor,
+                                    width: 3,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
+                                filled: true,
+                                fillColor: Colors.black,
+                                contentPadding:
+                                    EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
                               ),
                               style: FlutterFlowTheme.title3.override(
                                 fontFamily: 'Lexend Deca',
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -249,38 +280,36 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               controller: bioController,
                               obscureText: false,
                               decoration: InputDecoration(
-                                hintText: 'Your Bio',
-                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                labelText: 'Sua Igreja',
+                                labelStyle: FlutterFlowTheme.bodyText1.override(
                                   fontFamily: 'Lexend Deca',
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                enabledBorder: UnderlineInputBorder(
+                                enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.gray200,
-                                    width: 1,
+                                    color: FlutterFlowTheme.secondaryColor,
+                                    width: 3,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                focusedBorder: UnderlineInputBorder(
+                                focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.gray200,
-                                    width: 1,
+                                    color: FlutterFlowTheme.secondaryColor,
+                                    width: 3,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
+                                filled: true,
+                                fillColor: Colors.black,
                                 contentPadding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                    EdgeInsetsDirectional.fromSTEB(3, 8, 0, 0),
                               ),
                               style: FlutterFlowTheme.bodyText2.override(
                                 fontFamily: 'Lexend Deca',
+                                color: Colors.white,
                               ),
                               textAlign: TextAlign.start,
-                              maxLines: 4,
                             ),
                           ),
                         )
@@ -305,14 +334,15 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               displayName: yourNameController.text,
                               userName: userNameController.text,
                               photoUrl: uploadedFileUrl,
-                              bio: bioController.text,
+                              igreja: bioController.text,
+                              adm: false,
                             );
                             await currentUserReference.update(usersUpdateData);
                             await Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    NavBarPage(initialPage: 'homePage'),
+                                    NavBarPage(initialPage: 'PagIncial'),
                               ),
                               (r) => false,
                             );
@@ -320,11 +350,11 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                             setState(() => _loadingButton = false);
                           }
                         },
-                        text: 'Complete Setup',
+                        text: 'Completar Perfil ;)',
                         options: FFButtonOptions(
                           width: 230,
                           height: 50,
-                          color: FlutterFlowTheme.primaryColor,
+                          color: Colors.black,
                           textStyle: FlutterFlowTheme.subtitle2.override(
                             fontFamily: 'Lexend Deca',
                             color: Colors.white,

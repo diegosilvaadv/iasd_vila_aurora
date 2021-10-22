@@ -10,6 +10,13 @@ import 'schema/post_comments_record.dart';
 import 'schema/friends_record.dart';
 import 'schema/chats_record.dart';
 import 'schema/chat_messages_record.dart';
+import 'schema/escala_sonoplastia_record.dart';
+import 'schema/escala_pregadores_record.dart';
+import 'schema/ensaio_musical_record.dart';
+import 'schema/escola_sabatina_record.dart';
+import 'schema/anuncios_record.dart';
+import 'schema/limpeza_record.dart';
+import 'schema/mini_musical_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,6 +29,13 @@ export 'schema/post_comments_record.dart';
 export 'schema/friends_record.dart';
 export 'schema/chats_record.dart';
 export 'schema/chat_messages_record.dart';
+export 'schema/escala_sonoplastia_record.dart';
+export 'schema/escala_pregadores_record.dart';
+export 'schema/ensaio_musical_record.dart';
+export 'schema/escola_sabatina_record.dart';
+export 'schema/anuncios_record.dart';
+export 'schema/limpeza_record.dart';
+export 'schema/mini_musical_record.dart';
 
 Stream<List<UserPostsRecord>> queryUserPostsRecord(
         {Query Function(Query) queryBuilder,
@@ -65,6 +79,59 @@ Stream<List<ChatMessagesRecord>> queryChatMessagesRecord(
         bool singleRecord = false}) =>
     queryCollection(
         ChatMessagesRecord.collection, ChatMessagesRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<EscalaSonoplastiaRecord>> queryEscalaSonoplastiaRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        EscalaSonoplastiaRecord.collection, EscalaSonoplastiaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<EscalaPregadoresRecord>> queryEscalaPregadoresRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        EscalaPregadoresRecord.collection, EscalaPregadoresRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<EnsaioMusicalRecord>> queryEnsaioMusicalRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        EnsaioMusicalRecord.collection, EnsaioMusicalRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<EscolaSabatinaRecord>> queryEscolaSabatinaRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        EscolaSabatinaRecord.collection, EscolaSabatinaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<AnunciosRecord>> queryAnunciosRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(AnunciosRecord.collection, AnunciosRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<LimpezaRecord>> queryLimpezaRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(LimpezaRecord.collection, LimpezaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<MiniMusicalRecord>> queryMiniMusicalRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(MiniMusicalRecord.collection, MiniMusicalRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

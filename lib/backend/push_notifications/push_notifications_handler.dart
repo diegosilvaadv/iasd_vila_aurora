@@ -19,6 +19,10 @@ import '../../edit_user_profile/edit_user_profile_widget.dart';
 import '../../change_password/change_password_widget.dart';
 import '../../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../../chat_user/chat_user_widget.dart';
+import '../../criar_mensagem/criar_mensagem_widget.dart';
+import '../../sonoplastia/sonoplastia_widget.dart';
+import '../../detalhes_sonoplastia/detalhes_sonoplastia_widget.dart';
+import '../../edit_escala_sonoplastia/edit_escala_sonoplastia_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -109,6 +113,18 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
             data, 'chatUser', UsersRecord.serializer),
       ),
   'chatMain': (data) async => NavBarPage(initialPage: 'ChatMainWidget'),
+  'criar_mensagem': (data) async => CriarMensagemWidget(),
+  'sonoplastia': (data) async => SonoplastiaWidget(),
+  'detalhes_sonoplastia': (data) async => DetalhesSonoplastiaWidget(
+        nome: getParameter(data, 'nome'),
+        data: getParameter(data, 'data'),
+        img: getParameter(data, 'img'),
+      ),
+  'edit_escala_sonoplastia': (data) async => EditEscalaSonoplastiaWidget(
+        nome: getParameter(data, 'nome'),
+        data: getParameter(data, 'data'),
+        img: getParameter(data, 'img'),
+      ),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

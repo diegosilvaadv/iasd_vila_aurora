@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/create_modal_widget.dart';
-import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_media_display.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -11,12 +10,11 @@ import '../flutter_flow/flutter_flow_video_player.dart';
 import '../post_details/post_details_widget.dart';
 import '../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 
 class HomePageWidget extends StatefulWidget {
   HomePageWidget({Key key}) : super(key: key);
@@ -25,39 +23,37 @@ class HomePageWidget extends StatefulWidget {
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget>
-    with TickerProviderStateMixin {
-  final animationsMap = {
-    'iconOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      scale: 1.2,
-    ),
-  };
+class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.tertiaryColor,
+        backgroundColor: Colors.black,
         automaticallyImplyLeading: false,
-        title: Image.asset(
-          'assets/images/logoSniff_dark@3x.png',
-          width: 100,
-          height: 40,
-          fit: BoxFit.fitWidth,
+        title: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            FaIcon(
+              FontAwesomeIcons.commentDots,
+              color: Colors.white,
+              size: 40,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(7, 10, 0, 0),
+              child: Text(
+                'Social do Aurora ;)',
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.title1.override(
+                  fontFamily: 'Lexend Deca',
+                  color: Color(0xFFFAA211),
+                  fontSize: 23,
+                ),
+              ),
+            )
+          ],
         ),
         actions: [
           Padding(
@@ -68,7 +64,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
               buttonSize: 46,
               icon: Icon(
                 Icons.notifications_outlined,
-                color: FlutterFlowTheme.grayIcon,
+                color: Colors.white,
                 size: 24,
               ),
               onPressed: () {
@@ -123,63 +119,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   topLeft: Radius.circular(0),
                   topRight: Radius.circular(0),
                 ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Divider(
-                    height: 8,
-                    thickness: 2,
-                    color: FlutterFlowTheme.gray200,
-                  ),
-                  Container(
-                    height: 72,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 8),
-                      child: ListView(
-                        padding: EdgeInsets.zero,
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: CachedNetworkImage(
-                                    imageUrl:
-                                        'https://picsum.photos/seed/784/600',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 4, 0, 0),
-                                  child: AutoSizeText(
-                                    'Name',
-                                    style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
               ),
             ),
             Padding(
@@ -325,12 +264,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         child:
                                                             CachedNetworkImage(
                                                           imageUrl:
-                                                              valueOrDefault<
-                                                                  String>(
-                                                            userPostUsersRecord
-                                                                .photoUrl,
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/wn636nykq7im/lucrezia-carnelos-0liYTl4dJxk-unsplash.jpg',
-                                                          ),
+                                                              userPostUsersRecord
+                                                                  .photoUrl,
                                                           fit: BoxFit.fitWidth,
                                                         ),
                                                       ),
@@ -341,11 +276,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(12, 0, 0, 0),
                                                   child: Text(
-                                                    valueOrDefault<String>(
-                                                      userPostUsersRecord
-                                                          .userName,
-                                                      'myUsername',
-                                                    ),
+                                                    userPostUsersRecord
+                                                        .userName,
                                                     style: FlutterFlowTheme
                                                         .bodyText1
                                                         .override(
@@ -378,7 +310,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ),
                                     ),
                                     FlutterFlowMediaDisplay(
-                                      path: socialFeedUserPostsRecord.postPhoto,
+                                      path: userPostUsersRecord.photoUrl,
                                       imageBuilder: (path) =>
                                           CachedNetworkImage(
                                         imageUrl: path,
@@ -421,89 +353,49 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       height: 41,
                                                       child: Stack(
                                                         children: [
-                                                          Visibility(
-                                                            visible: !(socialFeedUserPostsRecord
-                                                                    .likes
-                                                                    .contains(
-                                                                        currentUserReference)) ??
-                                                                true,
-                                                            child: Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0, 0.25),
-                                                              child: InkWell(
-                                                                onTap:
-                                                                    () async {
-                                                                  final userPostsUpdateData =
-                                                                      {
-                                                                    'likes':
-                                                                        FieldValue
-                                                                            .arrayUnion([
-                                                                      currentUserReference
-                                                                    ]),
-                                                                  };
-                                                                  await socialFeedUserPostsRecord
-                                                                      .reference
-                                                                      .update(
-                                                                          userPostsUpdateData);
-                                                                  final animation =
-                                                                      animationsMap[
-                                                                          'iconOnActionTriggerAnimation'];
-                                                                  await (animation
-                                                                              .curvedAnimation
-                                                                              .parent
-                                                                          as AnimationController)
-                                                                      .forward(
-                                                                          from:
-                                                                              0.0);
-                                                                },
-                                                                child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .paw,
-                                                                  color: Color(
-                                                                      0xFF95A1AC),
-                                                                  size: 25,
-                                                                ),
-                                                              ),
+                                                          ToggleIcon(
+                                                            onPressed:
+                                                                () async {
+                                                              final likesElement =
+                                                                  currentUserReference;
+                                                              final likesUpdate = socialFeedUserPostsRecord
+                                                                      .likes
+                                                                      .contains(
+                                                                          likesElement)
+                                                                  ? FieldValue
+                                                                      .arrayRemove([
+                                                                      likesElement
+                                                                    ])
+                                                                  : FieldValue
+                                                                      .arrayUnion([
+                                                                      likesElement
+                                                                    ]);
+                                                              final userPostsUpdateData =
+                                                                  {
+                                                                'likes':
+                                                                    likesUpdate,
+                                                              };
+                                                              await socialFeedUserPostsRecord
+                                                                  .reference
+                                                                  .update(
+                                                                      userPostsUpdateData);
+                                                            },
+                                                            value: socialFeedUserPostsRecord
+                                                                .likes
+                                                                .contains(
+                                                                    currentUserReference),
+                                                            onIcon: Icon(
+                                                              Icons.favorite,
+                                                              color:
+                                                                  Colors.black,
+                                                              size: 25,
                                                             ),
-                                                          ),
-                                                          Visibility(
-                                                            visible: socialFeedUserPostsRecord
-                                                                    .likes
-                                                                    .contains(
-                                                                        currentUserReference) ??
-                                                                true,
-                                                            child: Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0, 0.25),
-                                                              child: InkWell(
-                                                                onTap:
-                                                                    () async {
-                                                                  final userPostsUpdateData =
-                                                                      {
-                                                                    'likes':
-                                                                        FieldValue
-                                                                            .arrayRemove([
-                                                                      currentUserReference
-                                                                    ]),
-                                                                  };
-                                                                  await socialFeedUserPostsRecord
-                                                                      .reference
-                                                                      .update(
-                                                                          userPostsUpdateData);
-                                                                },
-                                                                child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .paw,
-                                                                  color: Color(
-                                                                      0xFF4B39EF),
-                                                                  size: 25,
-                                                                ),
-                                                              ).animated([
-                                                                animationsMap[
-                                                                    'iconOnActionTriggerAnimation']
-                                                              ]),
+                                                            offIcon: Icon(
+                                                              Icons
+                                                                  .favorite_border,
+                                                              color:
+                                                                  Colors.black,
+                                                              size: 25,
                                                             ),
                                                           )
                                                         ],
@@ -591,10 +483,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   ),
                                                 ),
                                               ),
-                                              Icon(
-                                                Icons.ios_share,
-                                                color: Color(0xFF95A1AC),
-                                                size: 24,
+                                              InkWell(
+                                                onTap: () async {
+                                                  await Share.share('');
+                                                },
+                                                child: Icon(
+                                                  Icons.ios_share,
+                                                  color: Color(0xFF95A1AC),
+                                                  size: 24,
+                                                ),
                                               )
                                             ],
                                           )
