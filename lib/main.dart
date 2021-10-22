@@ -7,9 +7,11 @@ import 'auth/auth_util.dart';
 import 'backend/push_notifications/push_notifications_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:iasd7vilaaurora/login/login_widget.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
-import 'home_page/home_page_widget.dart';
+import 'pag_incial/pag_incial_widget.dart';
 import 'chat_main/chat_main_widget.dart';
+import 'home_page/home_page_widget.dart';
 import 'profile_page/profile_page_widget.dart';
 
 void main() async {
@@ -57,15 +59,11 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null
           ? Container(
-              color: Colors.transparent,
-              child: Center(
-                child: Builder(
-                  builder: (context) => Image.asset(
-                    'assets/images/Sniff_0.0_Splash@2x.png',
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 1,
-                    fit: BoxFit.cover,
-                  ),
+              color: Colors.black,
+              child: Builder(
+                builder: (context) => Image.asset(
+                  'assets/images/Logo_PORTUGUES.png',
+                  fit: BoxFit.contain,
                 ),
               ),
             )
@@ -87,7 +85,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'homePage';
+  String _currentPage = 'PagIncial';
 
   @override
   void initState() {
@@ -98,8 +96,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'homePage': HomePageWidget(),
+      'PagIncial': PagIncialWidget(),
       'chatMain': ChatMainWidget(),
+      'homePage': HomePageWidget(),
       'profilePage': ProfilePageWidget(),
     };
     return Scaffold(
@@ -127,6 +126,14 @@ class _NavBarPageState extends State<NavBarPage> {
             tooltip: '',
           ),
           BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.comments,
+              size: 24,
+            ),
+            label: 'Social',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(
               Icons.account_circle_outlined,
               size: 24,
@@ -139,13 +146,13 @@ class _NavBarPageState extends State<NavBarPage> {
             tooltip: '',
           )
         ],
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF590C44),
         currentIndex: tabs.keys.toList().indexOf(_currentPage),
-        selectedItemColor: FlutterFlowTheme.primaryColor,
-        unselectedItemColor: FlutterFlowTheme.grayIcon,
+        selectedItemColor: Color(0xFFF39E03),
+        unselectedItemColor: Colors.white,
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
         showSelectedLabels: true,
-        showUnselectedLabels: false,
+        showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
       ),
     );

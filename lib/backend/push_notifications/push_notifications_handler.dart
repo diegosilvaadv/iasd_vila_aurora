@@ -78,15 +78,11 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   @override
   Widget build(BuildContext context) => _loading
       ? Container(
-          color: Colors.transparent,
-          child: Center(
-            child: Builder(
-              builder: (context) => Image.asset(
-                'assets/images/Sniff_0.0_Splash@2x.png',
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 1,
-                fit: BoxFit.cover,
-              ),
+          color: Colors.black,
+          child: Builder(
+            builder: (context) => Image.asset(
+              'assets/images/Logo_PORTUGUES.png',
+              fit: BoxFit.contain,
             ),
           ),
         )
@@ -99,6 +95,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'createDogProfile': (data) async => CreateDogProfileWidget(),
   'createYourProfile': (data) async => CreateYourProfileWidget(),
   'forgotPassword': (data) async => ForgotPasswordWidget(),
+  'homePage': (data) async => NavBarPage(initialPage: 'HomePageWidget'),
   'profilePage': (data) async => NavBarPage(initialPage: 'ProfilePageWidget'),
   'createPost': (data) async => CreatePostWidget(),
   'createStory': (data) async => CreateStoryWidget(),
