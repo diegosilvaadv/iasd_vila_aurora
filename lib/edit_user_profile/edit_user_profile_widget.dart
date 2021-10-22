@@ -108,6 +108,8 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                               final selectedMedia =
                                   await selectMediaWithSourceBottomSheet(
                                 context: context,
+                                maxWidth: 1000.00,
+                                maxHeight: 1000.00,
                                 allowPhoto: true,
                                 backgroundColor: FlutterFlowTheme.tertiaryColor,
                                 textColor: Color(0xFF080808),

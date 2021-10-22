@@ -466,10 +466,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 4, 0, 8),
-                                            child: StreamBuilder<UsersRecord>(
-                                              stream: UsersRecord.getDocument(
-                                                  socialFeedUserPostsRecord
-                                                      .postUser),
+                                            child:
+                                                StreamBuilder<UserPostsRecord>(
+                                              stream:
+                                                  UserPostsRecord.getDocument(
+                                                      socialFeedUserPostsRecord
+                                                          .reference),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -485,7 +487,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     ),
                                                   );
                                                 }
-                                                final userPostUsersRecord =
+                                                final userPostUserPostsRecord =
                                                     snapshot.data;
                                                 return Container(
                                                   width: MediaQuery.of(context)
@@ -520,7 +522,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           builder: (context) =>
                                                               PostDetailsWidget(
                                                             userRecord:
-                                                                userPostUsersRecord,
+                                                                profilePageUsersRecord,
                                                             postReference:
                                                                 socialFeedUserPostsRecord
                                                                     .reference,
@@ -588,7 +590,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           .network(
                                                                         valueOrDefault<
                                                                             String>(
-                                                                          userPostUsersRecord
+                                                                          profilePageUsersRecord
                                                                               .photoUrl,
                                                                           'https://cdn-icons-png.flaticon.com/512/149/149071.png',
                                                                         ),
@@ -619,8 +621,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           Text(
                                                                         valueOrDefault<
                                                                             String>(
-                                                                          userPostUsersRecord
-                                                                              .userName,
+                                                                          profilePageUsersRecord
+                                                                              .displayName,
                                                                           'myUsername',
                                                                         ),
                                                                         style: FlutterFlowTheme
