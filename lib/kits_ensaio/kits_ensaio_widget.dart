@@ -103,7 +103,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                   audio: Audio.network(
                                     widget.cantatda,
                                     metas: Metas(
-                                      id: 'df3hg_-iljjydpz',
+                                      id: 'df3hg_-t7w6i9l1',
                                     ),
                                   ),
                                   titleTextStyle:
@@ -167,7 +167,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                   audio: Audio.network(
                                     widget.playback,
                                     metas: Metas(
-                                      id: 'df3hg_-8clsrmxj',
+                                      id: 'df3hg_-378b1v0b',
                                     ),
                                   ),
                                   titleTextStyle:
@@ -231,7 +231,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                   audio: Audio.network(
                                     widget.soprano,
                                     metas: Metas(
-                                      id: 'df3hg_-h7s9qm1n',
+                                      id: 'df3hg_-oba4mrcm',
                                     ),
                                   ),
                                   titleTextStyle:
@@ -295,7 +295,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                   audio: Audio.network(
                                     widget.contralto,
                                     metas: Metas(
-                                      id: 'df3hg_-y7w1suuu',
+                                      id: 'df3hg_-0l7z644y',
                                     ),
                                   ),
                                   titleTextStyle:
@@ -356,7 +356,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                 audio: Audio.network(
                                   widget.barito,
                                   metas: Metas(
-                                    id: 'df3hg_-cwdemc2i',
+                                    id: 'df3hg_-mlwp8os1',
                                   ),
                                 ),
                                 titleTextStyle:
@@ -419,7 +419,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                   audio: Audio.network(
                                     widget.tenor,
                                     metas: Metas(
-                                      id: 'df3hg_-cqkdqike',
+                                      id: 'df3hg_-4f8zztpy',
                                     ),
                                   ),
                                   titleTextStyle:
@@ -483,7 +483,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                   audio: Audio.network(
                                     widget.baixo,
                                     metas: Metas(
-                                      id: 'df3hg_-4miofmg2',
+                                      id: 'df3hg_-a2z66tu5',
                                     ),
                                   ),
                                   titleTextStyle:
