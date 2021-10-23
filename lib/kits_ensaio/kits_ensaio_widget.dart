@@ -30,7 +30,7 @@ class KitsEnsaioWidget extends StatefulWidget {
   final String nomemusica;
   final String cantatda;
   final String letra;
-  final int playback;
+  final String playback;
   final String soprano;
   final String contrato;
   final String barito;
@@ -148,7 +148,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 10, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -165,7 +165,11 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                     builder: (context) {
                                       return Container(
                                         height: 600,
-                                        child: PlaybackWidget(),
+                                        child: PlaybackWidget(
+                                          musica: widget.nomemusica,
+                                          letra: widget.letra,
+                                          playback: widget.playback,
+                                        ),
                                       );
                                     },
                                   );
@@ -477,38 +481,37 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                               decoration: BoxDecoration(
                                 color: Color(0xFF969696),
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.7,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFEEEEEE),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5, 5, 5, 0),
-                                          child: AutoSizeText(
-                                            widget.letra,
-                                            style: FlutterFlowTheme.subtitle1
-                                                .override(
-                                              fontFamily: 'Lexend Deca',
-                                              color: Colors.black,
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFFEEEEEE),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 5, 5, 0),
+                                            child: AutoSizeText(
+                                              widget.letra,
+                                              style: FlutterFlowTheme.subtitle1
+                                                  .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color: Colors.black,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                             )
                           ],

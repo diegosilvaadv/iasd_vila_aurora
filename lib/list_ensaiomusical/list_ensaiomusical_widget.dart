@@ -97,6 +97,12 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                     columnEnsaioMusicalRecord.nomeMusica,
                                 cantatda: columnEnsaioMusicalRecord.cantada,
                                 letra: columnEnsaioMusicalRecord.letra,
+                                soprano: columnEnsaioMusicalRecord.soprano,
+                                contrato: columnEnsaioMusicalRecord.contralto,
+                                barito: columnEnsaioMusicalRecord.barito,
+                                tenor: columnEnsaioMusicalRecord.tenor,
+                                baixo: columnEnsaioMusicalRecord.baixo,
+                                playback: columnEnsaioMusicalRecord.playback,
                               ),
                             ),
                           );
