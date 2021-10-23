@@ -310,10 +310,10 @@ class _ViewProfilePageOtherWidgetState
                         snapshot.data;
                     if (socialFeedUserPostsRecordList.isEmpty) {
                       return Center(
-                        child: Image.asset(
-                          'assets/images/ic_launcher_1.png',
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: 400,
+                        child: Image.network(
+                          'https://i.pinimg.com/736x/17/c7/96/17c796bc7d67fdd18e9ee571bb89ba5b.jpg',
+                          width: 100,
+                          height: MediaQuery.of(context).size.height * 1,
                         ),
                       );
                     }
@@ -348,7 +348,7 @@ class _ViewProfilePageOtherWidgetState
                                 return Container(
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.tertiaryColor,
+                                    color: Color(0xFF013668),
                                     boxShadow: [
                                       BoxShadow(
                                         blurRadius: 4,
@@ -446,8 +446,7 @@ class _ViewProfilePageOtherWidgetState
                                                             .override(
                                                           fontFamily:
                                                               'Lexend Deca',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: Colors.white,
                                                           fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -461,8 +460,8 @@ class _ViewProfilePageOtherWidgetState
                                                       buttonSize: 46,
                                                       icon: Icon(
                                                         Icons.keyboard_control,
-                                                        color:
-                                                            Color(0xFF262D34),
+                                                        color: FlutterFlowTheme
+                                                            .background,
                                                         size: 20,
                                                       ),
                                                       onPressed: () {
@@ -683,7 +682,8 @@ class _ViewProfilePageOtherWidgetState
                                                         .bodyText1
                                                         .override(
                                                       fontFamily: 'Lexend Deca',
-                                                      color: Color(0xFF090F13),
+                                                      color: FlutterFlowTheme
+                                                          .secondaryColor,
                                                       fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.normal,
