@@ -140,13 +140,13 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 2, 0, 0),
+                                        10, 28, 0, 0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(100),
                                       child: Image.network(
                                         'https://cdn0.iconfinder.com/data/icons/users-2/512/e33-512.png',
-                                        width: 65,
-                                        height: 65,
+                                        width: 40,
+                                        height: 40,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
