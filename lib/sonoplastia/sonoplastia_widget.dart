@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/create_modal_widget.dart';
 import '../detalhes_sonoplastia/detalhes_sonoplastia_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -29,6 +30,48 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF5F5F5),
+      floatingActionButton: StreamBuilder<UsersRecord>(
+        stream: UsersRecord.getDocument(currentUserReference),
+        builder: (context, snapshot) {
+          // Customize what your widget looks like when it's loading.
+          if (!snapshot.hasData) {
+            return Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: SpinKitDoubleBounce(
+                  color: Color(0xFFF49F04),
+                  size: 50,
+                ),
+              ),
+            );
+          }
+          final floatingActionButtonUsersRecord = snapshot.data;
+          return FloatingActionButton(
+            onPressed: () async {
+              if ((floatingActionButtonUsersRecord.adm) == (true)) {
+                await showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      height: 240,
+                      child: CreateModalWidget(),
+                    );
+                  },
+                );
+              }
+            },
+            backgroundColor: Color(0xFF4B39EF),
+            elevation: 8,
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 30,
+            ),
+          );
+        },
+      ),
       body: Stack(
         children: [
           Column(

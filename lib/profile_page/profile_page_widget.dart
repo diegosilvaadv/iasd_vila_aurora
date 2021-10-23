@@ -8,6 +8,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import '../post_details/post_details_widget.dart';
+import '../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -190,7 +191,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             setState(() => _loadingButton1 = false);
                           }
                         },
-                        text: 'Add a Dog',
+                        text: 'Criar Post',
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
@@ -271,127 +272,96 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Expanded(
                           child: TabBarView(
                             children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.primaryColor,
+                              StreamBuilder<List<UsersRecord>>(
+                                stream: queryUsersRecord(
+                                  queryBuilder: (usersRecord) =>
+                                      usersRecord.orderBy('display_name'),
                                 ),
-                                child: AuthUserStreamWidget(
-                                  child: StreamBuilder<List<UsersRecord>>(
-                                    stream: queryUsersRecord(
-                                      queryBuilder: (usersRecord) =>
-                                          usersRecord.where('display_name',
-                                              isEqualTo:
-                                                  currentUserDisplayName),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50,
-                                            height: 50,
-                                            child: SpinKitDoubleBounce(
-                                              color: Color(0xFFF49F04),
-                                              size: 50,
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<UsersRecord> columnUsersRecordList =
-                                          snapshot.data;
-                                      if (columnUsersRecordList.isEmpty) {
-                                        return Center(
-                                          child: Image.asset(
-                                            'assets/images/Logo_PORTUGUES.png',
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.8,
-                                          ),
-                                        );
-                                      }
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: List.generate(
-                                            columnUsersRecordList.length,
-                                            (columnIndex) {
-                                          final columnUsersRecord =
-                                              columnUsersRecordList[
-                                                  columnIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 12, 0, 0),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: SpinKitDoubleBounce(
+                                          color: Color(0xFFF49F04),
+                                          size: 50,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<UsersRecord> columnUsersRecordList =
+                                      snapshot.data;
+                                  return SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: List.generate(
+                                          columnUsersRecordList.length,
+                                          (columnIndex) {
+                                        final columnUsersRecord =
+                                            columnUsersRecordList[columnIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 0, 10),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ViewProfilePageOtherWidget(
+                                                    userDetails:
+                                                        columnUsersRecord,
+                                                  ),
+                                                ),
+                                              );
+                                            },
                                             child: Container(
                                               width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.96,
-                                              height: 100,
+                                                  .size
+                                                  .width,
                                               decoration: BoxDecoration(
-                                                color: FlutterFlowTheme
-                                                    .tertiaryColor,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    blurRadius: 3,
-                                                    color: Color(0x32000000),
-                                                    offset: Offset(0, 1),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
+                                                color: Color(0xFF252525),
                                               ),
-                                              child: Row(
+                                              child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      bottomLeft:
-                                                          Radius.circular(8),
-                                                      bottomRight:
-                                                          Radius.circular(0),
-                                                      topLeft:
-                                                          Radius.circular(8),
-                                                      topRight:
-                                                          Radius.circular(0),
-                                                    ),
-                                                    child: CachedNetworkImage(
-                                                      imageUrl:
-                                                          columnUsersRecord
-                                                              .photoUrl,
-                                                      width: 100,
-                                                      height: 100,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  12, 0, 0, 0),
-                                                      child: Column(
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
                                                         children: [
-                                                          Text(
-                                                            columnUsersRecord
-                                                                .displayName,
-                                                            style:
-                                                                FlutterFlowTheme
-                                                                    .title3
-                                                                    .override(
-                                                              fontFamily:
-                                                                  'Lexend Deca',
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        5,
+                                                                        0,
+                                                                        5),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              child:
+                                                                  Image.network(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  columnUsersRecord
+                                                                      .photoUrl,
+                                                                  'http://simpleicon.com/wp-content/uploads/user1.png',
+                                                                ),
+                                                                width: 100,
+                                                                height: 100,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
                                                             ),
                                                           ),
                                                           Row(
@@ -403,87 +373,41 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
+                                                                            5,
                                                                             0,
-                                                                            4,
-                                                                            0,
-                                                                            0),
-                                                                child: Text(
-                                                                  columnUsersRecord
-                                                                      .igreja,
-                                                                  style: FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                    fontFamily:
-                                                                        'Lexend Deca',
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4,
-                                                                            4,
                                                                             0,
                                                                             0),
                                                                 child: Text(
                                                                   columnUsersRecord
-                                                                      .email,
+                                                                      .displayName,
                                                                   style: FlutterFlowTheme
-                                                                      .bodyText1
+                                                                      .title1
                                                                       .override(
                                                                     fontFamily:
                                                                         'Lexend Deca',
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
                                                                   ),
                                                                 ),
                                                               )
                                                             ],
                                                           )
                                                         ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 0, 12, 0),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
-                                                          FlutterFlowTheme
-                                                              .gray200,
-                                                      borderRadius: 30,
-                                                      borderWidth: 2,
-                                                      buttonSize: 44,
-                                                      icon: Icon(
-                                                        Icons.edit_outlined,
-                                                        color: FlutterFlowTheme
-                                                            .grayIcon,
-                                                        size: 24,
-                                                      ),
-                                                      onPressed: () async {
-                                                        await Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                NavBarPage(
-                                                                    initialPage:
-                                                                        'chatMain'),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
+                                                      )
+                                                    ],
                                                   )
                                                 ],
                                               ),
                                             ),
-                                          );
-                                        }),
-                                      );
-                                    },
-                                  ),
-                                ),
+                                          ),
+                                        );
+                                      }),
+                                    ),
+                                  );
+                                },
                               ),
                               Padding(
                                 padding:
