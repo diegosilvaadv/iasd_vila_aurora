@@ -326,7 +326,7 @@ class _ViewProfilePageOtherWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 8),
                             child: StreamBuilder<UsersRecord>(
                               stream: UsersRecord.getDocument(
-                                  socialFeedUserPostsRecord.postUser),
+                                  viewProfilePageOtherUsersRecord.reference),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
