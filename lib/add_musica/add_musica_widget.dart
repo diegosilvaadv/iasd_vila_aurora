@@ -99,7 +99,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 5),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 10, 5),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -170,57 +171,60 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                 decoration: BoxDecoration(
                   color: Color(0xFFEEEEEE),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                        child: TextFormField(
-                          controller: textController2,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'Musica',
-                            labelStyle: FlutterFlowTheme.bodyText1.override(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                          child: TextFormField(
+                            controller: textController2,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Musica',
+                              labelStyle: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: Colors.white,
+                              ),
+                              hintText: 'Nome da Musica',
+                              hintStyle: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: Colors.white,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  width: 3,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  width: 3,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
+                              ),
+                              filled: true,
+                              fillColor: Colors.black,
+                            ),
+                            style: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Lexend Deca',
                               color: Colors.white,
                             ),
-                            hintText: 'Nome da Musica',
-                            hintStyle: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Colors.white,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.secondaryColor,
-                                width: 3,
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(4.0),
-                                topRight: Radius.circular(4.0),
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.secondaryColor,
-                                width: 3,
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(4.0),
-                                topRight: Radius.circular(4.0),
-                              ),
-                            ),
-                            filled: true,
-                            fillColor: Colors.black,
-                          ),
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Colors.white,
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               Padding(

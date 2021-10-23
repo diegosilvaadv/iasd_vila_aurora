@@ -1,6 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/addsonoplastia_widget.dart';
+import '../components/create_modal_widget.dart';
 import '../detalhes_sonoplastia/detalhes_sonoplastia_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -56,7 +56,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                   builder: (context) {
                     return Container(
                       height: 240,
-                      child: AddsonoplastiaWidget(),
+                      child: CreateModalWidget(),
                     );
                   },
                 );
