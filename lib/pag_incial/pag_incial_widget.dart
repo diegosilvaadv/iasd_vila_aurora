@@ -191,21 +191,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                           ),
                                           Align(
                                             alignment: AlignmentDirectional(
-                                                0.63, 0.86),
-                                            child: Text(
-                                              '|',
-                                              style: FlutterFlowTheme.title1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFFF49F04),
-                                                fontSize: 40,
-                                                fontWeight: FontWeight.w900,
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.28, -0.09),
+                                                0.11, -0.29),
                                             child: InkWell(
                                               onTap: () async {
                                                 await Navigator.push(
@@ -232,7 +218,21 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                           ),
                                           Align(
                                             alignment: AlignmentDirectional(
-                                                0.91, 0.85),
+                                                0.63, 0.96),
+                                            child: Text(
+                                              '|',
+                                              style: FlutterFlowTheme.title1
+                                                  .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color: Color(0xFFF49F04),
+                                                fontSize: 40,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                0.92, 0.99),
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(100),
