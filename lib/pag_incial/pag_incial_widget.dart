@@ -397,30 +397,42 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                         color: Color(0xFF6DEEE8),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: Stack(
-                                        children: [
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.04, -0.66),
-                                            child: Icon(
-                                              Icons.people,
-                                              color: Colors.black,
-                                              size: 80,
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SonoplastiaWidget(),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.1, 0.8),
-                                            child: Text(
-                                              'Pregadores',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
+                                          );
+                                        },
+                                        child: Stack(
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.04, -0.66),
+                                              child: Icon(
+                                                Icons.people,
                                                 color: Colors.black,
+                                                size: 80,
                                               ),
                                             ),
-                                          )
-                                        ],
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.1, 0.8),
+                                              child: Text(
+                                                'Pregadores',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Lexend Deca',
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Container(
