@@ -771,7 +771,6 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 500,
                     decoration: BoxDecoration(
                       color: Color(0x00EEEEEE),
                     ),
@@ -829,33 +828,83 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           110, 5, 0, 0),
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.13, 0.43),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 5, 5, 0),
-                                                child: AutoSizeText(
-                                                  columnAnunciosRecord.titulo
-                                                      .maybeHandleOverflow(
-                                                    maxChars: 25,
-                                                    replacement: '…',
-                                                  ),
-                                                  style: FlutterFlowTheme.title3
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Colors.white,
-                                                  ),
+                                      child: StreamBuilder<UsersRecord>(
+                                        stream: UsersRecord.getDocument(
+                                            currentUserReference),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50,
+                                                height: 50,
+                                                child: SpinKitDoubleBounce(
+                                                  color: Color(0xFFF49F04),
+                                                  size: 50,
                                                 ),
                                               ),
-                                            )
-                                          ],
-                                        ),
+                                            );
+                                          }
+                                          final rowUsersRecord = snapshot.data;
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 5, 0),
+                                                  child: InkWell(
+                                                    onDoubleTap: () async {
+                                                      if ((rowUsersRecord
+                                                              .adm) ==
+                                                          (true)) {
+                                                        await columnAnunciosRecord
+                                                            .reference
+                                                            .delete();
+                                                      }
+                                                    },
+                                                    child: Text(
+                                                      columnIndex.toString(),
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily:
+                                                            'Lexend Deca',
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          -0.13, 0.43),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 5, 5, 0),
+                                                    child: AutoSizeText(
+                                                      columnAnunciosRecord
+                                                          .titulo
+                                                          .maybeHandleOverflow(
+                                                        maxChars: 25,
+                                                        replacement: '…',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                          .title3
+                                                          .override(
+                                                        fontFamily:
+                                                            'Lexend Deca',
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                     Padding(

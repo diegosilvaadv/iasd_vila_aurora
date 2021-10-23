@@ -185,9 +185,13 @@ class _MinMusicalWidgetState extends State<MinMusicalWidget> {
                                                         snapshot.data;
                                                     return InkWell(
                                                       onLongPress: () async {
-                                                        await columnMiniMusicalRecord
-                                                            .reference
-                                                            .delete();
+                                                        if ((textUsersRecord
+                                                                .adm) ==
+                                                            (true)) {
+                                                          await columnMiniMusicalRecord
+                                                              .reference
+                                                              .delete();
+                                                        }
                                                       },
                                                       child: Text(
                                                         columnIndex.toString(),

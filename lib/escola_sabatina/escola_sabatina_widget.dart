@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -120,35 +121,78 @@ class _EscolaSabatinaWidgetState extends State<EscolaSabatinaWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 10, 0),
-                                                  child: Text(
-                                                    columnIndex.toString(),
-                                                    style: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Lexend Deca',
-                                                      color: Color(0xFFBDBDBD),
+                                            StreamBuilder<UsersRecord>(
+                                              stream: UsersRecord.getDocument(
+                                                  currentUserReference),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50,
+                                                      height: 50,
+                                                      child:
+                                                          SpinKitDoubleBounce(
+                                                        color:
+                                                            Color(0xFFF49F04),
+                                                        size: 50,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  columnEscolaSabatinaRecord
-                                                      .nome,
-                                                  style: FlutterFlowTheme
-                                                      .subtitle1
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Colors.white,
-                                                    fontSize: 18,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                )
-                                              ],
+                                                  );
+                                                }
+                                                final rowUsersRecord =
+                                                    snapshot.data;
+                                                return Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0, 0, 10, 0),
+                                                      child: InkWell(
+                                                        onDoubleTap: () async {
+                                                          if ((rowUsersRecord
+                                                                  .adm) ==
+                                                              (true)) {
+                                                            await columnEscolaSabatinaRecord
+                                                                .reference
+                                                                .delete();
+                                                          }
+                                                        },
+                                                        child: Text(
+                                                          columnIndex
+                                                              .toString(),
+                                                          style:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Lexend Deca',
+                                                            color: Color(
+                                                                0xFFBDBDBD),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      columnEscolaSabatinaRecord
+                                                          .nome,
+                                                      style: FlutterFlowTheme
+                                                          .subtitle1
+                                                          .override(
+                                                        fontFamily:
+                                                            'Lexend Deca',
+                                                        color: Colors.white,
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    )
+                                                  ],
+                                                );
+                                              },
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
