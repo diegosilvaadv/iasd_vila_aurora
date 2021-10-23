@@ -114,13 +114,8 @@ class _ChatMainWidgetState extends State<ChatMainWidget> {
                         onTap: chatUser != null
                             ? () => Navigator.push(
                                   context,
-                                  PageTransition(
-                                    type: PageTransitionType.scale,
-                                    alignment: Alignment.bottomCenter,
-                                    duration: Duration(milliseconds: 300),
-                                    reverseDuration:
-                                        Duration(milliseconds: 300),
-                                    child: ChatUserWidget(
+                                  MaterialPageRoute(
+                                    builder: (context) => ChatUserWidget(
                                       chatUser: chatUser,
                                     ),
                                   ),

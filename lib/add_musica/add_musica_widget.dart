@@ -863,12 +863,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                             .set(ensaioMusicalCreateData);
                         await Navigator.push(
                           context,
-                          PageTransition(
-                            type: PageTransitionType.scale,
-                            alignment: Alignment.bottomCenter,
-                            duration: Duration(milliseconds: 300),
-                            reverseDuration: Duration(milliseconds: 300),
-                            child: ListEnsaiomusicalWidget(),
+                          MaterialPageRoute(
+                            builder: (context) => ListEnsaiomusicalWidget(),
                           ),
                         );
                       } finally {

@@ -41,12 +41,8 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
               onTap: () async {
                 await Navigator.push(
                   context,
-                  PageTransition(
-                    type: PageTransitionType.scale,
-                    alignment: Alignment.bottomCenter,
-                    duration: Duration(milliseconds: 300),
-                    reverseDuration: Duration(milliseconds: 300),
-                    child: AddMusicaWidget(),
+                  MaterialPageRoute(
+                    builder: (context) => AddMusicaWidget(),
                   ),
                 );
               },
@@ -96,12 +92,8 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                         onTap: () async {
                           await Navigator.push(
                             context,
-                            PageTransition(
-                              type: PageTransitionType.scale,
-                              alignment: Alignment.bottomCenter,
-                              duration: Duration(milliseconds: 300),
-                              reverseDuration: Duration(milliseconds: 300),
-                              child: KitsEnsaioWidget(
+                            MaterialPageRoute(
+                              builder: (context) => KitsEnsaioWidget(
                                 nomemusica:
                                     columnEnsaioMusicalRecord.nomeMusica,
                                 cantatda: columnEnsaioMusicalRecord.cantada,

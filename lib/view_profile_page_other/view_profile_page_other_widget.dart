@@ -243,14 +243,9 @@ class _ViewProfilePageOtherWidgetState
                                         try {
                                           await Navigator.push(
                                             context,
-                                            PageTransition(
-                                              type: PageTransitionType.scale,
-                                              alignment: Alignment.bottomCenter,
-                                              duration:
-                                                  Duration(milliseconds: 300),
-                                              reverseDuration:
-                                                  Duration(milliseconds: 300),
-                                              child: ChatUserWidget(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ChatUserWidget(
                                                 chatUser:
                                                     viewProfilePageOtherUsersRecord,
                                               ),
@@ -371,13 +366,9 @@ class _ViewProfilePageOtherWidgetState
                                     onTap: () async {
                                       await Navigator.push(
                                         context,
-                                        PageTransition(
-                                          type: PageTransitionType.scale,
-                                          alignment: Alignment.bottomCenter,
-                                          duration: Duration(milliseconds: 300),
-                                          reverseDuration:
-                                              Duration(milliseconds: 300),
-                                          child: PostDetailsWidget(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              PostDetailsWidget(
                                             userRecord: userPostUsersRecord,
                                             postReference:
                                                 socialFeedUserPostsRecord

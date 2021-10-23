@@ -58,12 +58,8 @@ class _LimpezaWidgetState extends State<LimpezaWidget> {
                     if ((iconUsersRecord.adm) == (true)) {
                       await Navigator.push(
                         context,
-                        PageTransition(
-                          type: PageTransitionType.scale,
-                          alignment: Alignment.bottomCenter,
-                          duration: Duration(milliseconds: 300),
-                          reverseDuration: Duration(milliseconds: 300),
-                          child: AddLimpezaWidget(),
+                        MaterialPageRoute(
+                          builder: (context) => AddLimpezaWidget(),
                         ),
                       );
                     }

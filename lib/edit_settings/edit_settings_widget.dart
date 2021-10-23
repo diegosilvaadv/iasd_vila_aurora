@@ -167,12 +167,8 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
                           onTap: () async {
                             await Navigator.push(
                               context,
-                              PageTransition(
-                                type: PageTransitionType.scale,
-                                alignment: Alignment.bottomCenter,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: EditUserProfileWidget(),
+                              MaterialPageRoute(
+                                builder: (context) => EditUserProfileWidget(),
                               ),
                             );
                           },
@@ -224,12 +220,8 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
                             onTap: () async {
                               await Navigator.push(
                                 context,
-                                PageTransition(
-                                  type: PageTransitionType.scale,
-                                  alignment: Alignment.bottomCenter,
-                                  duration: Duration(milliseconds: 300),
-                                  reverseDuration: Duration(milliseconds: 300),
-                                  child: ChangePasswordWidget(),
+                                MaterialPageRoute(
+                                  builder: (context) => ChangePasswordWidget(),
                                 ),
                               );
                             },
@@ -281,12 +273,8 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
                           await signOut();
                           await Navigator.pushAndRemoveUntil(
                             context,
-                            PageTransition(
-                              type: PageTransitionType.scale,
-                              alignment: Alignment.bottomCenter,
-                              duration: Duration(milliseconds: 300),
-                              reverseDuration: Duration(milliseconds: 300),
-                              child: LoginWidget(),
+                            MaterialPageRoute(
+                              builder: (context) => LoginWidget(),
                             ),
                             (r) => false,
                           );

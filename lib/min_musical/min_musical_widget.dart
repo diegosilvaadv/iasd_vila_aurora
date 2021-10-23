@@ -58,12 +58,8 @@ class _MinMusicalWidgetState extends State<MinMusicalWidget> {
                     if ((iconUsersRecord.adm) == (true)) {
                       await Navigator.push(
                         context,
-                        PageTransition(
-                          type: PageTransitionType.scale,
-                          alignment: Alignment.bottomCenter,
-                          duration: Duration(milliseconds: 300),
-                          reverseDuration: Duration(milliseconds: 300),
-                          child: AddMusicalWidget(),
+                        MaterialPageRoute(
+                          builder: (context) => AddMusicalWidget(),
                         ),
                       );
                     }

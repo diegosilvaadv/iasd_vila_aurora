@@ -288,18 +288,11 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                               onTap: () async {
                                                 await Navigator.push(
                                                   context,
-                                                  PageTransition(
-                                                    type: PageTransitionType
-                                                        .scale,
-                                                    alignment:
-                                                        Alignment.bottomCenter,
-                                                    duration: Duration(
-                                                        milliseconds: 300),
-                                                    reverseDuration: Duration(
-                                                        milliseconds: 300),
-                                                    child: NavBarPage(
-                                                        initialPage:
-                                                            'profilePage'),
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        NavBarPage(
+                                                            initialPage:
+                                                                'profilePage'),
                                                   ),
                                                 );
                                               },

@@ -54,12 +54,8 @@ class _DetalhesSonoplastiaWidgetState extends State<DetalhesSonoplastiaWidget> {
               if ((editarUsersRecord.adm) == (true)) {
                 await Navigator.push(
                   context,
-                  PageTransition(
-                    type: PageTransitionType.scale,
-                    alignment: Alignment.bottomCenter,
-                    duration: Duration(milliseconds: 300),
-                    reverseDuration: Duration(milliseconds: 300),
-                    child: EditEscalaSonoplastiaWidget(
+                  MaterialPageRoute(
+                    builder: (context) => EditEscalaSonoplastiaWidget(
                       nome: widget.nome,
                       data: widget.data,
                       img: widget.img,
