@@ -13,6 +13,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ViewProfilePageOtherWidget extends StatefulWidget {
   ViewProfilePageOtherWidget({
@@ -311,7 +312,7 @@ class _ViewProfilePageOtherWidgetState
                     if (socialFeedUserPostsRecordList.isEmpty) {
                       return Center(
                         child: Image.asset(
-                          'assets/images/Logo_PORTUGUES.png',
+                          'assets/images/pngwing.com.png',
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: 400,
                         ),
@@ -348,7 +349,7 @@ class _ViewProfilePageOtherWidgetState
                                 return Container(
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFF013668),
+                                    color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
                                         blurRadius: 4,
@@ -446,7 +447,9 @@ class _ViewProfilePageOtherWidgetState
                                                             .override(
                                                           fontFamily:
                                                               'Lexend Deca',
-                                                          color: Colors.white,
+                                                          color:
+                                                              FlutterFlowTheme
+                                                                  .primaryDark,
                                                           fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -461,7 +464,7 @@ class _ViewProfilePageOtherWidgetState
                                                       icon: Icon(
                                                         Icons.keyboard_control,
                                                         color: FlutterFlowTheme
-                                                            .background,
+                                                            .primaryColor,
                                                         size: 20,
                                                       ),
                                                       onPressed: () {
@@ -651,10 +654,15 @@ class _ViewProfilePageOtherWidgetState
                                                       ),
                                                     ),
                                                   ),
-                                                  Icon(
-                                                    Icons.ios_share,
-                                                    color: Color(0xFF95A1AC),
-                                                    size: 24,
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      await Share.share('');
+                                                    },
+                                                    child: Icon(
+                                                      Icons.ios_share,
+                                                      color: Color(0xFF95A1AC),
+                                                      size: 24,
+                                                    ),
                                                   )
                                                 ],
                                               )
@@ -683,7 +691,7 @@ class _ViewProfilePageOtherWidgetState
                                                         .override(
                                                       fontFamily: 'Lexend Deca',
                                                       color: FlutterFlowTheme
-                                                          .secondaryColor,
+                                                          .primaryColor,
                                                       fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.normal,
