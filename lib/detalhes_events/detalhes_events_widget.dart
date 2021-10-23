@@ -1,7 +1,9 @@
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,6 +30,7 @@ class DetalhesEventsWidget extends StatefulWidget {
 }
 
 class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
+  double ratingBarValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -318,7 +321,7 @@ class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                          child: Text(
+                          child: AutoSizeText(
                             'Para mais informações sobre eventos entrre em contato com o responsável da comunicação da sua Igreja.',
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.subtitle2.override(
@@ -327,6 +330,53 @@ class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(50, 10, 0, 0),
+                          child: StreamBuilder<List<AnunciosRecord>>(
+                            stream: queryAnunciosRecord(
+                              singleRecord: true,
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: SpinKitThreeBounce(
+                                      color: FlutterFlowTheme.primaryColor,
+                                      size: 50,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<AnunciosRecord> ratingBarAnunciosRecordList =
+                                  snapshot.data;
+                              // Return an empty Container when the document does not exist.
+                              if (snapshot.data.isEmpty) {
+                                return Container();
+                              }
+                              final ratingBarAnunciosRecord =
+                                  ratingBarAnunciosRecordList.isNotEmpty
+                                      ? ratingBarAnunciosRecordList.first
+                                      : null;
+                              return RatingBar.builder(
+                                onRatingUpdate: (newValue) =>
+                                    setState(() => ratingBarValue = newValue),
+                                itemBuilder: (context, index) => Icon(
+                                  Icons.star_rounded,
+                                  color: FlutterFlowTheme.secondaryColor,
+                                ),
+                                direction: Axis.horizontal,
+                                initialRating: ratingBarValue ??= 4,
+                                unratedColor: Color(0xFF9E9E9E),
+                                itemCount: 5,
+                                itemSize: 40,
+                                glowColor: FlutterFlowTheme.secondaryColor,
+                              );
+                            },
                           ),
                         )
                       ],
