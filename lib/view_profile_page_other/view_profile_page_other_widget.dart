@@ -286,8 +286,11 @@ class _ViewProfilePageOtherWidgetState
                 ),
                 StreamBuilder<List<UserPostsRecord>>(
                   stream: queryUserPostsRecord(
-                    queryBuilder: (userPostsRecord) =>
-                        userPostsRecord.orderBy('timePosted', descending: true),
+                    queryBuilder: (userPostsRecord) => userPostsRecord
+                        .where('postUser',
+                            isEqualTo:
+                                viewProfilePageOtherUsersRecord.reference)
+                        .orderBy('timePosted', descending: true),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
