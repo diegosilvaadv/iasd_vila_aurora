@@ -312,8 +312,8 @@ class _ViewProfilePageOtherWidgetState
                       return Center(
                         child: Image.asset(
                           'assets/images/Logo_PORTUGUES.png',
-                          width: double.infinity,
-                          height: double.infinity,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          height: 400,
                         ),
                       );
                     }
