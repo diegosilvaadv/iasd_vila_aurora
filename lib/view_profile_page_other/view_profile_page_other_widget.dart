@@ -310,10 +310,10 @@ class _ViewProfilePageOtherWidgetState
                         snapshot.data;
                     if (socialFeedUserPostsRecordList.isEmpty) {
                       return Center(
-                        child: Image.network(
-                          'https://i.pinimg.com/736x/17/c7/96/17c796bc7d67fdd18e9ee571bb89ba5b.jpg',
-                          width: 100,
-                          height: MediaQuery.of(context).size.height * 1,
+                        child: Image.asset(
+                          'assets/images/Logo_PORTUGUES.png',
+                          width: double.infinity,
+                          height: double.infinity,
                         ),
                       );
                     }
