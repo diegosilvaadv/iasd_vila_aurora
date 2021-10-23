@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../chat_user/chat_user_widget.dart';
+import '../components/view_foto_perfil_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
@@ -186,20 +187,39 @@ class _ViewProfilePageOtherWidgetState
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     4, 4, 4, 4),
-                                            child: Container(
-                                              width: 90,
-                                              height: 90,
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Image.network(
-                                                valueOrDefault<String>(
-                                                  viewProfilePageOtherUsersRecord
-                                                      .photoUrl,
-                                                  'http://simpleicon.com/wp-content/uploads/user1.png',
+                                            child: InkWell(
+                                              onTap: () async {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Container(
+                                                      height: 600,
+                                                      child:
+                                                          ViewFotoPerfilWidget(
+                                                        perfilimg:
+                                                            viewProfilePageOtherUsersRecord
+                                                                .photoUrl,
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              child: Container(
+                                                width: 90,
+                                                height: 90,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
                                                 ),
-                                                fit: BoxFit.fitWidth,
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
+                                                    viewProfilePageOtherUsersRecord
+                                                        .photoUrl,
+                                                    'http://simpleicon.com/wp-content/uploads/user1.png',
+                                                  ),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
                                               ),
                                             ),
                                           ),

@@ -88,8 +88,10 @@ class _ChatMainWidgetState extends State<ChatMainWidget> {
               if (listViewChatsRecordList.isEmpty) {
                 return Center(
                   child: Image.asset(
-                    'assets/images/messagesMainEmpty@2x.png',
-                    width: MediaQuery.of(context).size.width * 0.76,
+                    'assets/images/129813009-black-line-translator-icon-isolated-seamless-pattern-on-white-background-foreign-language-conversati.jpg',
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
                   ),
                 );
               }

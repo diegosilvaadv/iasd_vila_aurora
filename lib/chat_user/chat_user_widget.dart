@@ -71,7 +71,7 @@ class _ChatUserWidgetState extends State<ChatUserWidget> {
               ? FFChatPage(
                   chatInfo: snapshot.data,
                   allowImages: true,
-                  backgroundColor: Color(0xFFF2F4F8),
+                  backgroundColor: FlutterFlowTheme.primaryColor,
                   timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
                   currentUserBoxDecoration: BoxDecoration(
                     color: Colors.white,
@@ -113,7 +113,7 @@ class _ChatUserWidgetState extends State<ChatUserWidget> {
                     fontSize: 14,
                   ),
                   emptyChatWidget: Image.asset(
-                    'assets/images/messagesEmpty@2x.png',
+                    'assets/images/Logo_PORTUGUES.png',
                     width: MediaQuery.of(context).size.width * 0.76,
                   ),
                 )

@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/view_foto_perfil_widget.dart';
 import '../edit_settings/edit_settings_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -142,19 +143,34 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           4, 4, 4, 4),
-                                      child: Container(
-                                        width: 90,
-                                        height: 90,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.network(
-                                          valueOrDefault<String>(
-                                            profilePageUsersRecord.photoUrl,
-                                            'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            context: context,
+                                            builder: (context) {
+                                              return ViewFotoPerfilWidget(
+                                                perfilimg:
+                                                    profilePageUsersRecord
+                                                        .photoUrl,
+                                              );
+                                            },
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 90,
+                                          height: 90,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
                                           ),
-                                          fit: BoxFit.fitWidth,
+                                          child: Image.network(
+                                            valueOrDefault<String>(
+                                              profilePageUsersRecord.photoUrl,
+                                              'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+                                            ),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
