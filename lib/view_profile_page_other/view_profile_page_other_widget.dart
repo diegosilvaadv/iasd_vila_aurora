@@ -286,9 +286,8 @@ class _ViewProfilePageOtherWidgetState
                 ),
                 StreamBuilder<List<UserPostsRecord>>(
                   stream: queryUserPostsRecord(
-                    queryBuilder: (userPostsRecord) => userPostsRecord
-                        .where('postUser', isEqualTo: currentUserReference)
-                        .orderBy('timePosted', descending: true),
+                    queryBuilder: (userPostsRecord) =>
+                        userPostsRecord.orderBy('timePosted', descending: true),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -416,7 +415,7 @@ class _ViewProfilePageOtherWidgetState
                                                       ),
                                                       child: Image.network(
                                                         valueOrDefault<String>(
-                                                          userPostUsersRecord
+                                                          viewProfilePageOtherUsersRecord
                                                               .photoUrl,
                                                           'http://simpleicon.com/wp-content/uploads/user1.png',
                                                         ),
@@ -441,8 +440,8 @@ class _ViewProfilePageOtherWidgetState
                                                                   12, 0, 0, 0),
                                                       child: Text(
                                                         valueOrDefault<String>(
-                                                          userPostUsersRecord
-                                                              .userName,
+                                                          viewProfilePageOtherUsersRecord
+                                                              .displayName,
                                                           'myUsername',
                                                         ),
                                                         style: FlutterFlowTheme
@@ -485,7 +484,8 @@ class _ViewProfilePageOtherWidgetState
                                               BorderRadius.circular(0),
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
-                                              userPostUsersRecord.photoUrl,
+                                              socialFeedUserPostsRecord
+                                                  .postPhoto,
                                               'https://d.newsweek.com/en/full/1310267/best-hawaii-beaches.jpg',
                                             ),
                                             width: MediaQuery.of(context)
