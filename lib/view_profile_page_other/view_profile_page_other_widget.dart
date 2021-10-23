@@ -311,7 +311,7 @@ class _ViewProfilePageOtherWidgetState
                     if (socialFeedUserPostsRecordList.isEmpty) {
                       return Center(
                         child: Image.asset(
-                          'assets/images/emptyPosts@2x.png',
+                          'assets/images/ic_launcher_1.png',
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: 400,
                         ),
@@ -349,12 +349,6 @@ class _ViewProfilePageOtherWidgetState
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.tertiaryColor,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: Image.asset(
-                                        'assets/images/Logo_PORTUGUES.png',
-                                      ).image,
-                                    ),
                                     boxShadow: [
                                       BoxShadow(
                                         blurRadius: 4,
