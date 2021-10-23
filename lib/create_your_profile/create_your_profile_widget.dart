@@ -343,9 +343,12 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                             await currentUserReference.update(usersUpdateData);
                             await Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    NavBarPage(initialPage: 'PagIncial'),
+                              PageTransition(
+                                type: PageTransitionType.scale,
+                                alignment: Alignment.bottomCenter,
+                                duration: Duration(milliseconds: 200),
+                                reverseDuration: Duration(milliseconds: 200),
+                                child: NavBarPage(initialPage: 'PagIncial'),
                               ),
                               (r) => false,
                             );

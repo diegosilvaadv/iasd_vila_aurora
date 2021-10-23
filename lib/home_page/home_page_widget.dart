@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/create_modal_widget.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_media_display.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -24,8 +25,31 @@ class HomePageWidget extends StatefulWidget {
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _HomePageWidgetState extends State<HomePageWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 1090,
+      fadeIn: true,
+    ),
+    'appBarOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +100,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ],
         centerTitle: false,
         elevation: 0,
-      ),
+      ).animated([animationsMap['appBarOnPageLoadAnimation']]),
       backgroundColor: Color(0xFFF1F5F8),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
@@ -136,8 +160,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: SpinKitDoubleBounce(
-                          color: Color(0xFFF49F04),
+                        child: SpinKitThreeBounce(
+                          color: FlutterFlowTheme.primaryColor,
                           size: 50,
                         ),
                       ),
@@ -173,8 +197,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
-                                    color: Color(0xFFF49F04),
+                                  child: SpinKitThreeBounce(
+                                    color: FlutterFlowTheme.primaryColor,
                                     size: 50,
                                   ),
                                 ),
@@ -198,8 +222,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 onTap: () async {
                                   await Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => PostDetailsWidget(
+                                    PageTransition(
+                                      type: PageTransitionType.scale,
+                                      alignment: Alignment.bottomCenter,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration:
+                                          Duration(milliseconds: 300),
+                                      child: PostDetailsWidget(
                                         userRecord: userPostUsersRecord,
                                         postReference:
                                             socialFeedUserPostsRecord.reference,
@@ -222,8 +251,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             onTap: () async {
                                               await Navigator.push(
                                                 context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
+                                                PageTransition(
+                                                  type:
+                                                      PageTransitionType.scale,
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                  duration: Duration(
+                                                      milliseconds: 300),
+                                                  reverseDuration: Duration(
+                                                      milliseconds: 300),
+                                                  child:
                                                       ViewProfilePageOtherWidget(
                                                     userDetails:
                                                         userPostUsersRecord,
@@ -533,7 +570,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     )
                                   ],
                                 ),
-                              ),
+                              ).animated(
+                                  [animationsMap['columnOnPageLoadAnimation']]),
                             );
                           },
                         ),

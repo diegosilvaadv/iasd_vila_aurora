@@ -47,8 +47,8 @@ class _PregadoresWidgetState extends State<PregadoresWidget> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: SpinKitDoubleBounce(
-                        color: Color(0xFFF49F04),
+                      child: SpinKitThreeBounce(
+                        color: FlutterFlowTheme.primaryColor,
                         size: 50,
                       ),
                     ),
@@ -60,8 +60,12 @@ class _PregadoresWidgetState extends State<PregadoresWidget> {
                     if ((iconUsersRecord.adm) == (true)) {
                       await Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => AddPregadoresWidget(),
+                        PageTransition(
+                          type: PageTransitionType.scale,
+                          alignment: Alignment.bottomCenter,
+                          duration: Duration(milliseconds: 300),
+                          reverseDuration: Duration(milliseconds: 300),
+                          child: AddPregadoresWidget(),
                         ),
                       );
                     }
@@ -110,8 +114,8 @@ class _PregadoresWidgetState extends State<PregadoresWidget> {
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
-                    color: Color(0xFFF49F04),
+                  child: SpinKitThreeBounce(
+                    color: FlutterFlowTheme.primaryColor,
                     size: 50,
                   ),
                 ),
@@ -293,8 +297,9 @@ class _PregadoresWidgetState extends State<PregadoresWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
-                                              color: Color(0xFFF49F04),
+                                            child: SpinKitThreeBounce(
+                                              color:
+                                                  FlutterFlowTheme.primaryColor,
                                               size: 50,
                                             ),
                                           ),

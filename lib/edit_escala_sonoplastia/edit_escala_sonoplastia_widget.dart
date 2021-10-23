@@ -64,8 +64,8 @@ class _EditEscalaSonoplastiaWidgetState
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
-                color: Color(0xFFF49F04),
+              child: SpinKitThreeBounce(
+                color: FlutterFlowTheme.primaryColor,
                 size: 50,
               ),
             ),

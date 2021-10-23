@@ -43,8 +43,8 @@ class _ViewProfilePageOtherWidgetState
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
-                color: Color(0xFFF49F04),
+              child: SpinKitThreeBounce(
+                color: FlutterFlowTheme.primaryColor,
                 size: 50,
               ),
             ),
@@ -243,9 +243,14 @@ class _ViewProfilePageOtherWidgetState
                                         try {
                                           await Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ChatUserWidget(
+                                            PageTransition(
+                                              type: PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
+                                              duration:
+                                                  Duration(milliseconds: 300),
+                                              reverseDuration:
+                                                  Duration(milliseconds: 300),
+                                              child: ChatUserWidget(
                                                 chatUser:
                                                     viewProfilePageOtherUsersRecord,
                                               ),
@@ -297,8 +302,8 @@ class _ViewProfilePageOtherWidgetState
                         child: SizedBox(
                           width: 50,
                           height: 50,
-                          child: SpinKitDoubleBounce(
-                            color: Color(0xFFF49F04),
+                          child: SpinKitThreeBounce(
+                            color: FlutterFlowTheme.primaryColor,
                             size: 50,
                           ),
                         ),
@@ -327,7 +332,7 @@ class _ViewProfilePageOtherWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 8),
                             child: StreamBuilder<UsersRecord>(
                               stream: UsersRecord.getDocument(
-                                  viewProfilePageOtherUsersRecord.reference),
+                                  socialFeedUserPostsRecord.postUser),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -335,8 +340,8 @@ class _ViewProfilePageOtherWidgetState
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
-                                        color: Color(0xFFF49F04),
+                                      child: SpinKitThreeBounce(
+                                        color: FlutterFlowTheme.primaryColor,
                                         size: 50,
                                       ),
                                     ),
@@ -366,9 +371,13 @@ class _ViewProfilePageOtherWidgetState
                                     onTap: () async {
                                       await Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              PostDetailsWidget(
+                                        PageTransition(
+                                          type: PageTransitionType.scale,
+                                          alignment: Alignment.bottomCenter,
+                                          duration: Duration(milliseconds: 300),
+                                          reverseDuration:
+                                              Duration(milliseconds: 300),
+                                          child: PostDetailsWidget(
                                             userRecord: userPostUsersRecord,
                                             postReference:
                                                 socialFeedUserPostsRecord

@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/view_foto_perfil_widget.dart';
 import '../edit_settings/edit_settings_widget.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
@@ -23,10 +24,40 @@ class ProfilePageWidget extends StatefulWidget {
   _ProfilePageWidgetState createState() => _ProfilePageWidgetState();
 }
 
-class _ProfilePageWidgetState extends State<ProfilePageWidget> {
+class _ProfilePageWidgetState extends State<ProfilePageWidget>
+    with TickerProviderStateMixin {
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 1210,
+      delay: 420,
+      fadeIn: true,
+    ),
+    'rowOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+    'tabBarOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 1210,
+      delay: 600,
+      fadeIn: true,
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +70,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
-                color: Color(0xFFF49F04),
+              child: SpinKitThreeBounce(
+                color: FlutterFlowTheme.primaryColor,
                 size: 50,
               ),
             ),
@@ -182,7 +213,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               ),
                             )
                           ],
-                        ),
+                        ).animated([animationsMap['rowOnPageLoadAnimation']]),
                       ),
                     )
                   ],
@@ -303,8 +334,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       child: SizedBox(
                                         width: 50,
                                         height: 50,
-                                        child: SpinKitDoubleBounce(
-                                          color: Color(0xFFF49F04),
+                                        child: SpinKitThreeBounce(
+                                          color: FlutterFlowTheme.primaryColor,
                                           size: 50,
                                         ),
                                       ),
@@ -328,8 +359,16 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             onTap: () async {
                                               await Navigator.push(
                                                 context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
+                                                PageTransition(
+                                                  type:
+                                                      PageTransitionType.scale,
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                  duration: Duration(
+                                                      milliseconds: 300),
+                                                  reverseDuration: Duration(
+                                                      milliseconds: 300),
+                                                  child:
                                                       ViewProfilePageOtherWidget(
                                                     userDetails:
                                                         columnUsersRecord,
@@ -449,8 +488,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
-                                            color: Color(0xFFF49F04),
+                                          child: SpinKitThreeBounce(
+                                            color:
+                                                FlutterFlowTheme.primaryColor,
                                             size: 50,
                                           ),
                                         ),
@@ -495,10 +535,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     child: SizedBox(
                                                       width: 50,
                                                       height: 50,
-                                                      child:
-                                                          SpinKitDoubleBounce(
-                                                        color:
-                                                            Color(0xFFF49F04),
+                                                      child: SpinKitThreeBounce(
+                                                        color: FlutterFlowTheme
+                                                            .primaryColor,
                                                         size: 50,
                                                       ),
                                                     ),
@@ -529,8 +568,20 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     onTap: () async {
                                                       await Navigator.push(
                                                         context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
+                                                        PageTransition(
+                                                          type:
+                                                              PageTransitionType
+                                                                  .scale,
+                                                          alignment: Alignment
+                                                              .bottomCenter,
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  300),
+                                                          reverseDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      300),
+                                                          child:
                                                               PostDetailsWidget(
                                                             userRecord:
                                                                 userPostUsersRecord,
@@ -934,10 +985,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         ),
                       ],
                     ),
-                  ),
+                  ).animated([animationsMap['tabBarOnPageLoadAnimation']]),
                 )
               ],
-            ),
+            ).animated([animationsMap['columnOnPageLoadAnimation']]),
           ),
         );
       },

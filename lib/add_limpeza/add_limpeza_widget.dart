@@ -267,8 +267,12 @@ class _AddLimpezaWidgetState extends State<AddLimpezaWidget> {
                                 .set(limpezaCreateData);
                             await Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => LimpezaWidget(),
+                              PageTransition(
+                                type: PageTransitionType.scale,
+                                alignment: Alignment.bottomCenter,
+                                duration: Duration(milliseconds: 300),
+                                reverseDuration: Duration(milliseconds: 300),
+                                child: LimpezaWidget(),
                               ),
                             );
                           } finally {

@@ -45,8 +45,8 @@ class _LimpezaWidgetState extends State<LimpezaWidget> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: SpinKitDoubleBounce(
-                        color: Color(0xFFF49F04),
+                      child: SpinKitThreeBounce(
+                        color: FlutterFlowTheme.primaryColor,
                         size: 50,
                       ),
                     ),
@@ -58,8 +58,12 @@ class _LimpezaWidgetState extends State<LimpezaWidget> {
                     if ((iconUsersRecord.adm) == (true)) {
                       await Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => AddLimpezaWidget(),
+                        PageTransition(
+                          type: PageTransitionType.scale,
+                          alignment: Alignment.bottomCenter,
+                          duration: Duration(milliseconds: 300),
+                          reverseDuration: Duration(milliseconds: 300),
+                          child: AddLimpezaWidget(),
                         ),
                       );
                     }
@@ -107,8 +111,8 @@ class _LimpezaWidgetState extends State<LimpezaWidget> {
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
-                    color: Color(0xFFF49F04),
+                  child: SpinKitThreeBounce(
+                    color: FlutterFlowTheme.primaryColor,
                     size: 50,
                   ),
                 ),
@@ -182,9 +186,10 @@ class _LimpezaWidgetState extends State<LimpezaWidget> {
                                                         width: 50,
                                                         height: 50,
                                                         child:
-                                                            SpinKitDoubleBounce(
+                                                            SpinKitThreeBounce(
                                                           color:
-                                                              Color(0xFFF49F04),
+                                                              FlutterFlowTheme
+                                                                  .primaryColor,
                                                           size: 50,
                                                         ),
                                                       ),

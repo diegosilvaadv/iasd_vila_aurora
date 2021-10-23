@@ -161,7 +161,7 @@ class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
                           Container(
                             width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color(0xFFF5F5F5),
                             ),
                             child: AutoSizeText(
                               widget.mensagem,

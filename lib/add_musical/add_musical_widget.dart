@@ -340,8 +340,12 @@ class _AddMusicalWidgetState extends State<AddMusicalWidget> {
                                 .set(miniMusicalCreateData);
                             await Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => MinMusicalWidget(),
+                              PageTransition(
+                                type: PageTransitionType.scale,
+                                alignment: Alignment.bottomCenter,
+                                duration: Duration(milliseconds: 300),
+                                reverseDuration: Duration(milliseconds: 300),
+                                child: MinMusicalWidget(),
                               ),
                             );
                           } finally {

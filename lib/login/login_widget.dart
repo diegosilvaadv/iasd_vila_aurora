@@ -265,9 +265,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   try {
                                     await Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChangePasswordWidget(),
+                                      PageTransition(
+                                        type: PageTransitionType.scale,
+                                        alignment: Alignment.bottomCenter,
+                                        duration: Duration(milliseconds: 300),
+                                        reverseDuration:
+                                            Duration(milliseconds: 300),
+                                        child: ChangePasswordWidget(),
                                       ),
                                     );
                                   } finally {
@@ -313,8 +317,13 @@ class _LoginWidgetState extends State<LoginWidget> {
 
                                     await Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) => NavBarPage(
+                                      PageTransition(
+                                        type: PageTransitionType.scale,
+                                        alignment: Alignment.bottomCenter,
+                                        duration: Duration(milliseconds: 300),
+                                        reverseDuration:
+                                            Duration(milliseconds: 300),
+                                        child: NavBarPage(
                                             initialPage: 'PagIncial'),
                                       ),
                                     );
@@ -357,9 +366,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                               }
                               await Navigator.pushAndRemoveUntil(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      NavBarPage(initialPage: 'PagIncial'),
+                                PageTransition(
+                                  type: PageTransitionType.scale,
+                                  alignment: Alignment.bottomCenter,
+                                  duration: Duration(milliseconds: 300),
+                                  reverseDuration: Duration(milliseconds: 300),
+                                  child: NavBarPage(initialPage: 'PagIncial'),
                                 ),
                                 (r) => false,
                               );

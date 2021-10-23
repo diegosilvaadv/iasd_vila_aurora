@@ -263,9 +263,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
 
                                     await Navigator.pushAndRemoveUntil(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            CreateYourProfileWidget(),
+                                      PageTransition(
+                                        type: PageTransitionType.scale,
+                                        alignment: Alignment.bottomCenter,
+                                        duration: Duration(milliseconds: 300),
+                                        reverseDuration:
+                                            Duration(milliseconds: 300),
+                                        child: CreateYourProfileWidget(),
                                       ),
                                       (r) => false,
                                     );

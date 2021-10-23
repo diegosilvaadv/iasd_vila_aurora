@@ -33,8 +33,8 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
-                color: Color(0xFFF49F04),
+              child: SpinKitThreeBounce(
+                color: FlutterFlowTheme.primaryColor,
                 size: 50,
               ),
             ),
@@ -167,8 +167,12 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
                           onTap: () async {
                             await Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => EditUserProfileWidget(),
+                              PageTransition(
+                                type: PageTransitionType.scale,
+                                alignment: Alignment.bottomCenter,
+                                duration: Duration(milliseconds: 300),
+                                reverseDuration: Duration(milliseconds: 300),
+                                child: EditUserProfileWidget(),
                               ),
                             );
                           },
@@ -220,8 +224,12 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
                             onTap: () async {
                               await Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChangePasswordWidget(),
+                                PageTransition(
+                                  type: PageTransitionType.scale,
+                                  alignment: Alignment.bottomCenter,
+                                  duration: Duration(milliseconds: 300),
+                                  reverseDuration: Duration(milliseconds: 300),
+                                  child: ChangePasswordWidget(),
                                 ),
                               );
                             },
@@ -273,8 +281,12 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
                           await signOut();
                           await Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginWidget(),
+                            PageTransition(
+                              type: PageTransitionType.scale,
+                              alignment: Alignment.bottomCenter,
+                              duration: Duration(milliseconds: 300),
+                              reverseDuration: Duration(milliseconds: 300),
+                              child: LoginWidget(),
                             ),
                             (r) => false,
                           );

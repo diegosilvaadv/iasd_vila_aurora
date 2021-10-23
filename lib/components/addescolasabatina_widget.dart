@@ -163,8 +163,12 @@ class _AddescolasabatinaWidgetState extends State<AddescolasabatinaWidget> {
                             .set(escolaSabatinaCreateData);
                         await Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => EscolaSabatinaWidget(),
+                          PageTransition(
+                            type: PageTransitionType.scale,
+                            alignment: Alignment.bottomCenter,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: EscolaSabatinaWidget(),
                           ),
                         );
                       } finally {

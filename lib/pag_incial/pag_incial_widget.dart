@@ -76,9 +76,21 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
       duration: 600,
       fadeIn: true,
     ),
+    'rowOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
     'iconOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      fadeIn: true,
+    ),
+    'columnOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      delay: 410,
       fadeIn: true,
     ),
   };
@@ -179,8 +191,9 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
-                                              color: Color(0xFFF49F04),
+                                            child: SpinKitThreeBounce(
+                                              color:
+                                                  FlutterFlowTheme.primaryColor,
                                               size: 50,
                                             ),
                                           ),
@@ -208,11 +221,16 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                                 onTap: () async {
                                                   await Navigator.push(
                                                     context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          NavBarPage(
-                                                              initialPage:
-                                                                  'profilePage'),
+                                                    PageTransition(
+                                                      type: PageTransitionType
+                                                          .bottomToTop,
+                                                      duration: Duration(
+                                                          milliseconds: 300),
+                                                      reverseDuration: Duration(
+                                                          milliseconds: 300),
+                                                      child: NavBarPage(
+                                                          initialPage:
+                                                              'profilePage'),
                                                     ),
                                                   );
                                                 },
@@ -270,11 +288,18 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                               onTap: () async {
                                                 await Navigator.push(
                                                   context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        NavBarPage(
-                                                            initialPage:
-                                                                'profilePage'),
+                                                  PageTransition(
+                                                    type: PageTransitionType
+                                                        .scale,
+                                                    alignment:
+                                                        Alignment.bottomCenter,
+                                                    duration: Duration(
+                                                        milliseconds: 300),
+                                                    reverseDuration: Duration(
+                                                        milliseconds: 300),
+                                                    child: NavBarPage(
+                                                        initialPage:
+                                                            'profilePage'),
                                                   ),
                                                 );
                                               },
@@ -371,7 +396,8 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                         await Navigator.push(
                                           context,
                                           PageTransition(
-                                            type: PageTransitionType.fade,
+                                            type: PageTransitionType.scale,
+                                            alignment: Alignment.bottomCenter,
                                             duration:
                                                 Duration(milliseconds: 300),
                                             reverseDuration:
@@ -483,9 +509,14 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                         onTap: () async {
                                           await Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PregadoresWidget(),
+                                            PageTransition(
+                                              type: PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
+                                              duration:
+                                                  Duration(milliseconds: 300),
+                                              reverseDuration:
+                                                  Duration(milliseconds: 300),
+                                              child: PregadoresWidget(),
                                             ),
                                           );
                                         },
@@ -531,9 +562,14 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                         onTap: () async {
                                           await Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ListEnsaiomusicalWidget(),
+                                            PageTransition(
+                                              type: PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
+                                              duration:
+                                                  Duration(milliseconds: 300),
+                                              reverseDuration:
+                                                  Duration(milliseconds: 300),
+                                              child: ListEnsaiomusicalWidget(),
                                             ),
                                           );
                                         },
@@ -636,11 +672,12 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                           await Navigator.push(
                                             context,
                                             PageTransition(
-                                              type: PageTransitionType.fade,
+                                              type: PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
                                               duration:
-                                                  Duration(milliseconds: 0),
+                                                  Duration(milliseconds: 300),
                                               reverseDuration:
-                                                  Duration(milliseconds: 0),
+                                                  Duration(milliseconds: 300),
                                               child: LimpezaWidget(),
                                             ),
                                           );
@@ -724,8 +761,9 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
-                                            color: Color(0xFFF49F04),
+                                          child: SpinKitThreeBounce(
+                                            color:
+                                                FlutterFlowTheme.primaryColor,
                                             size: 50,
                                           ),
                                         ),
@@ -759,7 +797,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                 ),
                               )
                             ],
-                          ),
+                          ).animated([animationsMap['rowOnPageLoadAnimation']]),
                         )
                       ],
                     ),
@@ -786,8 +824,8 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
-                                color: Color(0xFFF49F04),
+                              child: SpinKitThreeBounce(
+                                color: FlutterFlowTheme.primaryColor,
                                 size: 50,
                               ),
                             ),
@@ -838,8 +876,9 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                               child: SizedBox(
                                                 width: 50,
                                                 height: 50,
-                                                child: SpinKitDoubleBounce(
-                                                  color: Color(0xFFF49F04),
+                                                child: SpinKitThreeBounce(
+                                                  color: FlutterFlowTheme
+                                                      .primaryColor,
                                                   size: 50,
                                                 ),
                                               ),
@@ -1002,9 +1041,14 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                           onTap: () async {
                                             await Navigator.push(
                                               context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    DetalhesEventsWidget(
+                                              PageTransition(
+                                                type: PageTransitionType
+                                                    .rightToLeft,
+                                                duration:
+                                                    Duration(milliseconds: 300),
+                                                reverseDuration:
+                                                    Duration(milliseconds: 300),
+                                                child: DetalhesEventsWidget(
                                                   titulo: columnAnunciosRecord
                                                       .titulo,
                                                   mensagem: columnAnunciosRecord
@@ -1033,7 +1077,8 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                               );
                             }),
                           ),
-                        );
+                        ).animated(
+                            [animationsMap['columnOnPageLoadAnimation']]);
                       },
                     ),
                   )

@@ -45,8 +45,8 @@ class _MinMusicalWidgetState extends State<MinMusicalWidget> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: SpinKitDoubleBounce(
-                        color: Color(0xFFF49F04),
+                      child: SpinKitThreeBounce(
+                        color: FlutterFlowTheme.primaryColor,
                         size: 50,
                       ),
                     ),
@@ -58,8 +58,12 @@ class _MinMusicalWidgetState extends State<MinMusicalWidget> {
                     if ((iconUsersRecord.adm) == (true)) {
                       await Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => AddMusicalWidget(),
+                        PageTransition(
+                          type: PageTransitionType.scale,
+                          alignment: Alignment.bottomCenter,
+                          duration: Duration(milliseconds: 300),
+                          reverseDuration: Duration(milliseconds: 300),
+                          child: AddMusicalWidget(),
                         ),
                       );
                     }
@@ -93,8 +97,8 @@ class _MinMusicalWidgetState extends State<MinMusicalWidget> {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitDoubleBounce(
-                      color: Color(0xFFF49F04),
+                    child: SpinKitThreeBounce(
+                      color: FlutterFlowTheme.primaryColor,
                       size: 50,
                     ),
                   ),
@@ -173,9 +177,10 @@ class _MinMusicalWidgetState extends State<MinMusicalWidget> {
                                                           width: 50,
                                                           height: 50,
                                                           child:
-                                                              SpinKitDoubleBounce(
-                                                            color: Color(
-                                                                0xFFF49F04),
+                                                              SpinKitThreeBounce(
+                                                            color:
+                                                                FlutterFlowTheme
+                                                                    .primaryColor,
                                                             size: 50,
                                                           ),
                                                         ),

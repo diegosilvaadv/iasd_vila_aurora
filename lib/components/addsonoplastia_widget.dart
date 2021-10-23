@@ -224,8 +224,12 @@ class _AddsonoplastiaWidgetState extends State<AddsonoplastiaWidget> {
                             .set(escalaSonoplastiaCreateData);
                         await Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => SonoplastiaWidget(),
+                          PageTransition(
+                            type: PageTransitionType.scale,
+                            alignment: Alignment.bottomCenter,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: SonoplastiaWidget(),
                           ),
                         );
                       } finally {

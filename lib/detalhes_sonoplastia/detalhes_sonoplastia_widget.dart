@@ -41,8 +41,8 @@ class _DetalhesSonoplastiaWidgetState extends State<DetalhesSonoplastiaWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
-                  color: Color(0xFFF49F04),
+                child: SpinKitThreeBounce(
+                  color: FlutterFlowTheme.primaryColor,
                   size: 50,
                 ),
               ),
@@ -54,8 +54,12 @@ class _DetalhesSonoplastiaWidgetState extends State<DetalhesSonoplastiaWidget> {
               if ((editarUsersRecord.adm) == (true)) {
                 await Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => EditEscalaSonoplastiaWidget(
+                  PageTransition(
+                    type: PageTransitionType.scale,
+                    alignment: Alignment.bottomCenter,
+                    duration: Duration(milliseconds: 300),
+                    reverseDuration: Duration(milliseconds: 300),
+                    child: EditEscalaSonoplastiaWidget(
                       nome: widget.nome,
                       data: widget.data,
                       img: widget.img,
