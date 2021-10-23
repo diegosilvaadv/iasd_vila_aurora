@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../conjunto/conjunto_widget.dart';
 import '../escola_sabatina/escola_sabatina_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -429,31 +430,43 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                         color: Color(0xFFF2335C),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: Stack(
-                                        children: [
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                -0.1, 0.89),
-                                            child: Text(
-                                              'Ensaio Musical',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: FlutterFlowTheme
-                                                    .tertiaryColor,
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ConjuntoWidget(),
+                                            ),
+                                          );
+                                        },
+                                        child: Stack(
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -0.1, 0.89),
+                                              child: Text(
+                                                'Ensaio Musical',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Lexend Deca',
+                                                  color: FlutterFlowTheme
+                                                      .tertiaryColor,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.04, -0.66),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.microphoneAlt,
-                                              color: Colors.white,
-                                              size: 80,
-                                            ),
-                                          )
-                                        ],
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.04, -0.66),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.microphoneAlt,
+                                                color: Colors.white,
+                                                size: 80,
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Container(
