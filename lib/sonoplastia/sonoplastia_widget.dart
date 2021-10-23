@@ -55,7 +55,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                   context: context,
                   builder: (context) {
                     return Container(
-                      height: 240,
+                      height: 600,
                       child: AddsonoplastiaWidget(),
                     );
                   },
