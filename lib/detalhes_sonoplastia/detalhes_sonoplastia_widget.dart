@@ -55,7 +55,11 @@ class _DetalhesSonoplastiaWidgetState extends State<DetalhesSonoplastiaWidget> {
                 await Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => EditEscalaSonoplastiaWidget(),
+                    builder: (context) => EditEscalaSonoplastiaWidget(
+                      nome: widget.nome,
+                      data: widget.data,
+                      img: widget.img,
+                    ),
                   ),
                 );
               } else {

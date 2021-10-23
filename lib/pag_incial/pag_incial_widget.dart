@@ -7,6 +7,7 @@ import '../limpeza/limpeza_widget.dart';
 import '../list_ensaiomusical/list_ensaiomusical_widget.dart';
 import '../main.dart';
 import '../min_musical/min_musical_widget.dart';
+import '../pregadores/pregadores_widget.dart';
 import '../sonoplastia/sonoplastia_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -403,7 +404,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  SonoplastiaWidget(),
+                                                  PregadoresWidget(),
                                             ),
                                           );
                                         },
