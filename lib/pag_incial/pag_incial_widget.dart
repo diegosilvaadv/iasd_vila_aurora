@@ -1,8 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../escola_sabatina/escola_sabatina_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../limpeza/limpeza_widget.dart';
 import '../main.dart';
+import '../min_musical/min_musical_widget.dart';
 import '../sonoplastia/sonoplastia_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -343,30 +346,47 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                         color: Color(0xFFFAA211),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: Stack(
-                                        children: [
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.04, -0.66),
-                                            child: Icon(
-                                              Icons.library_music,
-                                              color: Colors.white,
-                                              size: 80,
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            PageTransition(
+                                              type: PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
+                                              duration:
+                                                  Duration(milliseconds: 300),
+                                              reverseDuration:
+                                                  Duration(milliseconds: 300),
+                                              child: MinMusicalWidget(),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.1, 0.8),
-                                            child: Text(
-                                              'Mini. Musical',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
+                                          );
+                                        },
+                                        child: Stack(
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.04, -0.66),
+                                              child: Icon(
+                                                Icons.library_music,
                                                 color: Colors.white,
+                                                size: 80,
                                               ),
                                             ),
-                                          )
-                                        ],
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.1, 0.8),
+                                              child: Text(
+                                                'Mini. Musical',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Lexend Deca',
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Container(
@@ -443,32 +463,49 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                         color: Color(0xFF0059B5),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: Stack(
-                                        children: [
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                -0.1, 0.89),
-                                            child: Text(
-                                              'Escola Sabatina',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: FlutterFlowTheme
-                                                    .tertiaryColor,
-                                                fontSize: 12,
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            PageTransition(
+                                              type: PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
+                                              duration:
+                                                  Duration(milliseconds: 300),
+                                              reverseDuration:
+                                                  Duration(milliseconds: 300),
+                                              child: EscolaSabatinaWidget(),
+                                            ),
+                                          );
+                                        },
+                                        child: Stack(
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -0.1, 0.89),
+                                              child: Text(
+                                                'Escola Sabatina',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Lexend Deca',
+                                                  color: FlutterFlowTheme
+                                                      .tertiaryColor,
+                                                  fontSize: 12,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.04, -0.66),
-                                            child: Icon(
-                                              Icons.school_outlined,
-                                              color: Colors.white,
-                                              size: 80,
-                                            ),
-                                          )
-                                        ],
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.04, -0.66),
+                                              child: Icon(
+                                                Icons.school_outlined,
+                                                color: Colors.white,
+                                                size: 80,
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Container(
@@ -478,32 +515,49 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                         color: Color(0xFF4E0606),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: Stack(
-                                        children: [
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                -0.1, 0.89),
-                                            child: Text(
-                                              'Limpeza',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: FlutterFlowTheme
-                                                    .tertiaryColor,
-                                                fontSize: 14,
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            PageTransition(
+                                              type: PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                              reverseDuration:
+                                                  Duration(milliseconds: 0),
+                                              child: LimpezaWidget(),
+                                            ),
+                                          );
+                                        },
+                                        child: Stack(
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -0.1, 0.89),
+                                              child: Text(
+                                                'Limpeza',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Lexend Deca',
+                                                  color: FlutterFlowTheme
+                                                      .tertiaryColor,
+                                                  fontSize: 14,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.04, -0.66),
-                                            child: Icon(
-                                              Icons.cleaning_services_outlined,
-                                              color: Colors.white,
-                                              size: 80,
-                                            ),
-                                          )
-                                        ],
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.04, -0.66),
+                                              child: Icon(
+                                                Icons
+                                                    .cleaning_services_outlined,
+                                                color: Colors.white,
+                                                size: 80,
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     )
                                   ],
