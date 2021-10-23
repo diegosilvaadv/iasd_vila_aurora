@@ -313,7 +313,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                     FlutterFlowMediaDisplay(
-                                      path: userPostUsersRecord.photoUrl,
+                                      path: socialFeedUserPostsRecord.postPhoto,
                                       imageBuilder: (path) =>
                                           CachedNetworkImage(
                                         imageUrl: path,

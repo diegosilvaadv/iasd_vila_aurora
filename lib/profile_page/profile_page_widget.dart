@@ -149,10 +149,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             isScrollControlled: true,
                                             context: context,
                                             builder: (context) {
-                                              return ViewFotoPerfilWidget(
-                                                perfilimg:
-                                                    profilePageUsersRecord
-                                                        .photoUrl,
+                                              return Container(
+                                                height: 600,
+                                                child: ViewFotoPerfilWidget(
+                                                  perfilimg:
+                                                      profilePageUsersRecord
+                                                          .photoUrl,
+                                                ),
                                               );
                                             },
                                           );
@@ -200,7 +203,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 type: PageTransitionType.bottomToTop,
                                 duration: Duration(milliseconds: 250),
                                 reverseDuration: Duration(milliseconds: 250),
-                                child: NavBarPage(initialPage: 'chatMain'),
+                                child: NavBarPage(initialPage: 'homePage'),
                               ),
                             );
                           } finally {

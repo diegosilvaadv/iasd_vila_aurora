@@ -170,7 +170,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   ),
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText: 'Your Name',
+                                    labelText: 'Seu Nome',
                                     labelStyle:
                                         FlutterFlowTheme.subtitle1.override(
                                       fontFamily: 'Lexend Deca',

@@ -133,19 +133,22 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         size: 24,
                                       ),
                                       onPressed: () async {
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          context: context,
-                                          builder: (context) {
-                                            return Container(
-                                              height: 250,
-                                              child: DeletePostWidget(
-                                                postParameters:
-                                                    postDetailsUserPostsRecord,
-                                              ),
-                                            );
-                                          },
-                                        );
+                                        if ((widget.userRecord.uid) ==
+                                            (currentUserUid)) {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            context: context,
+                                            builder: (context) {
+                                              return Container(
+                                                height: 250,
+                                                child: DeletePostWidget(
+                                                  postParameters:
+                                                      postDetailsUserPostsRecord,
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        }
                                       },
                                     ),
                                   )
@@ -370,7 +373,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'Comments',
+                                      'Comentários',
                                       style:
                                           FlutterFlowTheme.bodyText2.override(
                                         fontFamily: 'Lexend Deca',
@@ -662,7 +665,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                     controller: textController,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Comment here...',
+                                      hintText: 'Comentar aqui',
                                       hintStyle:
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Lexend Deca',
@@ -723,7 +726,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                       setState(() => _loadingButton = false);
                                     }
                                   },
-                                  text: 'Post',
+                                  text: 'Postar',
                                   options: FFButtonOptions(
                                     width: 70,
                                     height: 40,

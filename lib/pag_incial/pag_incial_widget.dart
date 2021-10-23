@@ -1,6 +1,9 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/addanuncios_widget.dart';
+import '../detalhes_events/detalhes_events_widget.dart';
 import '../escola_sabatina/escola_sabatina_widget.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../limpeza/limpeza_widget.dart';
@@ -22,8 +25,74 @@ class PagIncialWidget extends StatefulWidget {
   _PagIncialWidgetState createState() => _PagIncialWidgetState();
 }
 
-class _PagIncialWidgetState extends State<PagIncialWidget> {
+class _PagIncialWidgetState extends State<PagIncialWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'stackOnPageLoadAnimation1': AnimationInfo(
+      curve: Curves.easeIn,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 1170,
+      fadeIn: true,
+    ),
+    'imageOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.elasticOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+    'stackOnPageLoadAnimation2': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+    'stackOnPageLoadAnimation3': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+    'stackOnPageLoadAnimation4': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+    'stackOnPageLoadAnimation5': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+    'stackOnPageLoadAnimation6': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+    'stackOnPageLoadAnimation7': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+    'iconOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +230,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
-                                              ),
+                                              ).animated([
+                                                animationsMap[
+                                                    'imageOnPageLoadAnimation']
+                                              ]),
                                             ),
                                           ),
                                           Align(
@@ -247,7 +319,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                             ),
                                           )
                                         ],
-                                      );
+                                      ).animated([
+                                        animationsMap[
+                                            'stackOnPageLoadAnimation1']
+                                      ]);
                                     },
                                   ),
                                 ),
@@ -338,7 +413,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                               ),
                                             )
                                           ],
-                                        ),
+                                        ).animated([
+                                          animationsMap[
+                                              'stackOnPageLoadAnimation2']
+                                        ]),
                                       ),
                                     ),
                                     Container(
@@ -389,7 +467,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                             )
                                           ],
                                         ),
-                                      ),
+                                      ).animated([
+                                        animationsMap[
+                                            'stackOnPageLoadAnimation3']
+                                      ]),
                                     ),
                                     Container(
                                       width: 100,
@@ -434,7 +515,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                             )
                                           ],
                                         ),
-                                      ),
+                                      ).animated([
+                                        animationsMap[
+                                            'stackOnPageLoadAnimation4']
+                                      ]),
                                     ),
                                     Container(
                                       width: 100,
@@ -480,7 +564,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                             )
                                           ],
                                         ),
-                                      ),
+                                      ).animated([
+                                        animationsMap[
+                                            'stackOnPageLoadAnimation5']
+                                      ]),
                                     ),
                                     Container(
                                       width: 100,
@@ -532,7 +619,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                             )
                                           ],
                                         ),
-                                      ),
+                                      ).animated([
+                                        animationsMap[
+                                            'stackOnPageLoadAnimation6']
+                                      ]),
                                     ),
                                     Container(
                                       width: 100,
@@ -584,7 +674,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                             )
                                           ],
                                         ),
-                                      ),
+                                      ).animated([
+                                        animationsMap[
+                                            'stackOnPageLoadAnimation7']
+                                      ]),
                                     )
                                   ],
                                 ),
@@ -616,6 +709,53 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                     color: Color(0xFFD5D5D5),
                                     fontSize: 20,
                                   ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(90, 0, 0, 0),
+                                child: StreamBuilder<UsersRecord>(
+                                  stream: UsersRecord.getDocument(
+                                      currentUserReference),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitDoubleBounce(
+                                            color: Color(0xFFF49F04),
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    final iconUsersRecord = snapshot.data;
+                                    return InkWell(
+                                      onTap: () async {
+                                        if ((iconUsersRecord.adm) == (true)) {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            context: context,
+                                            builder: (context) {
+                                              return Container(
+                                                height: 600,
+                                                child: AddanunciosWidget(),
+                                              );
+                                            },
+                                          );
+                                        }
+                                      },
+                                      child: Icon(
+                                        Icons.add_circle,
+                                        color: Colors.white,
+                                        size: 24,
+                                      ),
+                                    ).animated([
+                                      animationsMap['iconOnPageLoadAnimation']
+                                    ]);
+                                  },
                                 ),
                               )
                             ],
@@ -701,7 +841,11 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 5, 5, 0),
                                                 child: AutoSizeText(
-                                                  columnAnunciosRecord.titulo,
+                                                  columnAnunciosRecord.titulo
+                                                      .maybeHandleOverflow(
+                                                    maxChars: 25,
+                                                    replacement: '…',
+                                                  ),
                                                   style: FlutterFlowTheme.title3
                                                       .override(
                                                     fontFamily: 'Lexend Deca',
@@ -729,7 +873,11 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 5, 5, 0),
                                                 child: AutoSizeText(
-                                                  columnAnunciosRecord.mensagem,
+                                                  columnAnunciosRecord.mensagem
+                                                      .maybeHandleOverflow(
+                                                    maxChars: 20,
+                                                    replacement: '…',
+                                                  ),
                                                   style: FlutterFlowTheme
                                                       .subtitle1
                                                       .override(
@@ -801,10 +949,33 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 40, 0, 0),
-                                        child: FaIcon(
-                                          FontAwesomeIcons.arrowRight,
-                                          color: Color(0xFF3B93A1),
-                                          size: 24,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DetalhesEventsWidget(
+                                                  titulo: columnAnunciosRecord
+                                                      .titulo,
+                                                  mensagem: columnAnunciosRecord
+                                                      .mensagem,
+                                                  img: columnAnunciosRecord.img,
+                                                  horario: columnAnunciosRecord
+                                                      .horario,
+                                                  data:
+                                                      columnAnunciosRecord.data,
+                                                  local: columnAnunciosRecord
+                                                      .local,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: FaIcon(
+                                            FontAwesomeIcons.arrowRight,
+                                            color: Color(0xFF3B93A1),
+                                            size: 30,
+                                          ),
                                         ),
                                       ),
                                     )

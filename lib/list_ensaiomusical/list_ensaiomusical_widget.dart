@@ -1,4 +1,5 @@
 import '../add_musica/add_musica_widget.dart';
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -147,14 +148,45 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 28, 0, 0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(100),
-                                      child: Image.network(
-                                        'https://cdn0.iconfinder.com/data/icons/users-2/512/e33-512.png',
-                                        width: 40,
-                                        height: 40,
-                                        fit: BoxFit.cover,
-                                      ),
+                                    child: StreamBuilder<UsersRecord>(
+                                      stream: UsersRecord.getDocument(
+                                          currentUserReference),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50,
+                                              height: 50,
+                                              child: SpinKitDoubleBounce(
+                                                color: Color(0xFFF49F04),
+                                                size: 50,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        final imageUsersRecord = snapshot.data;
+                                        return InkWell(
+                                          onDoubleTap: () async {
+                                            if ((imageUsersRecord.adm) ==
+                                                (true)) {
+                                              await columnEnsaioMusicalRecord
+                                                  .reference
+                                                  .delete();
+                                            }
+                                          },
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(100),
+                                            child: Image.network(
+                                              'https://cdn0.iconfinder.com/data/icons/users-2/512/e33-512.png',
+                                              width: 40,
+                                              height: 40,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   )
                                 ],
