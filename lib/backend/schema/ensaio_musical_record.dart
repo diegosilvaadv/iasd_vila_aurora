@@ -25,9 +25,6 @@ abstract class EnsaioMusicalRecord
   String get conjunto;
 
   @nullable
-  int get url;
-
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -35,8 +32,7 @@ abstract class EnsaioMusicalRecord
     ..nomeMusica = ''
     ..letra = ''
     ..cantada = ''
-    ..conjunto = ''
-    ..url = 0;
+    ..conjunto = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('ensaio_musical');
@@ -61,7 +57,6 @@ Map<String, dynamic> createEnsaioMusicalRecordData({
   String letra,
   String cantada,
   String conjunto,
-  int url,
 }) =>
     serializers.toFirestore(
         EnsaioMusicalRecord.serializer,
@@ -69,5 +64,4 @@ Map<String, dynamic> createEnsaioMusicalRecordData({
           ..nomeMusica = nomeMusica
           ..letra = letra
           ..cantada = cantada
-          ..conjunto = conjunto
-          ..url = url));
+          ..conjunto = conjunto));

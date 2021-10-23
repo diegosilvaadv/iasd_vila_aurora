@@ -97,7 +97,6 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                     columnEnsaioMusicalRecord.nomeMusica,
                                 cantatda: columnEnsaioMusicalRecord.cantada,
                                 letra: columnEnsaioMusicalRecord.letra,
-                                playback: columnEnsaioMusicalRecord.url,
                               ),
                             ),
                           );

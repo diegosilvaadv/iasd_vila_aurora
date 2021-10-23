@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_media_display.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_video_player.dart';
@@ -116,6 +115,15 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                         ),
                                       )
                                     ],
+                                  ),
+                                  FlutterFlowVideoPlayer(
+                                    path: widget.cantatda,
+                                    videoType: VideoType.network,
+                                    autoPlay: false,
+                                    looping: true,
+                                    showControls: true,
+                                    allowFullScreen: true,
+                                    allowPlaybackSpeedMenu: false,
                                   )
                                 ],
                               ),
@@ -152,25 +160,6 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                         ),
                                       )
                                     ],
-                                  ),
-                                  FlutterFlowMediaDisplay(
-                                    path: widget.cantatda,
-                                    imageBuilder: (path) => Image.network(
-                                      path,
-                                      width: 300,
-                                      height: 300,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    videoPlayerBuilder: (path) =>
-                                        FlutterFlowVideoPlayer(
-                                      path: path,
-                                      width: 300,
-                                      autoPlay: false,
-                                      looping: true,
-                                      showControls: true,
-                                      allowFullScreen: true,
-                                      allowPlaybackSpeedMenu: false,
-                                    ),
                                   )
                                 ],
                               ),
