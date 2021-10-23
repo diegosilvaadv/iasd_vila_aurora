@@ -1,11 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
-import '../conjunto/conjunto_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
+import '../list_ensaiomusical/list_ensaiomusical_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -20,15 +20,9 @@ class AddMusicaWidget extends StatefulWidget {
 }
 
 class _AddMusicaWidgetState extends State<AddMusicaWidget> {
-  String uploadedFileUrl1 = '';
+  String uploadedFileUrl = '';
   TextEditingController textController1;
   TextEditingController textController2;
-  String uploadedFileUrl2 = '';
-  String uploadedFileUrl3 = '';
-  String uploadedFileUrl4 = '';
-  String uploadedFileUrl5 = '';
-  String uploadedFileUrl6 = '';
-  String uploadedFileUrl7 = '';
   TextEditingController textController3;
   bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -266,7 +260,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                       .hideCurrentSnackBar();
                                   if (downloadUrl != null) {
                                     setState(
-                                        () => uploadedFileUrl1 = downloadUrl);
+                                        () => uploadedFileUrl = downloadUrl);
                                     showUploadMessage(context, 'Success!');
                                   } else {
                                     showUploadMessage(
@@ -292,7 +286,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                   color: Color(0xFFEEEEEE),
                                 ),
                                 child: Text(
-                                  uploadedFileUrl1.maybeHandleOverflow(
+                                  uploadedFileUrl.maybeHandleOverflow(
                                     maxChars: 30,
                                     replacement: '…',
                                   ),
@@ -333,45 +327,15 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                 size: 20,
                               ),
                             ),
-                            InkWell(
-                              onTap: () async {
-                                final selectedMedia = await selectMedia(
-                                  isVideo: true,
-                                  mediaSource: MediaSource.videoGallery,
-                                );
-                                if (selectedMedia != null &&
-                                    validateFileFormat(
-                                        selectedMedia.storagePath, context)) {
-                                  showUploadMessage(
-                                      context, 'Uploading file...',
-                                      showLoading: true);
-                                  final downloadUrl = await uploadData(
-                                      selectedMedia.storagePath,
-                                      selectedMedia.bytes);
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  if (downloadUrl != null) {
-                                    setState(
-                                        () => uploadedFileUrl2 = downloadUrl);
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    showUploadMessage(
-                                        context, 'Failed to upload media');
-                                    return;
-                                  }
-                                }
-                              },
-                              child: Text(
-                                'PLAYBACK',
-                                style: FlutterFlowTheme.title1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: FlutterFlowTheme.primaryColor,
-                                ),
+                            Text(
+                              'PLAYBACK',
+                              style: FlutterFlowTheme.title1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: FlutterFlowTheme.primaryColor,
                               ),
                             ),
                             Text(
-                              uploadedFileUrl2.maybeHandleOverflow(
-                                  maxChars: 30),
+                              'Hello World',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -403,45 +367,15 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               color: Colors.black,
                               size: 20,
                             ),
-                            InkWell(
-                              onTap: () async {
-                                final selectedMedia = await selectMedia(
-                                  isVideo: true,
-                                  mediaSource: MediaSource.videoGallery,
-                                );
-                                if (selectedMedia != null &&
-                                    validateFileFormat(
-                                        selectedMedia.storagePath, context)) {
-                                  showUploadMessage(
-                                      context, 'Uploading file...',
-                                      showLoading: true);
-                                  final downloadUrl = await uploadData(
-                                      selectedMedia.storagePath,
-                                      selectedMedia.bytes);
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  if (downloadUrl != null) {
-                                    setState(
-                                        () => uploadedFileUrl3 = downloadUrl);
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    showUploadMessage(
-                                        context, 'Failed to upload media');
-                                    return;
-                                  }
-                                }
-                              },
-                              child: Text(
-                                'SOPRANO',
-                                style: FlutterFlowTheme.title1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: FlutterFlowTheme.primaryColor,
-                                ),
+                            Text(
+                              'SOPRANO',
+                              style: FlutterFlowTheme.title1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: FlutterFlowTheme.primaryColor,
                               ),
                             ),
                             Text(
-                              uploadedFileUrl3.maybeHandleOverflow(
-                                  maxChars: 30),
+                              'Hello World',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -473,45 +407,15 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               color: Colors.black,
                               size: 20,
                             ),
-                            InkWell(
-                              onTap: () async {
-                                final selectedMedia = await selectMedia(
-                                  isVideo: true,
-                                  mediaSource: MediaSource.videoGallery,
-                                );
-                                if (selectedMedia != null &&
-                                    validateFileFormat(
-                                        selectedMedia.storagePath, context)) {
-                                  showUploadMessage(
-                                      context, 'Uploading file...',
-                                      showLoading: true);
-                                  final downloadUrl = await uploadData(
-                                      selectedMedia.storagePath,
-                                      selectedMedia.bytes);
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  if (downloadUrl != null) {
-                                    setState(
-                                        () => uploadedFileUrl4 = downloadUrl);
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    showUploadMessage(
-                                        context, 'Failed to upload media');
-                                    return;
-                                  }
-                                }
-                              },
-                              child: Text(
-                                'CONTRALTO',
-                                style: FlutterFlowTheme.title1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: FlutterFlowTheme.primaryColor,
-                                ),
+                            Text(
+                              'CONTRALTO',
+                              style: FlutterFlowTheme.title1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: FlutterFlowTheme.primaryColor,
                               ),
                             ),
                             Text(
-                              uploadedFileUrl4.maybeHandleOverflow(
-                                  maxChars: 30),
+                              'Hello World',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -543,45 +447,15 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               color: Colors.black,
                               size: 20,
                             ),
-                            InkWell(
-                              onTap: () async {
-                                final selectedMedia = await selectMedia(
-                                  isVideo: true,
-                                  mediaSource: MediaSource.videoGallery,
-                                );
-                                if (selectedMedia != null &&
-                                    validateFileFormat(
-                                        selectedMedia.storagePath, context)) {
-                                  showUploadMessage(
-                                      context, 'Uploading file...',
-                                      showLoading: true);
-                                  final downloadUrl = await uploadData(
-                                      selectedMedia.storagePath,
-                                      selectedMedia.bytes);
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  if (downloadUrl != null) {
-                                    setState(
-                                        () => uploadedFileUrl5 = downloadUrl);
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    showUploadMessage(
-                                        context, 'Failed to upload media');
-                                    return;
-                                  }
-                                }
-                              },
-                              child: Text(
-                                'TENOR',
-                                style: FlutterFlowTheme.title1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: FlutterFlowTheme.primaryColor,
-                                ),
+                            Text(
+                              'TENOR',
+                              style: FlutterFlowTheme.title1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: FlutterFlowTheme.primaryColor,
                               ),
                             ),
                             Text(
-                              uploadedFileUrl5.maybeHandleOverflow(
-                                  maxChars: 30),
+                              'Hello World',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -613,45 +487,15 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               color: Colors.black,
                               size: 20,
                             ),
-                            InkWell(
-                              onTap: () async {
-                                final selectedMedia = await selectMedia(
-                                  isVideo: true,
-                                  mediaSource: MediaSource.videoGallery,
-                                );
-                                if (selectedMedia != null &&
-                                    validateFileFormat(
-                                        selectedMedia.storagePath, context)) {
-                                  showUploadMessage(
-                                      context, 'Uploading file...',
-                                      showLoading: true);
-                                  final downloadUrl = await uploadData(
-                                      selectedMedia.storagePath,
-                                      selectedMedia.bytes);
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  if (downloadUrl != null) {
-                                    setState(
-                                        () => uploadedFileUrl6 = downloadUrl);
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    showUploadMessage(
-                                        context, 'Failed to upload media');
-                                    return;
-                                  }
-                                }
-                              },
-                              child: Text(
-                                'BAIXO',
-                                style: FlutterFlowTheme.title1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: FlutterFlowTheme.primaryColor,
-                                ),
+                            Text(
+                              'BAIXO',
+                              style: FlutterFlowTheme.title1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: FlutterFlowTheme.primaryColor,
                               ),
                             ),
                             Text(
-                              uploadedFileUrl6.maybeHandleOverflow(
-                                  maxChars: 30),
+                              'Hello World',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -683,44 +527,15 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               color: Colors.black,
                               size: 20,
                             ),
-                            InkWell(
-                              onTap: () async {
-                                final selectedMedia = await selectMedia(
-                                  isVideo: true,
-                                  mediaSource: MediaSource.videoGallery,
-                                );
-                                if (selectedMedia != null &&
-                                    validateFileFormat(
-                                        selectedMedia.storagePath, context)) {
-                                  showUploadMessage(
-                                      context, 'Uploading file...',
-                                      showLoading: true);
-                                  final downloadUrl = await uploadData(
-                                      selectedMedia.storagePath,
-                                      selectedMedia.bytes);
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  if (downloadUrl != null) {
-                                    setState(
-                                        () => uploadedFileUrl7 = downloadUrl);
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    showUploadMessage(
-                                        context, 'Failed to upload media');
-                                    return;
-                                  }
-                                }
-                              },
-                              child: Text(
-                                'BARITO',
-                                style: FlutterFlowTheme.title1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: FlutterFlowTheme.primaryColor,
-                                ),
+                            Text(
+                              'BARITO',
+                              style: FlutterFlowTheme.title1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: FlutterFlowTheme.primaryColor,
                               ),
                             ),
                             Text(
-                              uploadedFileUrl7,
+                              'Hello World',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -796,15 +611,9 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                       final ensaioMusicalCreateData =
                           createEnsaioMusicalRecordData(
                         nomeMusica: textController2.text,
-                        playback: uploadedFileUrl2,
                         conjunto: textController1.text,
-                        tenor: uploadedFileUrl5,
-                        barito: uploadedFileUrl7,
                         letra: textController3.text,
-                        contralto: uploadedFileUrl4,
-                        soprano: uploadedFileUrl3,
-                        baixo: uploadedFileUrl6,
-                        cantada: uploadedFileUrl1,
+                        cantada: uploadedFileUrl,
                       );
                       await EnsaioMusicalRecord.collection
                           .doc()
@@ -812,7 +621,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ConjuntoWidget(),
+                          builder: (context) => ListEnsaiomusicalWidget(),
                         ),
                       );
                     } finally {

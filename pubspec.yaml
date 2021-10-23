@@ -25,7 +25,6 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  assets_audio_player: ^3.0.3+3
   auto_size_text:
   built_collection: ^5.0.0
   built_value: ^8.0.6

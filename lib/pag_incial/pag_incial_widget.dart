@@ -1,10 +1,10 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../conjunto/conjunto_widget.dart';
 import '../escola_sabatina/escola_sabatina_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../limpeza/limpeza_widget.dart';
+import '../list_ensaiomusical/list_ensaiomusical_widget.dart';
 import '../main.dart';
 import '../min_musical/min_musical_widget.dart';
 import '../sonoplastia/sonoplastia_widget.dart';
@@ -436,7 +436,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  ConjuntoWidget(),
+                                                  ListEnsaiomusicalWidget(),
                                             ),
                                           );
                                         },

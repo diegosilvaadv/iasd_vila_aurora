@@ -16,31 +16,16 @@ abstract class EnsaioMusicalRecord
   String get nomeMusica;
 
   @nullable
-  String get playback;
+  String get letra;
 
   @nullable
-  String get tenor;
-
-  @nullable
-  String get barito;
-
-  @nullable
-  String get baixo;
-
-  @nullable
-  String get soprano;
-
-  @nullable
-  String get contralto;
+  String get cantada;
 
   @nullable
   String get conjunto;
 
   @nullable
-  String get letra;
-
-  @nullable
-  String get cantada;
+  int get url;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -48,15 +33,10 @@ abstract class EnsaioMusicalRecord
 
   static void _initializeBuilder(EnsaioMusicalRecordBuilder builder) => builder
     ..nomeMusica = ''
-    ..playback = ''
-    ..tenor = ''
-    ..barito = ''
-    ..baixo = ''
-    ..soprano = ''
-    ..contralto = ''
-    ..conjunto = ''
     ..letra = ''
-    ..cantada = '';
+    ..cantada = ''
+    ..conjunto = ''
+    ..url = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('ensaio_musical');
@@ -78,26 +58,16 @@ abstract class EnsaioMusicalRecord
 
 Map<String, dynamic> createEnsaioMusicalRecordData({
   String nomeMusica,
-  String playback,
-  String tenor,
-  String barito,
-  String baixo,
-  String soprano,
-  String contralto,
-  String conjunto,
   String letra,
   String cantada,
+  String conjunto,
+  int url,
 }) =>
     serializers.toFirestore(
         EnsaioMusicalRecord.serializer,
         EnsaioMusicalRecord((e) => e
           ..nomeMusica = nomeMusica
-          ..playback = playback
-          ..tenor = tenor
-          ..barito = barito
-          ..baixo = baixo
-          ..soprano = soprano
-          ..contralto = contralto
-          ..conjunto = conjunto
           ..letra = letra
-          ..cantada = cantada));
+          ..cantada = cantada
+          ..conjunto = conjunto
+          ..url = url));

@@ -1,8 +1,8 @@
 import '../add_musica/add_musica_widget.dart';
 import '../backend/backend.dart';
-import '../conjunto/conjunto_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../kits_ensaio/kits_ensaio_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -27,7 +27,7 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
         backgroundColor: FlutterFlowTheme.primaryColor,
         automaticallyImplyLeading: true,
         title: Text(
-          'Conjuntos',
+          'Kits Musicais',
           style: FlutterFlowTheme.title1.override(
             fontFamily: 'Lexend Deca',
             color: Colors.white,
@@ -92,17 +92,12 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ConjuntoWidget(
-                                conjunto: columnEnsaioMusicalRecord.conjunto,
-                                musica: columnEnsaioMusicalRecord.nomeMusica,
-                                cantado: columnEnsaioMusicalRecord.cantada,
-                                playback: columnEnsaioMusicalRecord.playback,
-                                soprano: columnEnsaioMusicalRecord.soprano,
-                                contralto: columnEnsaioMusicalRecord.contralto,
-                                barito: columnEnsaioMusicalRecord.barito,
-                                baixo: columnEnsaioMusicalRecord.baixo,
-                                tenor: columnEnsaioMusicalRecord.tenor,
+                              builder: (context) => KitsEnsaioWidget(
+                                nomemusica:
+                                    columnEnsaioMusicalRecord.nomeMusica,
+                                cantatda: columnEnsaioMusicalRecord.cantada,
                                 letra: columnEnsaioMusicalRecord.letra,
+                                playback: columnEnsaioMusicalRecord.url,
                               ),
                             ),
                           );
@@ -121,7 +116,7 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     AutoSizeText(
-                                      columnEnsaioMusicalRecord.conjunto,
+                                      columnEnsaioMusicalRecord.nomeMusica,
                                       style: FlutterFlowTheme.title1.override(
                                         fontFamily: 'Lexend Deca',
                                         color: FlutterFlowTheme.primaryColor,
