@@ -370,7 +370,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               ),
                             ),
                             Text(
-                              'Hello World',
+                              uploadedFileUrl2.maybeHandleOverflow(
+                                  maxChars: 30),
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -439,7 +440,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               ),
                             ),
                             Text(
-                              'Hello World',
+                              uploadedFileUrl3.maybeHandleOverflow(
+                                  maxChars: 30),
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -508,7 +510,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               ),
                             ),
                             Text(
-                              'Hello World',
+                              uploadedFileUrl4.maybeHandleOverflow(
+                                  maxChars: 30),
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -543,7 +546,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                             InkWell(
                               onTap: () async {
                                 final selectedMedia = await selectMedia(
-                                  mediaSource: MediaSource.photoGallery,
+                                  isVideo: true,
+                                  mediaSource: MediaSource.videoGallery,
                                 );
                                 if (selectedMedia != null &&
                                     validateFileFormat(
@@ -576,7 +580,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               ),
                             ),
                             Text(
-                              'Hello World',
+                              uploadedFileUrl5.maybeHandleOverflow(
+                                  maxChars: 30),
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -611,7 +616,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                             InkWell(
                               onTap: () async {
                                 final selectedMedia = await selectMedia(
-                                  mediaSource: MediaSource.photoGallery,
+                                  isVideo: true,
+                                  mediaSource: MediaSource.videoGallery,
                                 );
                                 if (selectedMedia != null &&
                                     validateFileFormat(
@@ -644,7 +650,8 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               ),
                             ),
                             Text(
-                              'Hello World',
+                              uploadedFileUrl6.maybeHandleOverflow(
+                                  maxChars: 30),
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
@@ -713,7 +720,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                               ),
                             ),
                             Text(
-                              'Hello World',
+                              uploadedFileUrl7,
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                               ),
