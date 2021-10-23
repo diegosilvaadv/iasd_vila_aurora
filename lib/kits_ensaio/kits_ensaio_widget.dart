@@ -1,7 +1,8 @@
 import '../backend/backend.dart';
+import '../components/view_kits_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_video_player.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -26,6 +27,7 @@ class KitsEnsaioWidget extends StatefulWidget {
 }
 
 class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
+  bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -97,33 +99,66 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
-                                        child: Text(
-                                          'Cantatada',
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lexend Deca',
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 0, 0, 3),
+                                          child: Text(
+                                            'Musica',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Lexend Deca',
+                                              color:
+                                                  FlutterFlowTheme.primaryColor,
+                                            ),
                                           ),
-                                        ),
-                                      )
-                                    ],
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                  FlutterFlowVideoPlayer(
-                                    path: widget.cantatda,
-                                    videoType: VideoType.network,
-                                    autoPlay: false,
-                                    looping: true,
-                                    showControls: true,
-                                    allowFullScreen: true,
-                                    allowPlaybackSpeedMenu: false,
+                                  FFButtonWidget(
+                                    onPressed: () async {
+                                      setState(() => _loadingButton = true);
+                                      try {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          context: context,
+                                          builder: (context) {
+                                            return ViewKitsWidget(
+                                              kits: widget.cantatda,
+                                              letra: widget.letra,
+                                            );
+                                          },
+                                        );
+                                      } finally {
+                                        setState(() => _loadingButton = false);
+                                      }
+                                    },
+                                    text: 'Cantada',
+                                    options: FFButtonOptions(
+                                      width: 200,
+                                      height: 40,
+                                      color: FlutterFlowTheme.primaryColor,
+                                      textStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Lexend Deca',
+                                        color: Colors.white,
+                                      ),
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1,
+                                      ),
+                                      borderRadius: 12,
+                                    ),
+                                    loading: _loadingButton,
                                   )
                                 ],
                               ),

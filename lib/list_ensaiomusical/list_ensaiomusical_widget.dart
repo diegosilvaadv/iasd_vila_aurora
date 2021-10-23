@@ -103,26 +103,55 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width,
+                          height: 70,
                           decoration: BoxDecoration(
                             color: Color(0xFFA5A5A5),
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    AutoSizeText(
+                              Stack(
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-0.02, 4.8),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 35, 0, 0),
+                                      child: Text(
+                                        columnEnsaioMusicalRecord.conjunto,
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.13, 0),
+                                    child: AutoSizeText(
                                       columnEnsaioMusicalRecord.nomeMusica,
                                       style: FlutterFlowTheme.title1.override(
                                         fontFamily: 'Lexend Deca',
                                         color: FlutterFlowTheme.primaryColor,
                                       ),
-                                    )
-                                  ],
-                                ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 2, 0, 0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Image.network(
+                                        'https://cdn0.iconfinder.com/data/icons/users-2/512/e33-512.png',
+                                        width: 65,
+                                        height: 65,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               )
                             ],
                           ),
