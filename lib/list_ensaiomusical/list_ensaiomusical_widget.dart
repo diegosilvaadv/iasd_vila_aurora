@@ -138,7 +138,11 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                   Align(
                                     alignment: AlignmentDirectional(0.13, 0),
                                     child: AutoSizeText(
-                                      columnEnsaioMusicalRecord.nomeMusica,
+                                      columnEnsaioMusicalRecord.nomeMusica
+                                          .maybeHandleOverflow(
+                                        maxChars: 17,
+                                        replacement: '…',
+                                      ),
                                       style: FlutterFlowTheme.title1.override(
                                         fontFamily: 'Lexend Deca',
                                         color: FlutterFlowTheme.primaryColor,

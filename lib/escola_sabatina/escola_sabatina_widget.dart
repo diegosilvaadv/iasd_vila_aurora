@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/addescolasabatina_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -33,10 +34,24 @@ class _EscolaSabatinaWidgetState extends State<EscolaSabatinaWidget> {
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-            child: Icon(
-              Icons.add_circle,
-              color: FlutterFlowTheme.secondaryColor,
-              size: 24,
+            child: InkWell(
+              onTap: () async {
+                await showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      height: 600,
+                      child: AddescolasabatinaWidget(),
+                    );
+                  },
+                );
+              },
+              child: Icon(
+                Icons.add_circle,
+                color: FlutterFlowTheme.secondaryColor,
+                size: 24,
+              ),
             ),
           )
         ],
