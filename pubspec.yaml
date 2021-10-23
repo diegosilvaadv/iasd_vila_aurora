@@ -25,12 +25,13 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  assets_audio_player: ^3.0.3+3
   auto_size_text:
   built_collection: ^5.0.0
   built_value: ^8.0.6
   cached_network_image: ^3.1.0
   chewie: ^1.0.0
-  cloud_firestore: ^2.4.0
+  cloud_firestore: ^2.5.4
   dash_chat:
   firebase_auth: ^3.0.1
   firebase_core: ^1.4.0

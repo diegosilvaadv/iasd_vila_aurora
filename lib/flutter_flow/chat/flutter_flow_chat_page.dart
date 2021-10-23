@@ -163,7 +163,10 @@ class _FFChatPageState extends State<FFChatPage> {
             onSend: (message) =>
                 sendMessage(text: message.text, imageUrl: message.image),
             uploadMediaAction: () async {
-              final selectedMedia = await selectMedia();
+              final selectedMedia = await selectMediaWithSourceBottomSheet(
+                context: context,
+                allowPhoto: true,
+              );
               if (selectedMedia == null ||
                   !validateFileFormat(selectedMedia.storagePath, context)) {
                 return;
