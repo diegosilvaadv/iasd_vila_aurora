@@ -283,33 +283,6 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                           ),
                                           Align(
                                             alignment: AlignmentDirectional(
-                                                0.11, -0.29),
-                                            child: InkWell(
-                                              onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        NavBarPage(
-                                                            initialPage:
-                                                                'profilePage'),
-                                                  ),
-                                                );
-                                              },
-                                              child: AutoSizeText(
-                                                stackUsersRecord.displayName,
-                                                style: FlutterFlowTheme
-                                                    .subtitle1
-                                                    .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: Colors.white,
-                                                  fontSize: 25,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
                                                 0.63, 0.96),
                                             child: Text(
                                               '|',
@@ -334,6 +307,50 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                                 height: 50,
                                                 fit: BoxFit.cover,
                                               ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    130, 0, 0, 0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.12, -0.25),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      await Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              NavBarPage(
+                                                                  initialPage:
+                                                                      'profilePage'),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: AutoSizeText(
+                                                      stackUsersRecord
+                                                          .displayName
+                                                          .maybeHandleOverflow(
+                                                        maxChars: 15,
+                                                        replacement: '…',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                          .subtitle1
+                                                          .override(
+                                                        fontFamily:
+                                                            'Lexend Deca',
+                                                        color: Colors.white,
+                                                        fontSize: 25,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
                                             ),
                                           )
                                         ],
@@ -743,7 +760,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(90, 0, 0, 0),
+                                    EdgeInsetsDirectional.fromSTEB(80, 0, 0, 0),
                                 child: StreamBuilder<UsersRecord>(
                                   stream: UsersRecord.getDocument(
                                       currentUserReference),
