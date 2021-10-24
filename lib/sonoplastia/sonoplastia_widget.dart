@@ -40,7 +40,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                 width: 50,
                 height: 50,
                 child: SpinKitThreeBounce(
-                  color: FlutterFlowTheme.primaryColor,
+                  color: FlutterFlowTheme.secondaryColor,
                   size: 50,
                 ),
               ),
@@ -209,7 +209,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                           width: 50,
                           height: 50,
                           child: SpinKitThreeBounce(
-                            color: FlutterFlowTheme.primaryColor,
+                            color: FlutterFlowTheme.secondaryColor,
                             size: 50,
                           ),
                         ),
@@ -302,7 +302,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                                                                 child:
                                                                     SpinKitThreeBounce(
                                                                   color: FlutterFlowTheme
-                                                                      .primaryColor,
+                                                                      .secondaryColor,
                                                                   size: 50,
                                                                 ),
                                                               ),

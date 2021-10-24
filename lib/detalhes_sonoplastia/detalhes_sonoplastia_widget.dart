@@ -42,7 +42,7 @@ class _DetalhesSonoplastiaWidgetState extends State<DetalhesSonoplastiaWidget> {
                 width: 50,
                 height: 50,
                 child: SpinKitThreeBounce(
-                  color: FlutterFlowTheme.primaryColor,
+                  color: FlutterFlowTheme.secondaryColor,
                   size: 50,
                 ),
               ),

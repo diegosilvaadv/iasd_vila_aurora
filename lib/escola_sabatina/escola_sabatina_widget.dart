@@ -75,7 +75,7 @@ class _EscolaSabatinaWidgetState extends State<EscolaSabatinaWidget> {
                       width: 50,
                       height: 50,
                       child: SpinKitThreeBounce(
-                        color: FlutterFlowTheme.primaryColor,
+                        color: FlutterFlowTheme.secondaryColor,
                         size: 50,
                       ),
                     ),
@@ -148,7 +148,7 @@ class _EscolaSabatinaWidgetState extends State<EscolaSabatinaWidget> {
                                                       height: 50,
                                                       child: SpinKitThreeBounce(
                                                         color: FlutterFlowTheme
-                                                            .primaryColor,
+                                                            .secondaryColor,
                                                         size: 50,
                                                       ),
                                                     ),

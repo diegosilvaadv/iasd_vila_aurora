@@ -45,7 +45,7 @@ class _ViewProfilePageOtherWidgetState
               width: 50,
               height: 50,
               child: SpinKitThreeBounce(
-                color: FlutterFlowTheme.primaryColor,
+                color: FlutterFlowTheme.secondaryColor,
                 size: 50,
               ),
             ),
@@ -301,7 +301,7 @@ class _ViewProfilePageOtherWidgetState
                           width: 50,
                           height: 50,
                           child: SpinKitThreeBounce(
-                            color: FlutterFlowTheme.primaryColor,
+                            color: FlutterFlowTheme.secondaryColor,
                             size: 50,
                           ),
                         ),
@@ -339,7 +339,7 @@ class _ViewProfilePageOtherWidgetState
                                       width: 50,
                                       height: 50,
                                       child: SpinKitThreeBounce(
-                                        color: FlutterFlowTheme.primaryColor,
+                                        color: FlutterFlowTheme.secondaryColor,
                                         size: 50,
                                       ),
                                     ),

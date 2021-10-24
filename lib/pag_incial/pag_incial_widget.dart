@@ -192,8 +192,8 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                             width: 50,
                                             height: 50,
                                             child: SpinKitThreeBounce(
-                                              color:
-                                                  FlutterFlowTheme.primaryColor,
+                                              color: FlutterFlowTheme
+                                                  .secondaryColor,
                                               size: 50,
                                             ),
                                           ),
@@ -756,7 +756,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                           height: 50,
                                           child: SpinKitThreeBounce(
                                             color:
-                                                FlutterFlowTheme.primaryColor,
+                                                FlutterFlowTheme.secondaryColor,
                                             size: 50,
                                           ),
                                         ),
@@ -818,7 +818,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                               width: 50,
                               height: 50,
                               child: SpinKitThreeBounce(
-                                color: FlutterFlowTheme.primaryColor,
+                                color: FlutterFlowTheme.secondaryColor,
                                 size: 50,
                               ),
                             ),
@@ -871,7 +871,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                                 height: 50,
                                                 child: SpinKitThreeBounce(
                                                   color: FlutterFlowTheme
-                                                      .primaryColor,
+                                                      .secondaryColor,
                                                   size: 50,
                                                 ),
                                               ),

@@ -137,7 +137,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         width: 50,
                         height: 50,
                         child: SpinKitThreeBounce(
-                          color: FlutterFlowTheme.primaryColor,
+                          color: FlutterFlowTheme.secondaryColor,
                           size: 50,
                         ),
                       ),
@@ -174,7 +174,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: 50,
                                   height: 50,
                                   child: SpinKitThreeBounce(
-                                    color: FlutterFlowTheme.primaryColor,
+                                    color: FlutterFlowTheme.secondaryColor,
                                     size: 50,
                                   ),
                                 ),

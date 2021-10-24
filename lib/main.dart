@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null
           ? Container(
-              color: Colors.black,
+              color: FlutterFlowTheme.primaryColor,
               child: Builder(
                 builder: (context) => Image.asset(
                   'assets/images/Logo_PORTUGUES.png',

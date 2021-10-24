@@ -287,7 +287,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                     }
                                   },
                                   child: Text(
-                                    'CANTATA',
+                                    'CANTADA',
                                     style: FlutterFlowTheme.title1.override(
                                       fontFamily: 'Lexend Deca',
                                       color: FlutterFlowTheme.primaryColor,

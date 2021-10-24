@@ -69,7 +69,7 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                   width: 50,
                   height: 50,
                   child: SpinKitThreeBounce(
-                    color: FlutterFlowTheme.primaryColor,
+                    color: FlutterFlowTheme.secondaryColor,
                     size: 50,
                   ),
                 ),
@@ -164,7 +164,7 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                               height: 50,
                                               child: SpinKitThreeBounce(
                                                 color: FlutterFlowTheme
-                                                    .primaryColor,
+                                                    .secondaryColor,
                                                 size: 50,
                                               ),
                                             ),
