@@ -17,6 +17,7 @@ import 'schema/escola_sabatina_record.dart';
 import 'schema/anuncios_record.dart';
 import 'schema/limpeza_record.dart';
 import 'schema/mini_musical_record.dart';
+import 'schema/anotacoes_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,6 +37,7 @@ export 'schema/escola_sabatina_record.dart';
 export 'schema/anuncios_record.dart';
 export 'schema/limpeza_record.dart';
 export 'schema/mini_musical_record.dart';
+export 'schema/anotacoes_record.dart';
 
 Stream<List<UserPostsRecord>> queryUserPostsRecord(
         {Query Function(Query) queryBuilder,
@@ -132,6 +134,13 @@ Stream<List<MiniMusicalRecord>> queryMiniMusicalRecord(
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(MiniMusicalRecord.collection, MiniMusicalRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<AnotacoesRecord>> queryAnotacoesRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(AnotacoesRecord.collection, AnotacoesRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

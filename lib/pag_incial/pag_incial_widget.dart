@@ -1,3 +1,4 @@
+import '../anotacoes/anotacoes_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/addanuncios_widget.dart';
@@ -351,6 +352,26 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                                   ),
                                                 )
                                               ],
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                0.97, -0.84),
+                                            child: InkWell(
+                                              onTap: () async {
+                                                await Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AnotacoesWidget(),
+                                                  ),
+                                                );
+                                              },
+                                              child: Icon(
+                                                Icons.note_add,
+                                                color: Color(0xFFFF0000),
+                                                size: 45,
+                                              ),
                                             ),
                                           )
                                         ],
