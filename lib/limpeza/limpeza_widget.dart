@@ -61,7 +61,7 @@ class _LimpezaWidgetState extends State<LimpezaWidget> {
             ),
             actions: [
               Visibility(
-                visible: (limpezaUsersRecord.adm) == (true),
+                visible: (limpezaUsersRecord.adm) == (false),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                   child: StreamBuilder<UsersRecord>(
