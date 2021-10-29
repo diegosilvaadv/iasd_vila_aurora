@@ -70,9 +70,7 @@ class _CreateModalWidgetState extends State<CreateModalWidget> {
                                     EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                                 child: Text(
                                   'Share a photo that will appear in the timeline.',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 ),
                               ),
                             )
@@ -134,9 +132,7 @@ class _CreateModalWidgetState extends State<CreateModalWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                           child: Text(
                             'Share photos on your timeline.',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                            ),
+                            style: FlutterFlowTheme.bodyText1,
                           ),
                         )
                       ],

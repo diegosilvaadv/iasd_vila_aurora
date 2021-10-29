@@ -34,24 +34,54 @@ class _EscolaSabatinaWidgetState extends State<EscolaSabatinaWidget> {
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-            child: InkWell(
-              onTap: () async {
-                await showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  builder: (context) {
-                    return Container(
-                      height: 600,
-                      child: AddescolasabatinaWidget(),
-                    );
+            child: StreamBuilder<List<UsersRecord>>(
+              stream: queryUsersRecord(
+                singleRecord: true,
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: SpinKitThreeBounce(
+                        color: FlutterFlowTheme.secondaryColor,
+                        size: 50,
+                      ),
+                    ),
+                  );
+                }
+                List<UsersRecord> iconUsersRecordList = snapshot.data;
+                // Return an empty Container when the document does not exist.
+                if (snapshot.data.isEmpty) {
+                  return Container();
+                }
+                final iconUsersRecord = iconUsersRecordList.isNotEmpty
+                    ? iconUsersRecordList.first
+                    : null;
+                return InkWell(
+                  onTap: () async {
+                    if ((iconUsersRecord.adm) == (true)) {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            height: 600,
+                            child: AddescolasabatinaWidget(),
+                          );
+                        },
+                      );
+                    }
                   },
+                  child: Icon(
+                    Icons.add_circle,
+                    color: FlutterFlowTheme.secondaryColor,
+                    size: 24,
+                  ),
                 );
               },
-              child: Icon(
-                Icons.add_circle,
-                color: FlutterFlowTheme.secondaryColor,
-                size: 24,
-              ),
             ),
           )
         ],

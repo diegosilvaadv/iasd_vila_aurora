@@ -916,11 +916,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                                     child: Text(
                                                       columnIndex.toString(),
                                                       style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                      ),
+                                                          .bodyText1,
                                                     ),
                                                   ),
                                                 ),

@@ -116,9 +116,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                         'UserName',
                                       ),
                                       textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.title3.override(
-                                        fontFamily: 'Lexend Deca',
-                                      ),
+                                      style: FlutterFlowTheme.title3,
                                     ),
                                     Align(
                                       alignment: AlignmentDirectional(-1, 0),
@@ -146,10 +144,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                         child: Text(
                                           profilePageUsersRecord.igreja,
                                           textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lexend Deca',
-                                          ),
+                                          style: FlutterFlowTheme.bodyText1,
                                         ),
                                       ),
                                     )
@@ -276,14 +271,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                             setState(() => _loadingButton2 = false);
                           }
                         },
-                        text: 'Settings',
+                        text: 'Configurações',
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
                           color: FlutterFlowTheme.tertiaryColor,
-                          textStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Lexend Deca',
-                          ),
+                          textStyle: FlutterFlowTheme.bodyText1,
                           elevation: 0,
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.gray200,
@@ -885,11 +878,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                                           socialFeedUserPostsRecord
                                                                               .timePosted),
                                                                       style: FlutterFlowTheme
-                                                                          .bodyText1
-                                                                          .override(
-                                                                        fontFamily:
-                                                                            'Lexend Deca',
-                                                                      ),
+                                                                          .bodyText1,
                                                                     ),
                                                                   ),
                                                                   Icon(

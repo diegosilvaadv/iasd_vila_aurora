@@ -179,9 +179,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                   children: [
                                     Text(
                                       'PlayBack',
-                                      style: FlutterFlowTheme.title2.override(
-                                        fontFamily: 'Lexend Deca',
-                                      ),
+                                      style: FlutterFlowTheme.title2,
                                     )
                                   ],
                                 ),
@@ -189,9 +187,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                             ),
                             Text(
                               'Hello World',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Lexend Deca',
-                              ),
+                              style: FlutterFlowTheme.bodyText1,
                             )
                           ],
                         ),
@@ -231,9 +227,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                           5, 0, 0, 0),
                                       child: Text(
                                         'Soprano',
-                                        style: FlutterFlowTheme.title2.override(
-                                          fontFamily: 'Lexend Deca',
-                                        ),
+                                        style: FlutterFlowTheme.title2,
                                       ),
                                     )
                                   ],
@@ -284,10 +278,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                                     5, 0, 0, 0),
                                             child: Text(
                                               'Contralto',
-                                              style: FlutterFlowTheme.title2
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                              ),
+                                              style: FlutterFlowTheme.title2,
                                             ),
                                           )
                                         ],
@@ -341,10 +332,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                                     5, 0, 0, 0),
                                             child: Text(
                                               'Barito',
-                                              style: FlutterFlowTheme.title2
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                              ),
+                                              style: FlutterFlowTheme.title2,
                                             ),
                                           )
                                         ],
@@ -398,10 +386,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                                     5, 0, 0, 0),
                                             child: Text(
                                               'Tenor',
-                                              style: FlutterFlowTheme.title2
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                              ),
+                                              style: FlutterFlowTheme.title2,
                                             ),
                                           )
                                         ],
@@ -455,10 +440,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                                     5, 0, 0, 0),
                                             child: Text(
                                               'Baixo',
-                                              style: FlutterFlowTheme.title2
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                              ),
+                                              style: FlutterFlowTheme.title2,
                                             ),
                                           )
                                         ],

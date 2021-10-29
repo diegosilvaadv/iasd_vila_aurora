@@ -16,14 +16,7 @@ class SonoplastiaWidget extends StatefulWidget {
 }
 
 class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
-  TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    textController = TextEditingController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +101,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                           width: MediaQuery.of(context).size.width * 0.8,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: FlutterFlowTheme.primaryDark,
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
                               color: Color(0xFFEEEEEE),
@@ -120,70 +113,11 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4, 0, 4, 0),
-                                  child: Icon(
-                                    Icons.search_rounded,
-                                    color: Color(0xFF95A1AC),
-                                    size: 24,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        4, 0, 0, 0),
-                                    child: TextFormField(
-                                      controller: textController,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Pesquisar',
-                                        labelStyle:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: Color(0xFF95A1AC),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                      ),
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF95A1AC),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.95, 0),
-                                    child: Icon(
-                                      Icons.tune_rounded,
-                                      color: Color(0xFF95A1AC),
-                                      size: 24,
-                                    ),
+                                Text(
+                                  'Escala Sonoplastia',
+                                  style: FlutterFlowTheme.title2.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: FlutterFlowTheme.secondaryColor,
                                   ),
                                 )
                               ],
@@ -326,11 +260,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                                                                   .toString(),
                                                               style:
                                                                   FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Lexend Deca',
-                                                              ),
+                                                                      .bodyText1,
                                                             ),
                                                           );
                                                         },

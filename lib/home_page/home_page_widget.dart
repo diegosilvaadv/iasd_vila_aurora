@@ -480,10 +480,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       socialFeedUserPostsRecord
                                                           .timePosted),
                                                   style: FlutterFlowTheme
-                                                      .bodyText1
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                  ),
+                                                      .bodyText1,
                                                 ),
                                               ),
                                               InkWell(

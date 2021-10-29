@@ -1,6 +1,5 @@
 import '../backend/backend.dart';
 import '../chat_user/chat_user_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -15,14 +14,7 @@ class CriarMensagemWidget extends StatefulWidget {
 }
 
 class _CriarMensagemWidgetState extends State<CriarMensagemWidget> {
-  TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    textController = TextEditingController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +34,12 @@ class _CriarMensagemWidgetState extends State<CriarMensagemWidget> {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 140,
+                      height: 50,
                       decoration: BoxDecoration(
                         color: Colors.black,
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 34, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -81,98 +73,6 @@ class _CriarMensagemWidgetState extends State<CriarMensagemWidget> {
                                     ),
                                   )
                                 ],
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(12, 5, 12, 0),
-                              child: Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Colors.white,
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8, 0, 8, 0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        flex: 10,
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  4, 0, 0, 0),
-                                          child: TextFormField(
-                                            controller: textController,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText:
-                                                  'Pesquisar Irmãos e Irmãs',
-                                              labelStyle: FlutterFlowTheme
-                                                  .bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF82878C),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                              enabledBorder:
-                                                  UnderlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x004B39EF),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
-                                              ),
-                                              focusedBorder:
-                                                  UnderlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x004B39EF),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            style: FlutterFlowTheme.bodyText1
-                                                .override(
-                                              fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF151B1E),
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                            textAlign: TextAlign.start,
-                                          ),
-                                        ),
-                                      ),
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30,
-                                        buttonSize: 48,
-                                        icon: Icon(
-                                          Icons.filter_alt_rounded,
-                                          color: Color(0xFF95A1AC),
-                                          size: 30,
-                                        ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
-                                        },
-                                      )
-                                    ],
-                                  ),
-                                ),
                               ),
                             )
                           ],

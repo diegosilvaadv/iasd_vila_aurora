@@ -100,9 +100,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget> {
                                 editSettingsUsersRecord.displayName,
                                 'UserName',
                               ),
-                              style: FlutterFlowTheme.title3.override(
-                                fontFamily: 'Lexend Deca',
-                              ),
+                              style: FlutterFlowTheme.title3,
                             ),
                             Align(
                               alignment: AlignmentDirectional(-1, 0),

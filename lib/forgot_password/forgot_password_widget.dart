@@ -43,9 +43,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
         ),
         title: Text(
           'Forgot Password',
-          style: FlutterFlowTheme.title2.override(
-            fontFamily: 'Lexend Deca',
-          ),
+          style: FlutterFlowTheme.title2,
         ),
         actions: [],
         centerTitle: false,
@@ -102,9 +100,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 Expanded(
                   child: Text(
                     'We will send you an email with a link to reset your password, please enter the email associated with your account above.',
-                    style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Lexend Deca',
-                    ),
+                    style: FlutterFlowTheme.bodyText1,
                   ),
                 )
               ],

@@ -647,11 +647,7 @@ class _ViewProfilePageOtherWidgetState
                                                           socialFeedUserPostsRecord
                                                               .timePosted),
                                                       style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                      ),
+                                                          .bodyText1,
                                                     ),
                                                   ),
                                                   InkWell(

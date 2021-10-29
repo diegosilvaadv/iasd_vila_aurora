@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
@@ -46,46 +45,6 @@ extension DateTimeComparisonOperators on DateTime {
 }
 
 bool get isAndroid => !kIsWeb && Platform.isAndroid;
-
-LatLng cachedUserLocation;
-Future<LatLng> getCurrentUserLocation(
-        {LatLng defaultLocation, bool cached = false}) async =>
-    cached && cachedUserLocation != null
-        ? cachedUserLocation
-        : queryCurrentUserLocation().then((loc) {
-            if (loc != null) {
-              cachedUserLocation = loc;
-            }
-            return loc;
-          }).onError((error, _) {
-            print("Error querying user location: $error");
-            return defaultLocation;
-          });
-
-Future<LatLng> queryCurrentUserLocation() async {
-  final serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  if (!serviceEnabled) {
-    return Future.error('Location services are disabled.');
-  }
-
-  var permission = await Geolocator.checkPermission();
-  if (permission == LocationPermission.denied) {
-    permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-      return Future.error('Location permissions are denied');
-    }
-  }
-
-  if (permission == LocationPermission.deniedForever) {
-    return Future.error(
-        'Location permissions are permanently denied, we cannot request permissions.');
-  }
-
-  final position = await Geolocator.getCurrentPosition();
-  return position != null && position.latitude != 0 && position.longitude != 0
-      ? LatLng(position.latitude, position.longitude)
-      : null;
-}
 
 void showSnackbar(
   BuildContext context,

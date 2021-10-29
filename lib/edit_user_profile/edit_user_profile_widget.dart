@@ -95,9 +95,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                               Expanded(
                                 child: Text(
                                   'Preencha o seu perfil agora para concluir as configurações.',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 ),
                               )
                             ],
@@ -171,10 +169,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Seu Nome',
-                                    labelStyle:
-                                        FlutterFlowTheme.subtitle1.override(
-                                      fontFamily: 'Lexend Deca',
-                                    ),
+                                    labelStyle: FlutterFlowTheme.subtitle1,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
@@ -196,9 +191,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                       ),
                                     ),
                                   ),
-                                  style: FlutterFlowTheme.title2.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.title2,
                                 ),
                               )
                             ],
@@ -221,10 +214,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'UserName',
-                                      labelStyle:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Lexend Deca',
-                                      ),
+                                      labelStyle: FlutterFlowTheme.bodyText1,
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
@@ -246,9 +236,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                         ),
                                       ),
                                     ),
-                                    style: FlutterFlowTheme.title3.override(
-                                      fontFamily: 'Lexend Deca',
-                                    ),
+                                    style: FlutterFlowTheme.title3,
                                   ),
                                 ),
                               )
@@ -269,15 +257,9 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Sua Igreja',
-                                    labelStyle:
-                                        FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                    ),
+                                    labelStyle: FlutterFlowTheme.bodyText1,
                                     hintText: 'Sua Igreja',
-                                    hintStyle:
-                                        FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                    ),
+                                    hintStyle: FlutterFlowTheme.bodyText1,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
@@ -299,9 +281,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                       ),
                                     ),
                                   ),
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 ),
                               )
                             ],

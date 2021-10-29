@@ -540,11 +540,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                                       'My Name Here',
                                                                     ),
                                                                     style: FlutterFlowTheme
-                                                                        .subtitle2
-                                                                        .override(
-                                                                      fontFamily:
-                                                                          'Lexend Deca',
-                                                                    ),
+                                                                        .subtitle2,
                                                                   ),
                                                                   Padding(
                                                                     padding: EdgeInsetsDirectional
@@ -557,11 +553,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                                       commentListPostCommentsRecord
                                                                           .comment,
                                                                       style: FlutterFlowTheme
-                                                                          .bodyText1
-                                                                          .override(
-                                                                        fontFamily:
-                                                                            'Lexend Deca',
-                                                                      ),
+                                                                          .bodyText1,
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -666,10 +658,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Comentar aqui',
-                                      hintStyle:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Lexend Deca',
-                                      ),
+                                      hintStyle: FlutterFlowTheme.bodyText1,
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),

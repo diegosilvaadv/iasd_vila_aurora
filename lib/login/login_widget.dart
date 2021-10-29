@@ -175,9 +175,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Endereço de E-mail',
-                            labelStyle: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                            ),
+                            labelStyle: FlutterFlowTheme.bodyText1,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFE6E6E6),
@@ -210,9 +208,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           obscureText: !passwordVisibility,
                           decoration: InputDecoration(
                             labelText: 'Senha',
-                            labelStyle: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                            ),
+                            labelStyle: FlutterFlowTheme.bodyText1,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFE6E6E6),

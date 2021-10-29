@@ -307,10 +307,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                         maxChars: 30,
                                         replacement: '…',
                                       ),
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Lexend Deca',
-                                      ),
+                                      style: FlutterFlowTheme.bodyText1,
                                     ),
                                   ),
                                 )
@@ -388,9 +385,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                 Text(
                                   uploadedFileUrl2.maybeHandleOverflow(
                                       maxChars: 30),
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 )
                               ],
                             ),
@@ -462,9 +457,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                 Text(
                                   uploadedFileUrl3.maybeHandleOverflow(
                                       maxChars: 30),
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 )
                               ],
                             ),
@@ -536,9 +529,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                 Text(
                                   uploadedFileUrl4.maybeHandleOverflow(
                                       maxChars: 30),
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 )
                               ],
                             ),
@@ -610,9 +601,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                 Text(
                                   uploadedFileUrl5.maybeHandleOverflow(
                                       maxChars: 30),
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 )
                               ],
                             ),
@@ -684,9 +673,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                 Text(
                                   uploadedFileUrl6.maybeHandleOverflow(
                                       maxChars: 30),
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 )
                               ],
                             ),
@@ -757,9 +744,7 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                                 ),
                                 Text(
                                   uploadedFileUrl7,
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                  ),
+                                  style: FlutterFlowTheme.bodyText1,
                                 )
                               ],
                             ),
