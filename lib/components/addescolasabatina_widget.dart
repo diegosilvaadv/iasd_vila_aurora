@@ -130,7 +130,7 @@ class _AddescolasabatinaWidgetState extends State<AddescolasabatinaWidget> {
               child: FlutterFlowCalendar(
                 color: FlutterFlowTheme.primaryColor,
                 weekFormat: false,
-                weekStartsMonday: true,
+                weekStartsMonday: false,
                 onChange: (DateTimeRange newSelectedDate) {
                   setState(() => calendarSelectedDay = newSelectedDate);
                 },
@@ -161,11 +161,12 @@ class _AddescolasabatinaWidgetState extends State<AddescolasabatinaWidget> {
                         await EscolaSabatinaRecord.collection
                             .doc()
                             .set(escolaSabatinaCreateData);
-                        await Navigator.push(
+                        await Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
                             builder: (context) => EscolaSabatinaWidget(),
                           ),
+                          (r) => false,
                         );
                       } finally {
                         setState(() => _loadingButton = false);

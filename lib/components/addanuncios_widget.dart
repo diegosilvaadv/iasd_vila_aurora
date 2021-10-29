@@ -427,7 +427,7 @@ class _AddanunciosWidgetState extends State<AddanunciosWidget> {
               child: FlutterFlowCalendar(
                 color: FlutterFlowTheme.primaryColor,
                 weekFormat: false,
-                weekStartsMonday: true,
+                weekStartsMonday: false,
                 onChange: (DateTimeRange newSelectedDate) {
                   setState(() => calendarSelectedDay = newSelectedDate);
                 },

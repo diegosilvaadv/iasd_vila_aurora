@@ -305,7 +305,7 @@ class _AddMusicalWidgetState extends State<AddMusicalWidget> {
                   child: FlutterFlowCalendar(
                     color: FlutterFlowTheme.primaryColor,
                     weekFormat: false,
-                    weekStartsMonday: true,
+                    weekStartsMonday: false,
                     onChange: (DateTimeRange newSelectedDate) {
                       setState(() => calendarSelectedDay = newSelectedDate);
                     },
@@ -338,11 +338,12 @@ class _AddMusicalWidgetState extends State<AddMusicalWidget> {
                             await MiniMusicalRecord.collection
                                 .doc()
                                 .set(miniMusicalCreateData);
-                            await Navigator.push(
+                            await Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => MinMusicalWidget(),
                               ),
+                              (r) => false,
                             );
                           } finally {
                             setState(() => _loadingButton = false);

@@ -846,11 +846,12 @@ class _AddMusicaWidgetState extends State<AddMusicaWidget> {
                         await EnsaioMusicalRecord.collection
                             .doc()
                             .set(ensaioMusicalCreateData);
-                        await Navigator.push(
+                        await Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
                             builder: (context) => ListEnsaiomusicalWidget(),
                           ),
+                          (r) => false,
                         );
                       } finally {
                         setState(() => _loadingButton = false);

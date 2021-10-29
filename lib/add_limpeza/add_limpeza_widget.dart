@@ -234,7 +234,7 @@ class _AddLimpezaWidgetState extends State<AddLimpezaWidget> {
                   child: FlutterFlowCalendar(
                     color: FlutterFlowTheme.primaryColor,
                     weekFormat: false,
-                    weekStartsMonday: true,
+                    weekStartsMonday: false,
                     onChange: (DateTimeRange newSelectedDate) {
                       setState(() => calendarSelectedDay = newSelectedDate);
                     },
@@ -265,11 +265,12 @@ class _AddLimpezaWidgetState extends State<AddLimpezaWidget> {
                             await LimpezaRecord.collection
                                 .doc()
                                 .set(limpezaCreateData);
-                            await Navigator.push(
+                            await Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => LimpezaWidget(),
                               ),
+                              (r) => false,
                             );
                           } finally {
                             setState(() => _loadingButton = false);

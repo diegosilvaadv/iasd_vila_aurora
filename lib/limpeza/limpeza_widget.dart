@@ -60,61 +60,60 @@ class _LimpezaWidgetState extends State<LimpezaWidget> {
               ),
             ),
             actions: [
-              Visibility(
-                visible: (limpezaUsersRecord.adm) == (false),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                  child: StreamBuilder<UsersRecord>(
-                    stream: UsersRecord.getDocument(currentUserReference),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: SpinKitThreeBounce(
-                              color: FlutterFlowTheme.secondaryColor,
-                              size: 50,
-                            ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                child: StreamBuilder<UsersRecord>(
+                  stream: UsersRecord.getDocument(currentUserReference),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: SpinKitThreeBounce(
+                            color: FlutterFlowTheme.secondaryColor,
+                            size: 50,
                           ),
-                        );
-                      }
-                      final iconUsersRecord = snapshot.data;
-                      return InkWell(
-                        onTap: () async {
+                        ),
+                      );
+                    }
+                    final iconUsersRecord = snapshot.data;
+                    return InkWell(
+                      onTap: () async {
+                        if ((iconUsersRecord.adm) == (true)) {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => AddLimpezaWidget(),
                             ),
                           );
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('Atenção !!!'),
-                                content: Text(
-                                    'Você não tem permissão para acessar essa tela. '),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                        child: Icon(
-                          Icons.add_circle,
-                          color: FlutterFlowTheme.secondaryColor,
-                          size: 30,
-                        ),
-                      );
-                    },
-                  ),
+                        }
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('Atenção !!!'),
+                              content: Text(
+                                  'Você não tem permissão para acessar essa tela. '),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: Icon(
+                        Icons.add_circle,
+                        color: FlutterFlowTheme.secondaryColor,
+                        size: 30,
+                      ),
+                    );
+                  },
                 ),
               )
             ],

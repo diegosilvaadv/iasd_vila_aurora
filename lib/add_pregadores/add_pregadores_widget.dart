@@ -376,7 +376,7 @@ class _AddPregadoresWidgetState extends State<AddPregadoresWidget> {
                   child: FlutterFlowCalendar(
                     color: FlutterFlowTheme.primaryColor,
                     weekFormat: false,
-                    weekStartsMonday: true,
+                    weekStartsMonday: false,
                     onChange: (DateTimeRange newSelectedDate) {
                       setState(() => calendarSelectedDay = newSelectedDate);
                     },
@@ -410,11 +410,12 @@ class _AddPregadoresWidgetState extends State<AddPregadoresWidget> {
                             await EscalaPregadoresRecord.collection
                                 .doc()
                                 .set(escalaPregadoresCreateData);
-                            await Navigator.push(
+                            await Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => PregadoresWidget(),
                               ),
+                              (r) => false,
                             );
                           } finally {
                             setState(() => _loadingButton = false);
