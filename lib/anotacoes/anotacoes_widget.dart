@@ -228,7 +228,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                         children: [
                                           Expanded(
                                             child: Text(
-                                              'Anotação...',
+                                              columnAnotacoesRecord.anotacao,
                                               style: FlutterFlowTheme.bodyText2
                                                   .override(
                                                 fontFamily: 'Lexend Deca',
