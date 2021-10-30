@@ -1,4 +1,3 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/add_anotacoes_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -78,82 +77,73 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
         elevation: 2,
       ),
       backgroundColor: FlutterFlowTheme.dark600,
-      body: StreamBuilder<List<AnotacoesRecord>>(
-        stream: queryAnotacoesRecord(
-          singleRecord: true,
-        ),
-        builder: (context, snapshot) {
-          // Customize what your widget looks like when it's loading.
-          if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 50,
-                height: 50,
-                child: SpinKitThreeBounce(
-                  color: FlutterFlowTheme.secondaryColor,
-                  size: 50,
-                ),
-              ),
-            );
-          }
-          List<AnotacoesRecord> columnAnotacoesRecordList = snapshot.data;
-          // Return an empty Container when the document does not exist.
-          if (snapshot.data.isEmpty) {
-            return Container();
-          }
-          final columnAnotacoesRecord = columnAnotacoesRecordList.isNotEmpty
-              ? columnAnotacoesRecordList.first
-              : null;
-          return SingleChildScrollView(
-            child: Column(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
-                      child: Text(
-                        'Anotações Não Concluidas',
-                        style: FlutterFlowTheme.bodyText2.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Color(0xFF8B97A2),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                StreamBuilder<List<AnotacoesRecord>>(
-                  stream: queryAnotacoesRecord(
-                    queryBuilder: (anotacoesRecord) => anotacoesRecord
-                        .where('concluida', isEqualTo: false)
-                        .where('users', isEqualTo: columnAnotacoesRecord.users),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
+                  child: Text(
+                    'Anotações Não Concluidas',
+                    style: FlutterFlowTheme.bodyText2.override(
+                      fontFamily: 'Lexend Deca',
+                      color: Color(0xFF8B97A2),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: SpinKitThreeBounce(
-                            color: FlutterFlowTheme.secondaryColor,
-                            size: 50,
-                          ),
-                        ),
-                      );
-                    }
-                    List<AnotacoesRecord> columnAnotacoesRecordList =
-                        snapshot.data;
-                    return SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(
-                            columnAnotacoesRecordList.length, (columnIndex) {
-                          final columnAnotacoesRecord =
-                              columnAnotacoesRecordList[columnIndex];
+                )
+              ],
+            ),
+            StreamBuilder<List<AnotacoesRecord>>(
+              stream: queryAnotacoesRecord(
+                queryBuilder: (anotacoesRecord) => anotacoesRecord
+                    .where('concluida', isEqualTo: false)
+                    .orderBy('data'),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: SpinKitThreeBounce(
+                        color: FlutterFlowTheme.secondaryColor,
+                        size: 50,
+                      ),
+                    ),
+                  );
+                }
+                List<AnotacoesRecord> columnAnotacoesRecordList = snapshot.data;
+                return SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: List.generate(columnAnotacoesRecordList.length,
+                        (columnIndex) {
+                      final columnAnotacoesRecord =
+                          columnAnotacoesRecordList[columnIndex];
+                      return StreamBuilder<UsersRecord>(
+                        stream: UsersRecord.getDocument(
+                            columnAnotacoesRecord.users),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: SpinKitThreeBounce(
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  size: 50,
+                                ),
+                              ),
+                            );
+                          }
+                          final cardEventUsersRecord = snapshot.data;
                           return Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -180,19 +170,26 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 10, 0),
+                                                child: Text(
+                                                  columnIndex.toString(),
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 4, 0, 0),
-                                                child: AuthUserStreamWidget(
-                                                  child: Text(
-                                                    currentUserDisplayName,
-                                                    style: FlutterFlowTheme
-                                                        .bodyText2
-                                                        .override(
-                                                      fontFamily: 'Lexend Deca',
-                                                      color: Color(0xFF4B39EF),
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
+                                                child: Text(
+                                                  cardEventUsersRecord
+                                                      .displayName,
+                                                  style: FlutterFlowTheme
+                                                      .bodyText2
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF4B39EF),
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
                                               ),
@@ -260,7 +257,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                                       .subtitle1
                                                       .override(
                                                     fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF151B1E),
+                                                    color: Color(0xFF1C1D1D),
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -284,7 +281,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                                       .bodyText2
                                                       .override(
                                                     fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF8B97A2),
+                                                    color: Color(0xFFF39E03),
                                                     fontSize: 14,
                                                     fontWeight:
                                                         FontWeight.normal,
@@ -365,57 +362,76 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                               )
                             ],
                           );
-                        }),
-                      ),
-                    );
-                  },
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
-                      child: Text(
-                        'Anotações concluidas',
-                        style: FlutterFlowTheme.bodyText2.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Color(0xFF8B97A2),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                StreamBuilder<List<AnotacoesRecord>>(
-                  stream: queryAnotacoesRecord(
-                    queryBuilder: (anotacoesRecord) => anotacoesRecord
-                        .where('concluida', isEqualTo: true)
-                        .where('users', isEqualTo: columnAnotacoesRecord.users),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: SpinKitThreeBounce(
-                            color: FlutterFlowTheme.secondaryColor,
-                            size: 50,
-                          ),
-                        ),
+                        },
                       );
-                    }
-                    List<AnotacoesRecord> columnAnotacoesRecordList =
-                        snapshot.data;
-                    return SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(
-                            columnAnotacoesRecordList.length, (columnIndex) {
-                          final columnAnotacoesRecord =
-                              columnAnotacoesRecordList[columnIndex];
+                    }),
+                  ),
+                );
+              },
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
+                  child: Text(
+                    'Anotações concluidas',
+                    style: FlutterFlowTheme.bodyText2.override(
+                      fontFamily: 'Lexend Deca',
+                      color: Color(0xFF8B97A2),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            StreamBuilder<List<AnotacoesRecord>>(
+              stream: queryAnotacoesRecord(
+                queryBuilder: (anotacoesRecord) => anotacoesRecord
+                    .where('concluida', isEqualTo: true)
+                    .orderBy('data'),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: SpinKitThreeBounce(
+                        color: FlutterFlowTheme.secondaryColor,
+                        size: 50,
+                      ),
+                    ),
+                  );
+                }
+                List<AnotacoesRecord> columnAnotacoesRecordList = snapshot.data;
+                return SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: List.generate(columnAnotacoesRecordList.length,
+                        (columnIndex) {
+                      final columnAnotacoesRecord =
+                          columnAnotacoesRecordList[columnIndex];
+                      return StreamBuilder<UsersRecord>(
+                        stream: UsersRecord.getDocument(
+                            columnAnotacoesRecord.users),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: SpinKitThreeBounce(
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  size: 50,
+                                ),
+                              ),
+                            );
+                          }
+                          final cardEventUsersRecord = snapshot.data;
                           return Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -442,25 +458,32 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 10, 0),
+                                                child: Text(
+                                                  columnIndex.toString(),
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 4, 0, 0),
-                                                child: AuthUserStreamWidget(
-                                                  child: Text(
-                                                    currentUserDisplayName,
-                                                    style: FlutterFlowTheme
-                                                        .bodyText2
-                                                        .override(
-                                                      fontFamily: 'Lexend Deca',
-                                                      color: Color(0xFF4B39EF),
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
+                                                child: Text(
+                                                  cardEventUsersRecord
+                                                      .displayName,
+                                                  style: FlutterFlowTheme
+                                                      .bodyText2
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF4B39EF),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(180, 0, 0, 0),
+                                                    .fromSTEB(150, 0, 0, 0),
                                                 child: ToggleIcon(
                                                   onPressed: () async {
                                                     final anotacoesUpdateData =
@@ -522,7 +545,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                                       .subtitle1
                                                       .override(
                                                     fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF151B1E),
+                                                    color: Color(0xFF121313),
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -546,7 +569,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                                       .bodyText2
                                                       .override(
                                                     fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF8B97A2),
+                                                    color: Color(0xFFF39E03),
                                                     fontSize: 14,
                                                     fontWeight:
                                                         FontWeight.normal,
@@ -619,7 +642,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(130, 0, 0, 0),
+                                                    .fromSTEB(100, 0, 0, 0),
                                                 child: InkWell(
                                                   onTap: () async {
                                                     await columnAnotacoesRecord
@@ -643,15 +666,15 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                               )
                             ],
                           );
-                        }),
-                      ),
-                    );
-                  },
-                )
-              ],
-            ),
-          );
-        },
+                        },
+                      );
+                    }),
+                  ),
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }
