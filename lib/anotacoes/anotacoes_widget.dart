@@ -78,527 +78,580 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
         elevation: 2,
       ),
       backgroundColor: FlutterFlowTheme.dark600,
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
-                  child: Text(
-                    'Anotações Não Concluidas',
-                    style: FlutterFlowTheme.bodyText2.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Color(0xFF8B97A2),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            StreamBuilder<List<AnotacoesRecord>>(
-              stream: queryAnotacoesRecord(
-                queryBuilder: (anotacoesRecord) => anotacoesRecord
-                    .where('concluida', isEqualTo: false)
-                    .where('users', isNotEqualTo: currentUserReference),
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: SpinKitThreeBounce(
-                        color: FlutterFlowTheme.secondaryColor,
-                        size: 50,
-                      ),
-                    ),
-                  );
-                }
-                List<AnotacoesRecord> columnAnotacoesRecordList = snapshot.data;
-                return SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: List.generate(columnAnotacoesRecordList.length,
-                        (columnIndex) {
-                      final columnAnotacoesRecord =
-                          columnAnotacoesRecordList[columnIndex];
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                              child: Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Colors.white,
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 0, 0),
-                                            child: AuthUserStreamWidget(
-                                              child: Text(
-                                                currentUserDisplayName,
-                                                style: FlutterFlowTheme
-                                                    .bodyText2
-                                                    .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: Color(0xFF4B39EF),
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    180, 0, 0, 0),
-                                            child: ToggleIcon(
-                                              onPressed: () async {
-                                                final anotacoesUpdateData =
-                                                    createAnotacoesRecordData(
-                                                  concluida:
-                                                      !columnAnotacoesRecord
-                                                          .concluida,
-                                                );
-                                                await columnAnotacoesRecord
-                                                    .reference
-                                                    .update(
-                                                        anotacoesUpdateData);
-                                              },
-                                              value: columnAnotacoesRecord
-                                                  .concluida,
-                                              onIcon: Icon(
-                                                Icons.check_box,
-                                                color: Colors.black,
-                                                size: 25,
-                                              ),
-                                              offIcon: Icon(
-                                                Icons.check_box_outline_blank,
-                                                color: Colors.black,
-                                                size: 25,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.85,
-                                      height: 1,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFDBE2E7),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 0, 0),
-                                            child: Text(
-                                              valueOrDefault<String>(
-                                                columnAnotacoesRecord.titulo,
-                                                'Sem Titulo',
-                                              ),
-                                              style: FlutterFlowTheme.subtitle1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF151B1E),
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              columnAnotacoesRecord.anotacao,
-                                              style: FlutterFlowTheme.bodyText2
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF8B97A2),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 8),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 0, 4),
-                                            child: Icon(
-                                              Icons.schedule,
-                                              color: Color(0xFF4B39EF),
-                                              size: 20,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4, 0, 0, 0),
-                                            child: Text(
-                                              dateTimeFormat('Hm',
-                                                  columnAnotacoesRecord.data),
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF4B39EF),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    24, 0, 0, 4),
-                                            child: Icon(
-                                              Icons.date_range,
-                                              color: Color(0xFF4B39EF),
-                                              size: 20,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4, 0, 0, 0),
-                                            child: Text(
-                                              dateTimeFormat('d/M/y',
-                                                  columnAnotacoesRecord.data),
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF4B39EF),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      );
-                    }),
-                  ),
-                );
-              },
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
-                  child: Text(
-                    'Anotações concluidas',
-                    style: FlutterFlowTheme.bodyText2.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Color(0xFF8B97A2),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            StreamBuilder<List<AnotacoesRecord>>(
-              stream: queryAnotacoesRecord(
-                queryBuilder: (anotacoesRecord) => anotacoesRecord
-                    .where('concluida', isEqualTo: true)
-                    .where('users', isNotEqualTo: currentUserReference),
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: SpinKitThreeBounce(
-                        color: FlutterFlowTheme.secondaryColor,
-                        size: 50,
-                      ),
-                    ),
-                  );
-                }
-                List<AnotacoesRecord> columnAnotacoesRecordList = snapshot.data;
-                return SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: List.generate(columnAnotacoesRecordList.length,
-                        (columnIndex) {
-                      final columnAnotacoesRecord =
-                          columnAnotacoesRecordList[columnIndex];
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                              child: Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Colors.white,
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 0, 0),
-                                            child: AuthUserStreamWidget(
-                                              child: Text(
-                                                currentUserDisplayName,
-                                                style: FlutterFlowTheme
-                                                    .bodyText2
-                                                    .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: Color(0xFF4B39EF),
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    180, 0, 0, 0),
-                                            child: ToggleIcon(
-                                              onPressed: () async {
-                                                final anotacoesUpdateData =
-                                                    createAnotacoesRecordData(
-                                                  concluida:
-                                                      !columnAnotacoesRecord
-                                                          .concluida,
-                                                );
-                                                await columnAnotacoesRecord
-                                                    .reference
-                                                    .update(
-                                                        anotacoesUpdateData);
-                                              },
-                                              value: columnAnotacoesRecord
-                                                  .concluida,
-                                              onIcon: Icon(
-                                                Icons.check_box,
-                                                color: Colors.black,
-                                                size: 25,
-                                              ),
-                                              offIcon: Icon(
-                                                Icons.check_box_outline_blank,
-                                                color: Colors.black,
-                                                size: 25,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.85,
-                                      height: 1,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFDBE2E7),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 0, 0),
-                                            child: Text(
-                                              valueOrDefault<String>(
-                                                columnAnotacoesRecord.titulo,
-                                                'Sem Titulo',
-                                              ),
-                                              style: FlutterFlowTheme.subtitle1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF151B1E),
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              'Anotação...',
-                                              style: FlutterFlowTheme.bodyText2
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF8B97A2),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 8),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 0, 4),
-                                            child: Icon(
-                                              Icons.schedule,
-                                              color: Color(0xFF4B39EF),
-                                              size: 20,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4, 0, 0, 0),
-                                            child: Text(
-                                              dateTimeFormat('Hm',
-                                                  columnAnotacoesRecord.data),
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF4B39EF),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    24, 0, 0, 4),
-                                            child: Icon(
-                                              Icons.date_range,
-                                              color: Color(0xFF4B39EF),
-                                              size: 20,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4, 0, 0, 0),
-                                            child: Text(
-                                              dateTimeFormat('d/M/y',
-                                                  columnAnotacoesRecord.data),
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF4B39EF),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    130, 0, 0, 0),
-                                            child: InkWell(
-                                              onTap: () async {
-                                                await columnAnotacoesRecord
-                                                    .reference
-                                                    .delete();
-                                              },
-                                              child: Icon(
-                                                Icons.delete,
-                                                color: Colors.black,
-                                                size: 24,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      );
-                    }),
-                  ),
-                );
-              },
-            )
-          ],
+      body: StreamBuilder<List<AnotacoesRecord>>(
+        stream: queryAnotacoesRecord(
+          singleRecord: true,
         ),
+        builder: (context, snapshot) {
+          // Customize what your widget looks like when it's loading.
+          if (!snapshot.hasData) {
+            return Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: SpinKitThreeBounce(
+                  color: FlutterFlowTheme.secondaryColor,
+                  size: 50,
+                ),
+              ),
+            );
+          }
+          List<AnotacoesRecord> columnAnotacoesRecordList = snapshot.data;
+          // Return an empty Container when the document does not exist.
+          if (snapshot.data.isEmpty) {
+            return Container();
+          }
+          final columnAnotacoesRecord = columnAnotacoesRecordList.isNotEmpty
+              ? columnAnotacoesRecordList.first
+              : null;
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
+                      child: Text(
+                        'Anotações Não Concluidas',
+                        style: FlutterFlowTheme.bodyText2.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Color(0xFF8B97A2),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                StreamBuilder<List<AnotacoesRecord>>(
+                  stream: queryAnotacoesRecord(
+                    queryBuilder: (anotacoesRecord) => anotacoesRecord
+                        .where('concluida', isEqualTo: false)
+                        .where('users', isEqualTo: columnAnotacoesRecord.users),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: SpinKitThreeBounce(
+                            color: FlutterFlowTheme.secondaryColor,
+                            size: 50,
+                          ),
+                        ),
+                      );
+                    }
+                    List<AnotacoesRecord> columnAnotacoesRecordList =
+                        snapshot.data;
+                    return SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: List.generate(
+                            columnAnotacoesRecordList.length, (columnIndex) {
+                          final columnAnotacoesRecord =
+                              columnAnotacoesRecordList[columnIndex];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8, 0, 8, 0),
+                                  child: Card(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    color: Colors.white,
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 4, 12, 4),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 0),
+                                                child: AuthUserStreamWidget(
+                                                  child: Text(
+                                                    currentUserDisplayName,
+                                                    style: FlutterFlowTheme
+                                                        .bodyText2
+                                                        .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: Color(0xFF4B39EF),
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(180, 0, 0, 0),
+                                                child: ToggleIcon(
+                                                  onPressed: () async {
+                                                    final anotacoesUpdateData =
+                                                        createAnotacoesRecordData(
+                                                      concluida:
+                                                          !columnAnotacoesRecord
+                                                              .concluida,
+                                                    );
+                                                    await columnAnotacoesRecord
+                                                        .reference
+                                                        .update(
+                                                            anotacoesUpdateData);
+                                                  },
+                                                  value: columnAnotacoesRecord
+                                                      .concluida,
+                                                  onIcon: Icon(
+                                                    Icons.check_box,
+                                                    color: Colors.black,
+                                                    size: 25,
+                                                  ),
+                                                  offIcon: Icon(
+                                                    Icons
+                                                        .check_box_outline_blank,
+                                                    color: Colors.black,
+                                                    size: 25,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.85,
+                                          height: 1,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFFDBE2E7),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 4, 12, 4),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    columnAnotacoesRecord
+                                                        .titulo,
+                                                    'Sem Titulo',
+                                                  ),
+                                                  style: FlutterFlowTheme
+                                                      .subtitle1
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF151B1E),
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 4, 12, 4),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  columnAnotacoesRecord
+                                                      .anotacao,
+                                                  style: FlutterFlowTheme
+                                                      .bodyText2
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF8B97A2),
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 4, 12, 8),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 4),
+                                                child: Icon(
+                                                  Icons.schedule,
+                                                  color: Color(0xFF4B39EF),
+                                                  size: 20,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(4, 0, 0, 0),
+                                                child: Text(
+                                                  dateTimeFormat(
+                                                      'Hm',
+                                                      columnAnotacoesRecord
+                                                          .data),
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF4B39EF),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(24, 0, 0, 4),
+                                                child: Icon(
+                                                  Icons.date_range,
+                                                  color: Color(0xFF4B39EF),
+                                                  size: 20,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(4, 0, 0, 0),
+                                                child: Text(
+                                                  dateTimeFormat(
+                                                      'd/M/y',
+                                                      columnAnotacoesRecord
+                                                          .data),
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF4B39EF),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        }),
+                      ),
+                    );
+                  },
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
+                      child: Text(
+                        'Anotações concluidas',
+                        style: FlutterFlowTheme.bodyText2.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Color(0xFF8B97A2),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                StreamBuilder<List<AnotacoesRecord>>(
+                  stream: queryAnotacoesRecord(
+                    queryBuilder: (anotacoesRecord) => anotacoesRecord
+                        .where('concluida', isEqualTo: true)
+                        .where('users', isEqualTo: columnAnotacoesRecord.users),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: SpinKitThreeBounce(
+                            color: FlutterFlowTheme.secondaryColor,
+                            size: 50,
+                          ),
+                        ),
+                      );
+                    }
+                    List<AnotacoesRecord> columnAnotacoesRecordList =
+                        snapshot.data;
+                    return SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: List.generate(
+                            columnAnotacoesRecordList.length, (columnIndex) {
+                          final columnAnotacoesRecord =
+                              columnAnotacoesRecordList[columnIndex];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8, 0, 8, 0),
+                                  child: Card(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    color: Colors.white,
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 4, 12, 4),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 0),
+                                                child: AuthUserStreamWidget(
+                                                  child: Text(
+                                                    currentUserDisplayName,
+                                                    style: FlutterFlowTheme
+                                                        .bodyText2
+                                                        .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: Color(0xFF4B39EF),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(180, 0, 0, 0),
+                                                child: ToggleIcon(
+                                                  onPressed: () async {
+                                                    final anotacoesUpdateData =
+                                                        createAnotacoesRecordData(
+                                                      concluida:
+                                                          !columnAnotacoesRecord
+                                                              .concluida,
+                                                    );
+                                                    await columnAnotacoesRecord
+                                                        .reference
+                                                        .update(
+                                                            anotacoesUpdateData);
+                                                  },
+                                                  value: columnAnotacoesRecord
+                                                      .concluida,
+                                                  onIcon: Icon(
+                                                    Icons.check_box,
+                                                    color: Colors.black,
+                                                    size: 25,
+                                                  ),
+                                                  offIcon: Icon(
+                                                    Icons
+                                                        .check_box_outline_blank,
+                                                    color: Colors.black,
+                                                    size: 25,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.85,
+                                          height: 1,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFFDBE2E7),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 4, 12, 4),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    columnAnotacoesRecord
+                                                        .titulo,
+                                                    'Sem Titulo',
+                                                  ),
+                                                  style: FlutterFlowTheme
+                                                      .subtitle1
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF151B1E),
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 4, 12, 4),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  columnAnotacoesRecord
+                                                      .anotacao,
+                                                  style: FlutterFlowTheme
+                                                      .bodyText2
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF8B97A2),
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 4, 12, 8),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 4),
+                                                child: Icon(
+                                                  Icons.schedule,
+                                                  color: Color(0xFF4B39EF),
+                                                  size: 20,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(4, 0, 0, 0),
+                                                child: Text(
+                                                  dateTimeFormat(
+                                                      'Hm',
+                                                      columnAnotacoesRecord
+                                                          .data),
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF4B39EF),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(24, 0, 0, 4),
+                                                child: Icon(
+                                                  Icons.date_range,
+                                                  color: Color(0xFF4B39EF),
+                                                  size: 20,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(4, 0, 0, 0),
+                                                child: Text(
+                                                  dateTimeFormat(
+                                                      'd/M/y',
+                                                      columnAnotacoesRecord
+                                                          .data),
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF4B39EF),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(130, 0, 0, 0),
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    await columnAnotacoesRecord
+                                                        .reference
+                                                        .delete();
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.black,
+                                                    size: 24,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        }),
+                      ),
+                    );
+                  },
+                )
+              ],
+            ),
+          );
+        },
       ),
     );
   }
