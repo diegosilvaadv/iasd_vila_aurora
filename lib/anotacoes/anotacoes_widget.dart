@@ -4,6 +4,7 @@ import '../components/add_anotacoes_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,6 +26,21 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NavBarPage(initialPage: 'PagIncial'),
+              ),
+            );
+          },
+          child: Icon(
+            Icons.home,
+            color: Colors.black,
+            size: 24,
+          ),
+        ),
         title: Text(
           'Minhas Anotações',
           style: FlutterFlowTheme.title1.override(
