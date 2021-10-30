@@ -57,6 +57,20 @@
       ]
     },
     {
+      "collectionGroup": "anotacoes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "concluida",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "users",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "chats",
       "queryScope": "COLLECTION",
       "fields": [

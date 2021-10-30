@@ -103,7 +103,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
               stream: queryAnotacoesRecord(
                 queryBuilder: (anotacoesRecord) => anotacoesRecord
                     .where('concluida', isEqualTo: false)
-                    .where('users', isEqualTo: currentUserReference),
+                    .where('users', isNotEqualTo: currentUserReference),
               ),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
