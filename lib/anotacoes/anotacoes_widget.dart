@@ -101,8 +101,9 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
             ),
             StreamBuilder<List<AnotacoesRecord>>(
               stream: queryAnotacoesRecord(
-                queryBuilder: (anotacoesRecord) =>
-                    anotacoesRecord.where('concluida', isEqualTo: false),
+                queryBuilder: (anotacoesRecord) => anotacoesRecord
+                    .where('concluida', isEqualTo: false)
+                    .where('users', isEqualTo: currentUserReference),
               ),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
@@ -349,8 +350,9 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
             ),
             StreamBuilder<List<AnotacoesRecord>>(
               stream: queryAnotacoesRecord(
-                queryBuilder: (anotacoesRecord) =>
-                    anotacoesRecord.where('concluida', isEqualTo: true),
+                queryBuilder: (anotacoesRecord) => anotacoesRecord
+                    .where('concluida', isEqualTo: true)
+                    .where('users', isEqualTo: currentUserReference),
               ),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
