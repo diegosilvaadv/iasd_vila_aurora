@@ -13,7 +13,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:share_plus/share_plus.dart';
 
 class ViewProfilePageOtherWidget extends StatefulWidget {
   ViewProfilePageOtherWidget({
@@ -650,15 +649,10 @@ class _ViewProfilePageOtherWidgetState
                                                           .bodyText1,
                                                     ),
                                                   ),
-                                                  InkWell(
-                                                    onTap: () async {
-                                                      await Share.share('');
-                                                    },
-                                                    child: Icon(
-                                                      Icons.ios_share,
-                                                      color: Color(0xFF95A1AC),
-                                                      size: 24,
-                                                    ),
+                                                  Icon(
+                                                    Icons.ios_share,
+                                                    color: Color(0xFF95A1AC),
+                                                    size: 24,
                                                   )
                                                 ],
                                               )
