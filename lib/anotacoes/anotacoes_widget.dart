@@ -67,8 +67,8 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                 );
               },
               child: Icon(
-                Icons.add_rounded,
-                color: Color(0xFF4B39EF),
+                Icons.add_circle_sharp,
+                color: FlutterFlowTheme.secondaryColor,
                 size: 24,
               ),
             ),
