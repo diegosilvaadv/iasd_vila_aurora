@@ -13,6 +13,7 @@ import '../main.dart';
 import '../min_musical/min_musical_widget.dart';
 import '../pregadores/pregadores_widget.dart';
 import '../sonoplastia/sonoplastia_widget.dart';
+import '../teste/teste_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -392,12 +393,22 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: Text(
-                                'Acesso Rápido',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Color(0xFFDBDBDB),
-                                  fontSize: 20,
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => TesteWidget(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Acesso Rápido',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFFDBDBDB),
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
                             )
@@ -502,7 +513,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.04, -0.66),
+                                                  -9.47, -4.8),
                                               child: Icon(
                                                 Icons.library_music,
                                                 color: Colors.white,
