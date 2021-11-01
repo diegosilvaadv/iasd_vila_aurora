@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:share_plus/share_plus.dart';
 
 class HomePageWidget extends StatefulWidget {
   HomePageWidget({Key key}) : super(key: key);
@@ -483,15 +482,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       .bodyText1,
                                                 ),
                                               ),
-                                              InkWell(
-                                                onTap: () async {
-                                                  await Share.share('');
-                                                },
-                                                child: Icon(
-                                                  Icons.ios_share,
-                                                  color: Color(0xFF95A1AC),
-                                                  size: 24,
-                                                ),
+                                              Icon(
+                                                Icons.ios_share,
+                                                color: Color(0xFF95A1AC),
+                                                size: 24,
                                               )
                                             ],
                                           )
