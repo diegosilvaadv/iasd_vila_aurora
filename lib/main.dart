@@ -45,33 +45,7 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'iasd7vilaaurora',
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [Locale('en', '')],
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: initialUser == null
-          ? Container(
-              color: FlutterFlowTheme.primaryColor,
-              child: Builder(
-                builder: (context) => Image.asset(
-                  'assets/images/Logo_PORTUGUES.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-            )
-          : currentUser.loggedIn
-              ? NavBarPage()
-              : LoginWidget(),
-    );
-  }
-}
+ 
 
 class NavBarPage extends StatefulWidget {
   NavBarPage({Key key, this.initialPage}) : super(key: key);
