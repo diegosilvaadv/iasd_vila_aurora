@@ -393,22 +393,12 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: InkWell(
-                                onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => TesteWidget(),
-                                    ),
-                                  );
-                                },
-                                child: Text(
-                                  'Acesso Rápido',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFFDBDBDB),
-                                    fontSize: 20,
-                                  ),
+                              child: Text(
+                                'Acesso Rápido',
+                                style: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFFDBDBDB),
+                                  fontSize: 20,
                                 ),
                               ),
                             )
