@@ -30,7 +30,6 @@ dependencies:
   page_transition:
   rxdart: ^0.26.0
   sign_in_with_apple: ^3.0.0
-  smooth_page_indicator:
   table_calendar: ^2.3.3
   timeago:
   url_launcher:
