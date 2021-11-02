@@ -83,6 +83,10 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "users",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "data",
           "order": "ASCENDING"
         }
