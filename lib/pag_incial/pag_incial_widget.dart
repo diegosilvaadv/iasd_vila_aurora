@@ -13,7 +13,6 @@ import '../main.dart';
 import '../min_musical/min_musical_widget.dart';
 import '../pregadores/pregadores_widget.dart';
 import '../sonoplastia/sonoplastia_widget.dart';
-import '../teste/teste_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
