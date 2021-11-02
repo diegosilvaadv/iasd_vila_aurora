@@ -1,0 +1,69 @@
+import 'dart:async';
+
+import 'index.dart';
+import 'serializers.dart';
+import 'package:built_value/built_value.dart';
+
+part 'hello_record.g.dart';
+
+abstract class helloRecord
+    implements Built<helloRecord, helloRecordBuilder> {
+  static Serializer<helloRecord> get serializer =>
+      _$helloRecordSerializer;
+
+  @nullable
+  String get titulo;
+
+  @nullable
+  String get anotacao;
+
+  @nullable
+  DateTime get data;
+
+  @nullable
+  DocumentReference get users;
+
+  @nullable
+  bool get concluida;
+
+  @nullable
+  @BuiltValueField(wireName: kDocumentReferenceField)
+  DocumentReference get reference;
+
+  static void _initializeBuilder(helloRecordBuilder builder) => builder
+    ..titulo = ''
+    ..anotacao = ''
+    ..concluida = false;
+
+  static CollectionReference get collection =>
+      FirebaseFirestore.instance.collection('hello');
+
+  static Stream<helloRecord> getDocument(DocumentReference ref) => ref
+      .snapshots()
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+
+  helloRecord._();
+  factory helloRecord([void Function(helloRecordBuilder) updates]) =
+      _$helloRecord;
+
+  static helloRecord getDocumentFromData(
+          Map<String, dynamic> data, DocumentReference reference) =>
+      serializers.deserializeWith(serializer,
+          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+}
+
+Map<String, dynamic> createhelloRecordData({
+  String titulo,
+  String anotacao,
+  DateTime data,
+  DocumentReference users,
+  bool concluida,
+}) =>
+    serializers.toFirestore(
+        helloRecord.serializer,
+        helloRecord((a) => a
+          ..titulo = titulo
+          ..anotacao = anotacao
+          ..data = data
+          ..users = users
+          ..concluida = concluida));
