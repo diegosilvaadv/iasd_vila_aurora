@@ -7,6 +7,7 @@ import '../escola_sabatina/escola_sabatina_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../hello/hello_widget.dart';
 import '../limpeza/limpeza_widget.dart';
 import '../list_ensaiomusical/list_ensaiomusical_widget.dart';
 import '../main.dart';
@@ -392,12 +393,22 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: Text(
-                                'Acesso Rápido',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Color(0xFFDBDBDB),
-                                  fontSize: 20,
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => HelloWidget(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Acesso Rápido',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFFDBDBDB),
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
                             )
