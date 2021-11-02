@@ -394,6 +394,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
               stream: queryAnotacoesRecord(
                 queryBuilder: (anotacoesRecord) => anotacoesRecord
                     .where('concluida', isEqualTo: true)
+                    .where('users', isEqualTo: currentUserReference)
                     .orderBy('data'),
               ),
               builder: (context, snapshot) {
@@ -418,9 +419,9 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                         (columnIndex) {
                       final columnAnotacoesRecord =
                           columnAnotacoesRecordList[columnIndex];
-                      return StreamBuilder<UsersRecord>(
-                        stream: UsersRecord.getDocument(
-                            columnAnotacoesRecord.users),
+                      return StreamBuilder<AnotacoesRecord>(
+                        stream: AnotacoesRecord.getDocument(
+                            columnAnotacoesRecord.reference),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -435,7 +436,7 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                               ),
                             );
                           }
-                          final cardEventUsersRecord = snapshot.data;
+                          final cardEventAnotacoesRecord = snapshot.data;
                           return Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -472,16 +473,18 @@ class _AnotacoesWidgetState extends State<AnotacoesWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 4, 0, 0),
-                                                child: Text(
-                                                  cardEventUsersRecord
-                                                      .displayName,
-                                                  style: FlutterFlowTheme
-                                                      .bodyText2
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF4B39EF),
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w600,
+                                                child: AuthUserStreamWidget(
+                                                  child: Text(
+                                                    currentUserDisplayName,
+                                                    style: FlutterFlowTheme
+                                                        .bodyText2
+                                                        .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: Color(0xFF4B39EF),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
