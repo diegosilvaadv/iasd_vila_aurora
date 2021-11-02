@@ -145,12 +145,12 @@ Stream<List<AnotacoesRecord>> queryAnotacoesRecord(
     queryCollection(AnotacoesRecord.collection, AnotacoesRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Stream<List<testedados>> querytestedadosRecord(
+Stream<List<Testedados>> queryTestedadosRecord(
         {Query Function(Query) queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(
-        testedadosRecord.collection, testedadosRecord.serializer,
+        TestedadosRecord.collection, TestedadosRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(
