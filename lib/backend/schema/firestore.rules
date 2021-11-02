@@ -89,7 +89,7 @@ service cloud.firestore {
 
     // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
     // security rules for this collection before publishing your app.
-    match /hello/{id} {
+    match /testedados/{id} {
       allow read, write: if true;
     }
   }
