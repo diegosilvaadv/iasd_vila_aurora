@@ -13,6 +13,7 @@ import '../main.dart';
 import '../min_musical/min_musical_widget.dart';
 import '../pregadores/pregadores_widget.dart';
 import '../sonoplastia/sonoplastia_widget.dart';
+import '../teste/teste_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -502,15 +503,6 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -9.47, -4.8),
-                                              child: Icon(
-                                                Icons.library_music,
-                                                color: Colors.white,
-                                                size: 80,
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
                                                   0.1, 0.8),
                                               child: Text(
                                                 'Mini. Musical',
@@ -520,6 +512,16 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                                   fontFamily: 'Lexend Deca',
                                                   color: Colors.white,
                                                 ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(18, 5, 0, 0),
+                                              child: Icon(
+                                                Icons.library_music,
+                                                color:
+                                                    FlutterFlowTheme.background,
+                                                size: 80,
                                               ),
                                             )
                                           ],
