@@ -72,7 +72,6 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-//Remove this method to stop OneSignal Debugging 
 OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
 OneSignal.shared.setAppId("7d11bc10-7cfb-42c6-8315-abdba913a150");
