@@ -34,7 +34,7 @@ dependencies:
   timeago:
   url_launcher:
   video_player: ^2.1.10
-
+  onesignal_flutter: ^3.0.0
 
 dev_dependencies:
   build_runner: ^2.0.6
@@ -53,6 +53,5 @@ flutter:
     - assets/lottie_animations/
     - assets/rive_animations/
     
-    dependencies:
-    onesignal_flutter: ^3.0.0
+
   
