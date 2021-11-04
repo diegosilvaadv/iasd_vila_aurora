@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/add_anotacoes_widget.dart';
 import '../components/addescolasabatina_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -32,62 +31,32 @@ class _EscolaSabatinaWidgetState extends State<EscolaSabatinaWidget> {
             color: Colors.white,
           ),
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-            child: StreamBuilder<List<UsersRecord>>(
-              stream: queryUsersRecord(
-                singleRecord: true,
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: SpinKitThreeBounce(
-                        color: FlutterFlowTheme.secondaryColor,
-                        size: 50,
-                      ),
-                    ),
-                  );
-                }
-                List<UsersRecord> iconUsersRecordList = snapshot.data;
-                // Return an empty Container when the document does not exist.
-                if (snapshot.data.isEmpty) {
-                  return Container();
-                }
-                final iconUsersRecord = iconUsersRecordList.isNotEmpty
-                    ? iconUsersRecordList.first
-                    : null;
-                return InkWell(
-                  onTap: () async {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          height: 600,
-                          child: AddAnotacoesWidget(),
-                        );
-                      },
-                    );
-                  },
-                  child: Icon(
-                    Icons.add_circle,
-                    color: FlutterFlowTheme.secondaryColor,
-                    size: 24,
-                  ),
-                );
-              },
-            ),
-          )
-        ],
+        actions: [],
         centerTitle: true,
         elevation: 4,
       ),
       backgroundColor: Color(0xFFF5F5F5),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) {
+              return Container(
+                height: 600,
+                child: AddescolasabatinaWidget(),
+              );
+            },
+          );
+        },
+        backgroundColor: FlutterFlowTheme.primaryColor,
+        elevation: 8,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 30,
+        ),
+      ),
       body: SafeArea(
         child: Stack(
           children: [
