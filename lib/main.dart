@@ -13,6 +13,7 @@ import 'pag_incial/pag_incial_widget.dart';
 import 'chat_main/chat_main_widget.dart';
 import 'home_page/home_page_widget.dart';
 import 'profile_page/profile_page_widget.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
