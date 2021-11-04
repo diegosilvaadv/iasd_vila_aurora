@@ -15,6 +15,16 @@ import 'home_page/home_page_widget.dart';
 import 'profile_page/profile_page_widget.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
+//Remove this method to stop OneSignal Debugging 
+OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+
+OneSignal.shared.setAppId("7d11bc10-7cfb-42c6-8315-abdba913a150");
+
+// The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
+OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
+    print("Accepted permission: $accepted");
+});
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
