@@ -21,14 +21,6 @@ void main() async {
   runApp(MyApp());
 }
 
-OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-
-OneSignal.shared.setAppId("7d11bc10-7cfb-42c6-8315-abdba913a150");
-
-OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
-    print("Accepted permission: $accepted");
-});
-
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
