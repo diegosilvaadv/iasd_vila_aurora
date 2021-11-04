@@ -52,4 +52,7 @@ flutter:
     - assets/audios/
     - assets/lottie_animations/
     - assets/rive_animations/
+    
+    dependencies:
+    onesignal_flutter: ^3.0.0
   
