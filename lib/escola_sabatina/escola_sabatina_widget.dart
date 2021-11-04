@@ -62,18 +62,16 @@ class _EscolaSabatinaWidgetState extends State<EscolaSabatinaWidget> {
                     : null;
                 return InkWell(
                   onTap: () async {
-                    if ((iconUsersRecord.adm) == (true)) {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        context: context,
-                        builder: (context) {
-                          return Container(
-                            height: 600,
-                            child: AddescolasabatinaWidget(),
-                          );
-                        },
-                      );
-                    }
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          height: 600,
+                          child: AddescolasabatinaWidget(),
+                        );
+                      },
+                    );
                   },
                   child: Icon(
                     Icons.add_circle,
