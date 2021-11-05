@@ -119,16 +119,23 @@ class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
                               fontWeight: FontWeight.normal,
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                            child: AutoSizeText(
-                              widget.titulo,
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.title2.override(
-                                fontFamily: 'Lexend Deca',
-                                color: Color(0xFF090F13),
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFEEEEEE),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                              child: AutoSizeText(
+                                widget.titulo,
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.title2.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF090F13),
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           )
@@ -310,33 +317,37 @@ class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Atenção:',
-                            style: FlutterFlowTheme.bodyText2.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Color(0xFF8B97A2),
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                            child: AutoSizeText(
-                              'Para mais informações sobre eventos entrre em contato com o responsável da comunicação da sua Igreja.',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.subtitle2.override(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Atenção:',
+                              style: FlutterFlowTheme.bodyText2.override(
                                 fontFamily: 'Lexend Deca',
-                                color: Color(0xFF151B1E),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF8B97A2),
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),
-                          )
-                        ],
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                              child: AutoSizeText(
+                                'Para mais informações sobre eventos entrre em contato com o responsável da comunicação da sua Igreja.',
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.subtitle2.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF151B1E),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],
