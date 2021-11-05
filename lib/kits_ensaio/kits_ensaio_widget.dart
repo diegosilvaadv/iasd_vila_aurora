@@ -177,7 +177,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Text(
+                                    AutoSizeText(
                                       'PlayBack',
                                       style: FlutterFlowTheme.title2,
                                     )
