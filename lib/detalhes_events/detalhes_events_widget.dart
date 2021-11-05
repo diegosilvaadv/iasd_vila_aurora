@@ -1,3 +1,4 @@
+import '../components/view_events_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -56,14 +57,30 @@ class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
                             child: Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                              child: Image.network(
-                                valueOrDefault<String>(
-                                  widget.img,
-                                  'https://www2.camara.leg.br/atividade-legislativa/participe/saiba-como-participar/imagens/imagem.2015-10-09.9391415699/image',
+                              child: InkWell(
+                                onTap: () async {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    context: context,
+                                    builder: (context) {
+                                      return Container(
+                                        height: 600,
+                                        child: ViewEventsWidget(
+                                          enventphoto: widget.img,
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Image.network(
+                                  valueOrDefault<String>(
+                                    widget.img,
+                                    'https://www2.camara.leg.br/atividade-legislativa/participe/saiba-como-participar/imagens/imagem.2015-10-09.9391415699/image',
+                                  ),
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 240,
+                                  fit: BoxFit.contain,
                                 ),
-                                width: MediaQuery.of(context).size.width,
-                                height: 240,
-                                fit: BoxFit.contain,
                               ),
                             ),
                           ),
