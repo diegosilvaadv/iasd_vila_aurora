@@ -14,7 +14,6 @@ import 'anuncios_record.dart';
 import 'limpeza_record.dart';
 import 'mini_musical_record.dart';
 import 'anotacoes_record.dart';
-import 'testedados_record.dart';
 
 import 'index.dart';
 
@@ -39,7 +38,6 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   LimpezaRecord,
   MiniMusicalRecord,
   AnotacoesRecord,
-  TestedadosRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
