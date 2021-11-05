@@ -205,7 +205,7 @@ class _PregadoresWidgetState extends State<PregadoresWidget> {
                                         AutoSizeText(
                                           columnEscalaPregadoresRecord.igreja
                                               .maybeHandleOverflow(
-                                            maxChars: 25,
+                                            maxChars: 18,
                                             replacement: '…',
                                           ),
                                           style: FlutterFlowTheme.subtitle1
