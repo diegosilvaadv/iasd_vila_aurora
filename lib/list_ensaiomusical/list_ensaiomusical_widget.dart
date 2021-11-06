@@ -57,7 +57,7 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
         centerTitle: true,
         elevation: 4,
       ),
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: FlutterFlowTheme.primaryDark,
       body: SafeArea(
         child: StreamBuilder<List<EnsaioMusicalRecord>>(
           stream: queryEnsaioMusicalRecord(),
@@ -125,7 +125,8 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 35, 0, 0),
                                       child: Text(
-                                        columnEnsaioMusicalRecord.conjunto,
+                                        columnEnsaioMusicalRecord.conjunto
+                                            .maybeHandleOverflow(maxChars: 20),
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Lexend Deca',
@@ -140,7 +141,7 @@ class _ListEnsaiomusicalWidgetState extends State<ListEnsaiomusicalWidget> {
                                     child: AutoSizeText(
                                       columnEnsaioMusicalRecord.nomeMusica
                                           .maybeHandleOverflow(
-                                        maxChars: 17,
+                                        maxChars: 15,
                                         replacement: '…',
                                       ),
                                       style: FlutterFlowTheme.title1.override(
