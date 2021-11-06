@@ -120,212 +120,225 @@ class _LimpezaWidgetState extends State<LimpezaWidget> {
             centerTitle: true,
             elevation: 4,
           ),
-          backgroundColor: Color(0xFFF5F5F5),
+          backgroundColor: FlutterFlowTheme.primaryDark,
           body: SafeArea(
-            child: StreamBuilder<List<LimpezaRecord>>(
-              stream: queryLimpezaRecord(
-                queryBuilder: (limpezaRecord) => limpezaRecord.orderBy('data'),
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: SpinKitThreeBounce(
-                        color: FlutterFlowTheme.secondaryColor,
-                        size: 50,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+              child: StreamBuilder<List<LimpezaRecord>>(
+                stream: queryLimpezaRecord(
+                  queryBuilder: (limpezaRecord) =>
+                      limpezaRecord.orderBy('data'),
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: SpinKitThreeBounce(
+                          color: FlutterFlowTheme.secondaryColor,
+                          size: 50,
+                        ),
                       ),
-                    ),
-                  );
-                }
-                List<LimpezaRecord> columnLimpezaRecordList = snapshot.data;
-                return SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: List.generate(columnLimpezaRecordList.length,
-                        (columnIndex) {
-                      final columnLimpezaRecord =
-                          columnLimpezaRecordList[columnIndex];
-                      return Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 90,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.secondaryColor,
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
+                    );
+                  }
+                  List<LimpezaRecord> columnLimpezaRecordList = snapshot.data;
+                  return SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: List.generate(columnLimpezaRecordList.length,
+                          (columnIndex) {
+                        final columnLimpezaRecord =
+                            columnLimpezaRecordList[columnIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 90,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.secondaryColor,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8, 8, 8, 8),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              child: Image.network(
+                                                'https://cdn-icons-png.flaticon.com/512/995/995053.png',
+                                                width: 74,
+                                                height: 74,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      Expanded(
+                                        child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  8, 8, 8, 8),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            child: Image.network(
-                                              'https://cdn-icons-png.flaticon.com/512/995/995053.png',
-                                              width: 74,
-                                              height: 74,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            8, 1, 0, 0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 10, 0),
-                                                  child: StreamBuilder<
-                                                      UsersRecord>(
-                                                    stream:
-                                                        UsersRecord.getDocument(
-                                                            currentUserReference),
-                                                    builder:
-                                                        (context, snapshot) {
-                                                      // Customize what your widget looks like when it's loading.
-                                                      if (!snapshot.hasData) {
-                                                        return Center(
-                                                          child: SizedBox(
-                                                            width: 50,
-                                                            height: 50,
-                                                            child:
-                                                                SpinKitThreeBounce(
-                                                              color: FlutterFlowTheme
-                                                                  .secondaryColor,
-                                                              size: 50,
+                                                  8, 1, 0, 0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 10, 0),
+                                                    child: StreamBuilder<
+                                                        UsersRecord>(
+                                                      stream: UsersRecord
+                                                          .getDocument(
+                                                              currentUserReference),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50,
+                                                              height: 50,
+                                                              child:
+                                                                  SpinKitThreeBounce(
+                                                                color: FlutterFlowTheme
+                                                                    .secondaryColor,
+                                                                size: 50,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        final textUsersRecord =
+                                                            snapshot.data;
+                                                        return InkWell(
+                                                          onLongPress:
+                                                              () async {
+                                                            if ((textUsersRecord
+                                                                    .adm) ==
+                                                                (true)) {
+                                                              await columnLimpezaRecord
+                                                                  .reference
+                                                                  .delete();
+                                                            }
+                                                          },
+                                                          child: Text(
+                                                            columnIndex
+                                                                .toString(),
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Lexend Deca',
+                                                              color: Color(
+                                                                  0xFF545454),
                                                             ),
                                                           ),
                                                         );
-                                                      }
-                                                      final textUsersRecord =
-                                                          snapshot.data;
-                                                      return InkWell(
-                                                        onLongPress: () async {
-                                                          if ((textUsersRecord
-                                                                  .adm) ==
-                                                              (true)) {
-                                                            await columnLimpezaRecord
-                                                                .reference
-                                                                .delete();
-                                                          }
-                                                        },
-                                                        child: Text(
-                                                          columnIndex
-                                                              .toString(),
-                                                          style:
-                                                              FlutterFlowTheme
-                                                                  .bodyText1
-                                                                  .override(
-                                                            fontFamily:
-                                                                'Lexend Deca',
-                                                            color: Color(
-                                                                0xFF545454),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
+                                                      },
+                                                    ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  columnLimpezaRecord.nome,
-                                                  style: FlutterFlowTheme
-                                                      .subtitle1
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: FlutterFlowTheme
-                                                        .primaryColor,
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w500,
+                                                  Text(
+                                                    columnLimpezaRecord.nome,
+                                                    style: FlutterFlowTheme
+                                                        .subtitle1
+                                                        .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: FlutterFlowTheme
+                                                          .primaryColor,
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'Data: ',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText2
+                                                        .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: FlutterFlowTheme
+                                                          .primaryColor,
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
                                                   ),
-                                                )
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
-                                                  'Data: ',
-                                                  style: FlutterFlowTheme
-                                                      .bodyText2
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: FlutterFlowTheme
-                                                        .primaryColor,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  dateTimeFormat('d/M/y',
-                                                      columnLimpezaRecord.data),
-                                                  style: FlutterFlowTheme
-                                                      .bodyText1
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF050635),
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
-                                                  columnLimpezaRecord.mes,
-                                                  style: FlutterFlowTheme
-                                                      .bodyText1
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Colors.black,
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
+                                                  Text(
+                                                    dateTimeFormat(
+                                                        'd/M/y',
+                                                        columnLimpezaRecord
+                                                            .data),
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: Color(0xFF050635),
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    columnLimpezaRecord.mes,
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: Colors.black,
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    )
-                                  ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    }),
-                  ),
-                );
-              },
+                              )
+                            ],
+                          ),
+                        );
+                      }),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         );
