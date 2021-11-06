@@ -77,7 +77,7 @@ class _MinMusicalWidgetState extends State<MinMusicalWidget> {
         centerTitle: true,
         elevation: 4,
       ),
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: FlutterFlowTheme.primaryDark,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
