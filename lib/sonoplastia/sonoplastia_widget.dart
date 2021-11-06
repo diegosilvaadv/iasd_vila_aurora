@@ -22,7 +22,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: FlutterFlowTheme.primaryDark,
       floatingActionButton: StreamBuilder<UsersRecord>(
         stream: UsersRecord.getDocument(currentUserReference),
         builder: (context, snapshot) {
@@ -55,7 +55,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                 );
               }
             },
-            backgroundColor: Color(0xFF4B39EF),
+            backgroundColor: Color(0xFF0B8DA3),
             elevation: 8,
             child: Icon(
               Icons.add,
@@ -74,7 +74,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                 width: MediaQuery.of(context).size.width,
                 height: 108,
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Color(0xFF0B8DA3),
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
@@ -91,7 +91,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                           child: Icon(
                             Icons.arrow_back_outlined,
                             color: Color(0xFFFAA211),
-                            size: 50,
+                            size: 30,
                           ),
                         ),
                       ),
@@ -101,10 +101,10 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                           width: MediaQuery.of(context).size.width * 0.8,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.primaryDark,
+                            color: Color(0x001A1F24),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
-                              color: Color(0xFFEEEEEE),
+                              color: Color(0x00EEEEEE),
                               width: 2,
                             ),
                           ),
@@ -117,7 +117,7 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                                   'Escala Sonoplastia',
                                   style: FlutterFlowTheme.title2.override(
                                     fontFamily: 'Lexend Deca',
-                                    color: FlutterFlowTheme.secondaryColor,
+                                    color: Colors.white,
                                   ),
                                 )
                               ],
@@ -130,223 +130,203 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                 ),
               ),
               Expanded(
-                child: StreamBuilder<List<EscalaSonoplastiaRecord>>(
-                  stream: queryEscalaSonoplastiaRecord(
-                    queryBuilder: (escalaSonoplastiaRecord) =>
-                        escalaSonoplastiaRecord.orderBy('data'),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: SpinKitThreeBounce(
-                            color: FlutterFlowTheme.secondaryColor,
-                            size: 50,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+                  child: StreamBuilder<List<EscalaSonoplastiaRecord>>(
+                    stream: queryEscalaSonoplastiaRecord(
+                      queryBuilder: (escalaSonoplastiaRecord) =>
+                          escalaSonoplastiaRecord.orderBy('data'),
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: SpinKitThreeBounce(
+                              color: FlutterFlowTheme.secondaryColor,
+                              size: 50,
+                            ),
                           ),
-                        ),
-                      );
-                    }
-                    List<EscalaSonoplastiaRecord>
-                        columnEscalaSonoplastiaRecordList = snapshot.data;
-                    return SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(
-                            columnEscalaSonoplastiaRecordList.length,
-                            (columnIndex) {
-                          final columnEscalaSonoplastiaRecord =
-                              columnEscalaSonoplastiaRecordList[columnIndex];
-                          return Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 5),
-                                  child: Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF0B8DA3),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8, 8, 8, 8),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    columnEscalaSonoplastiaRecord
-                                                        .img,
-                                                    'http://simpleicon.com/wp-content/uploads/user1.png',
+                        );
+                      }
+                      List<EscalaSonoplastiaRecord>
+                          columnEscalaSonoplastiaRecordList = snapshot.data;
+                      return SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: List.generate(
+                              columnEscalaSonoplastiaRecordList.length,
+                              (columnIndex) {
+                            final columnEscalaSonoplastiaRecord =
+                                columnEscalaSonoplastiaRecordList[columnIndex];
+                            return Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 5),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 90,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.primaryColor,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(8, 8, 8, 8),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  child: Image.network(
+                                                    valueOrDefault<String>(
+                                                      columnEscalaSonoplastiaRecord
+                                                          .img,
+                                                      'http://simpleicon.com/wp-content/uploads/user1.png',
+                                                    ),
+                                                    width: 74,
+                                                    height: 74,
+                                                    fit: BoxFit.cover,
                                                   ),
-                                                  width: 74,
-                                                  height: 74,
-                                                  fit: BoxFit.cover,
                                                 ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8, 1, 0, 0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 0, 10, 0),
-                                                      child: StreamBuilder<
-                                                          UsersRecord>(
-                                                        stream: UsersRecord
-                                                            .getDocument(
-                                                                currentUserReference),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50,
-                                                                height: 50,
-                                                                child:
-                                                                    SpinKitThreeBounce(
-                                                                  color: FlutterFlowTheme
-                                                                      .secondaryColor,
-                                                                  size: 50,
+                                              )
+                                            ],
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(8, 1, 0, 0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    10, 0),
+                                                        child: StreamBuilder<
+                                                            UsersRecord>(
+                                                          stream: UsersRecord
+                                                              .getDocument(
+                                                                  currentUserReference),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50,
+                                                                  height: 50,
+                                                                  child:
+                                                                      SpinKitThreeBounce(
+                                                                    color: FlutterFlowTheme
+                                                                        .secondaryColor,
+                                                                    size: 50,
+                                                                  ),
                                                                 ),
+                                                              );
+                                                            }
+                                                            final textUsersRecord =
+                                                                snapshot.data;
+                                                            return InkWell(
+                                                              onLongPress:
+                                                                  () async {
+                                                                if ((textUsersRecord
+                                                                        .adm) ==
+                                                                    (true)) {
+                                                                  await columnEscalaSonoplastiaRecord
+                                                                      .reference
+                                                                      .delete();
+                                                                }
+                                                              },
+                                                              child: Text(
+                                                                columnIndex
+                                                                    .toString(),
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1,
                                                               ),
                                                             );
-                                                          }
-                                                          final textUsersRecord =
-                                                              snapshot.data;
-                                                          return InkWell(
-                                                            onLongPress:
-                                                                () async {
-                                                              if ((textUsersRecord
-                                                                      .adm) ==
-                                                                  (true)) {
-                                                                await columnEscalaSonoplastiaRecord
-                                                                    .reference
-                                                                    .delete();
-                                                              }
-                                                            },
-                                                            child: Text(
-                                                              columnIndex
-                                                                  .toString(),
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1,
-                                                            ),
-                                                          );
-                                                        },
+                                                          },
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      columnEscalaSonoplastiaRecord
-                                                          .nome,
-                                                      style: FlutterFlowTheme
-                                                          .subtitle1
-                                                          .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                        color: Colors.white,
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w500,
+                                                      Text(
+                                                        columnEscalaSonoplastiaRecord
+                                                            .nome,
+                                                        style: FlutterFlowTheme
+                                                            .subtitle1
+                                                            .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color: Colors.white,
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Text(
+                                                        'Seu dia no Som é ',
+                                                        style: FlutterFlowTheme
+                                                            .bodyText2
+                                                            .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color:
+                                                              Color(0xFFFAA211),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
                                                       ),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      'Seu dia no Som é ',
-                                                      style: FlutterFlowTheme
-                                                          .bodyText2
-                                                          .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                        color:
-                                                            Color(0xFFFAA211),
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      dateTimeFormat(
-                                                          'd/M/y',
-                                                          columnEscalaSonoplastiaRecord
-                                                              .data),
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Open Sans',
-                                                        color:
-                                                            Color(0xFFF5F5F5),
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      dateTimeFormat(
-                                                          'EEEE',
-                                                          columnEscalaSonoplastiaRecord
-                                                              .data),
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                        color:
-                                                            Color(0xFF6DEEE8),
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  5, 0, 0, 0),
-                                                      child: Text(
+                                                      Text(
                                                         dateTimeFormat(
-                                                            'Hm',
+                                                            'd/M/y',
+                                                            columnEscalaSonoplastiaRecord
+                                                                .data),
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color:
+                                                              Color(0xFFF5F5F5),
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Text(
+                                                        dateTimeFormat(
+                                                            'EEEE',
                                                             columnEscalaSonoplastiaRecord
                                                                 .data),
                                                         style: FlutterFlowTheme
@@ -361,70 +341,96 @@ class _SonoplastiaWidgetState extends State<SonoplastiaWidget> {
                                                               FontWeight.w500,
                                                         ),
                                                       ),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    5, 0, 0, 0),
+                                                        child: Text(
+                                                          dateTimeFormat(
+                                                              'Hm',
+                                                              columnEscalaSonoplastiaRecord
+                                                                  .data),
+                                                          style:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Lexend Deca',
+                                                            color: Color(
+                                                                0xFF6DEEE8),
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 8, 0),
-                                                child: InkWell(
-                                                  onTap: () async {
-                                                    await Navigator.push(
-                                                      context,
-                                                      PageTransition(
-                                                        type: PageTransitionType
-                                                            .bottomToTop,
-                                                        duration: Duration(
-                                                            milliseconds: 300),
-                                                        reverseDuration:
-                                                            Duration(
-                                                                milliseconds:
-                                                                    300),
-                                                        child:
-                                                            DetalhesSonoplastiaWidget(
-                                                          nome:
-                                                              columnEscalaSonoplastiaRecord
-                                                                  .nome,
-                                                          data:
-                                                              columnEscalaSonoplastiaRecord
-                                                                  .data,
-                                                          img:
-                                                              columnEscalaSonoplastiaRecord
-                                                                  .img,
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 8, 0),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      await Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                          type:
+                                                              PageTransitionType
+                                                                  .bottomToTop,
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  300),
+                                                          reverseDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      300),
+                                                          child:
+                                                              DetalhesSonoplastiaWidget(
+                                                            nome:
+                                                                columnEscalaSonoplastiaRecord
+                                                                    .nome,
+                                                            data:
+                                                                columnEscalaSonoplastiaRecord
+                                                                    .data,
+                                                            img:
+                                                                columnEscalaSonoplastiaRecord
+                                                                    .img,
+                                                          ),
                                                         ),
-                                                      ),
-                                                    );
-                                                  },
-                                                  child: Icon(
-                                                    Icons
-                                                        .chevron_right_outlined,
-                                                    color: Color(0xFFFAA211),
-                                                    size: 50,
+                                                      );
+                                                    },
+                                                    child: Icon(
+                                                      Icons
+                                                          .chevron_right_outlined,
+                                                      color: Color(0xFFFAA211),
+                                                      size: 50,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
-                        }),
-                      ),
-                    );
-                  },
+                                  )
+                                ],
+                              ),
+                            );
+                          }),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               )
             ],
