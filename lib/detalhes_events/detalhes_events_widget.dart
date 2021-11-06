@@ -139,7 +139,7 @@ class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
                           Container(
                             width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
-                              color: Color(0xFFEEEEEE),
+                              color: Colors.white,
                             ),
                             child: Padding(
                               padding:
@@ -268,7 +268,8 @@ class _DetalhesEventsWidgetState extends State<DetalhesEventsWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                 child: Text(
-                                  widget.horario,
+                                  widget.horario
+                                      .maybeHandleOverflow(maxChars: 12),
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.subtitle2.override(
                                     fontFamily: 'Lexend Deca',
