@@ -96,7 +96,7 @@ class _PregadoresWidgetState extends State<PregadoresWidget> {
         centerTitle: true,
         elevation: 4,
       ),
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: FlutterFlowTheme.primaryDark,
       body: SafeArea(
         child: StreamBuilder<List<EscalaPregadoresRecord>>(
           stream: queryEscalaPregadoresRecord(
