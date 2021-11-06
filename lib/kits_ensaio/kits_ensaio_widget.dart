@@ -62,7 +62,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
         centerTitle: true,
         elevation: 4,
       ),
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: FlutterFlowTheme.primaryDark,
       body: SafeArea(
         child: StreamBuilder<List<EnsaioMusicalRecord>>(
           stream: queryEnsaioMusicalRecord(
@@ -102,7 +102,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 10),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 10),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -148,7 +148,7 @@ class _KitsEnsaioWidgetState extends State<KitsEnsaioWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 10, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 7, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
