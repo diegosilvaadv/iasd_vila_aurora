@@ -13,24 +13,11 @@ import 'pag_incial/pag_incial_widget.dart';
 import 'chat_main/chat_main_widget.dart';
 import 'home_page/home_page_widget.dart';
 import 'profile_page/profile_page_widget.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
-  
-  //Remove this method to stop OneSignal Debugging 
-OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-
-OneSignal.shared.setAppId("YOUR_ONESIGNAL_APP_ID");
-
-// The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
-OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
-    print("Accepted permission: $accepted");
-});
-  
-}
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
