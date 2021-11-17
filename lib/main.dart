@@ -24,7 +24,7 @@ void main() async {
 //Remove this method to stop OneSignal Debugging 
 OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
-OneSignal.shared.setAppId("YOUR_ONESIGNAL_APP_ID");
+OneSignal.shared.setAppId("7d11bc10-7cfb-42c6-8315-abdba913a150");
 
 
 class MyApp extends StatefulWidget {
