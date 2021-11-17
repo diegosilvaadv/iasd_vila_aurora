@@ -21,6 +21,12 @@ void main() async {
   runApp(MyApp());
 }
 
+//Remove this method to stop OneSignal Debugging 
+OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+
+OneSignal.shared.setAppId("YOUR_ONESIGNAL_APP_ID");
+
+
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
