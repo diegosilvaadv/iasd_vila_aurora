@@ -7,6 +7,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+      platforms:
+      android:
+        package: com.onesignal.flutter
+        pluginClass: OneSignalPlugin
+      ios:
+        pluginClass: OneSignalPlugin
   auto_size_text:
   built_collection: ^5.0.0
   built_value: ^8.0.6
@@ -34,7 +40,6 @@ dependencies:
   timeago:
   url_launcher:
   video_player: ^2.1.10
-  onesignal_flutter: ^3.2.7
 
 dev_dependencies:
   build_runner: ^2.0.6
