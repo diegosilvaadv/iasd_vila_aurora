@@ -30,7 +30,7 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'stackOnPageLoadAnimation1': AnimationInfo(
-      curve: Curves.easeIn,
+      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 1170,
       fadeIn: true,
@@ -427,10 +427,10 @@ class _PagIncialWidgetState extends State<PagIncialWidget>
                                         await Navigator.push(
                                           context,
                                           PageTransition(
-                                            type: PageTransitionType.scale,
+                                            type: PageTransitionType.bottomToTop,
                                             alignment: Alignment.bottomCenter,
                                             duration:
-                                                Duration(milliseconds: 300),
+                                                Duration(milliseconds: 900),
                                             reverseDuration:
                                                 Duration(milliseconds: 300),
                                             child: SonoplastiaWidget(),

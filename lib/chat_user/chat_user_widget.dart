@@ -121,10 +121,7 @@ class _ChatUserWidgetState extends State<ChatUserWidget> {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitThreeBounce(
-                      color: FlutterFlowTheme.secondaryColor,
-                      size: 50,
-                    ),
+
                   ),
                 ),
         ),

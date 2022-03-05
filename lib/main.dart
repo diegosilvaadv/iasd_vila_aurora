@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
-import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:iasd7vilaaurora/login/login_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'pag_incial/pag_incial_widget.dart';
 import 'chat_main/chat_main_widget.dart';
 import 'home_page/home_page_widget.dart';
@@ -56,7 +53,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null
           ? Container(
-              color: FlutterFlowTheme.primaryColor,
+              color: Colors.black,
               child: Builder(
                 builder: (context) => Image.asset(
                   'assets/images/Logo_PORTUGUES.png',
